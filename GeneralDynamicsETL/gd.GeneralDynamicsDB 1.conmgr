@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="gd.GeneralDynamicsDB ControlErrores"
+  DTS:DTSID="{9A614EB1-E73B-4900-A4C9-7FB12FA03C1F}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::CadenaDeConexion]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=40.68.149.248\gd,1433;Initial Catalog=GeneralDynamicsDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;integratedsecurity=True;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

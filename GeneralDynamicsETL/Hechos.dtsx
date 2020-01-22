@@ -1,0 +1,1976 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/20/2020 10:55:17 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="gd"
+  DTS:CreatorName="gd\gd"
+  DTS:DTSID="{9FFDCC3A-5EAB-483D-974A-7AF3163B907C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Hechos"
+  DTS:PackageType="5"
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{5419BA6B-EAAA-4638-97A4-C914CF01C3D8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Antiguedad"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contenedor de secuencias"
+      DTS:DTSID="{EDF8D856-24A9-4BCA-AE4B-D0A79F4E29F3}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Antiguedad">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Antiguedad\Borrar Tablas Fact"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7d0030d4-5c0f-49cd-b0e7-ac1b54b4c5e8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Borrar Tablas Fact"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [Hecho].[Fac_Antiguedad]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Antiguedad\Cargar Fac_Antiguedad"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{9deaa5bb-c72e-4684-bffe-7f7d52c85aab}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Cargar Fac_Antiguedad"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Outputs[Derived Column Output].Columns[Id_Calendario_1]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Outputs[Derived Column Output].Columns[Id_Calendario_1]"
+                          name="Id_Calendario_1"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[YEAR]([GETDATE]()) * 10000 + [MONTH]([GETDATE]()) * 100 + [DAY]([GETDATE]())</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">YEAR(GETDATE()) * 10000 + MONTH(GETDATE()) * 100 + DAY(GETDATE())</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Fac_Antiguedad"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Hecho].[Fac_Antiguedad]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Connections[OleDbConnection]"
+                      connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].Columns[ID_Centro]"
+                          cachedDataType="i4"
+                          cachedName="ID_Centro"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Centro]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Centro]" />
+                        <inputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].Columns[ID_Sexo]"
+                          cachedDataType="i4"
+                          cachedName="ID_Sexo"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Sexo]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Sexo]" />
+                        <inputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].Columns[ID_Rango_Antiguedad]"
+                          cachedDataType="i4"
+                          cachedName="ID_Rango_Antiguedad"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Rango_Antiguedad]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Rango_Antiguedad]" />
+                        <inputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].Columns[Num_Empleados]"
+                          cachedDataType="i4"
+                          cachedName="Num_Empleados"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].ExternalColumns[Num_Empleados]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[Num_Empleados]" />
+                        <inputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].Columns[ID_Calendario]"
+                          cachedDataType="i4"
+                          cachedName="ID_Calendario"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Calendario]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Calendario]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Calendario]"
+                          dataType="i4"
+                          name="ID_Calendario" />
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Centro]"
+                          dataType="i4"
+                          name="ID_Centro" />
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Sexo]"
+                          dataType="i4"
+                          name="ID_Sexo" />
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Rango_Antiguedad]"
+                          dataType="i4"
+                          name="ID_Rango_Antiguedad" />
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input].ExternalColumns[Num_Empleados]"
+                          dataType="i4"
+                          name="Num_Empleados" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="src_Fac_Antiguedad"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  -- FecProceso,
+		ID_Calendario,
+		-- CodCentro,
+		ID_Centro,
+		-- Cod_Sexo,
+		ID_Sexo,
+		ID_Rango_Antiguedad,
+		-- Antiguedad,
+		(SELECT COUNT(Fec_Alta) FROM [Dimension].[Dim_Empleado] DEA
+			WHERE [Sistema].[Antiguedad](DEA.Fec_Alta) = Antiguedad
+					AND DEA.Fec_Alta &lt;= FecProceso
+					AND DEA.[Cod_Centro] = CodCentro
+					AND DEA.[Cod_Sexo] = Cod_Sexo) AS Num_Empleados
+	FROM (
+	SELECT DISTINCT Dimension.Dim_Empleado.Fec_Alta AS FecProceso, 
+			Dimension.Calendario.idCalendario AS ID_Calendario, 
+			Dimension.Dim_Centro.CodCentro AS CodCentro,
+			Dimension.Dim_Centro.Id_Centro AS ID_Centro,
+			Dimension.Dim_Sexo.Cod_Sexo AS Cod_Sexo, 
+			Dimension.Dim_Sexo.Id_Sexo AS ID_Sexo,
+			(SELECT [Id_Rango_Antiguedad] FROM [Dimension].[Dim_Rango_Antiguedad] 
+						WHERE [Sistema].[Antiguedad](Fec_Alta) BETWEEN Rango_Min AND Rango_Max) AS ID_Rango_Antiguedad,
+			[Sistema].[Antiguedad](Dimension.Dim_Empleado.Fec_Alta) AS Antiguedad
+	FROM   Dimension.Dim_Empleado INNER JOIN
+				 Dimension.Calendario ON Dimension.Dim_Empleado.Fec_Alta = Dimension.Calendario.Fecha INNER JOIN
+				 Dimension.Dim_Sexo ON Dimension.Dim_Empleado.Cod_Sexo = Dimension.Dim_Sexo.Cod_Sexo INNER JOIN
+				 Dimension.Dim_Centro ON Dimension.Dim_Empleado.Cod_Centro = Dimension.Dim_Centro.CodCentro, Dimension.Dim_Centro dc
+	WHERE (Dimension.Dim_Empleado.Ind_Activo = 1)) X  ORDER BY X.ID_Calendario DESC</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Connections[OleDbConnection]"
+                      connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Centro]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[ID_Centro]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Centro]"
+                          name="ID_Centro"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Sexo]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[ID_Sexo]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Sexo]"
+                          name="ID_Sexo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Calendario]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[ID_Calendario]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Calendario]"
+                          name="ID_Calendario"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Rango_Antiguedad]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[ID_Rango_Antiguedad]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[ID_Rango_Antiguedad]"
+                          name="ID_Rango_Antiguedad"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[Num_Empleados]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[Num_Empleados]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[Num_Empleados]"
+                          name="Num_Empleados"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[ID_Centro]"
+                          dataType="i4"
+                          name="ID_Centro" />
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[ID_Sexo]"
+                          dataType="i4"
+                          name="ID_Sexo" />
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[ID_Calendario]"
+                          dataType="i4"
+                          name="ID_Calendario" />
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[ID_Rango_Antiguedad]"
+                          dataType="i4"
+                          name="ID_Rango_Antiguedad" />
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[Num_Empleados]"
+                          dataType="i4"
+                          name="Num_Empleados" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ID_Calendario]"
+                          dataType="i4"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ID_Calendario]"
+                          name="ID_Calendario" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ID_Centro]"
+                          dataType="i4"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ID_Centro]"
+                          name="ID_Centro" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ID_Sexo]"
+                          dataType="i4"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ID_Sexo]"
+                          name="ID_Sexo" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ID_Rango_Antiguedad]"
+                          dataType="i4"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ID_Rango_Antiguedad]"
+                          name="ID_Rango_Antiguedad" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[Num_Empleados]"
+                          dataType="i4"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[Num_Empleados]"
+                          name="Num_Empleados" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[Derived Column Output]"
+                  endId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[OLE DB Source Output]"
+                  endId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Antiguedad.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{5B3F9233-01A2-4DDE-B403-ACAFB8BC4D51}"
+          DTS:From="Package\Antiguedad\Borrar Tablas Fact"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\Antiguedad\Cargar Fac_Antiguedad" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Edad"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contenedor de secuencias"
+      DTS:DTSID="{3b9aa983-a28e-4108-a301-0de1e82dadab}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Edad">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Edad\Borrar Tablas Fact"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{4ff585b2-f35b-4249-bd95-4f217d562b00}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Borrar Tablas Fact"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [Hecho].[Fac_Edad]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Edad\Cargar Fac_Edad"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{379b5e6a-1f77-4bec-bb4e-5abddf6ef61a}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Cargar Fac_Edad"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Edad\Cargar Fac_Edad\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Edad\Cargar Fac_Edad\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Edad\Cargar Fac_Edad\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Edad\Cargar Fac_Edad\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Derived Column.Outputs[Derived Column Output].Columns[Id_Calendario_1]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Edad\Cargar Fac_Edad\Derived Column.Outputs[Derived Column Output].Columns[Id_Calendario_1]"
+                          name="Id_Calendario_1"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[YEAR]([GETDATE]()) * 10000 + [MONTH]([GETDATE]()) * 100 + [DAY]([GETDATE]())</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">YEAR(GETDATE()) * 10000 + MONTH(GETDATE()) * 100 + DAY(GETDATE())</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Edad\Cargar Fac_Edad\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Edad\Cargar Fac_Edad\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Edad\Cargar Fac_Edad\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Edad\Cargar Fac_Edad\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Edad\Cargar Fac_Edad\Fac_Edad"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Fac_Edad"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Hecho].[Fac_Edad]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Connections[OleDbConnection]"
+                      connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].Columns[ID_Centro]"
+                          cachedDataType="i4"
+                          cachedName="ID_Centro"
+                          externalMetadataColumnId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Centro]"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Centro]" />
+                        <inputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].Columns[ID_Sexo]"
+                          cachedDataType="i4"
+                          cachedName="ID_Sexo"
+                          externalMetadataColumnId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Sexo]"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Sexo]" />
+                        <inputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].Columns[Num_Empleados]"
+                          cachedDataType="i4"
+                          cachedName="Num_Empleados"
+                          externalMetadataColumnId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].ExternalColumns[Num_Empleados]"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[Num_Empleados]" />
+                        <inputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].Columns[ID_Rango_Edad]"
+                          cachedDataType="i4"
+                          cachedName="ID_Rango_Edad"
+                          externalMetadataColumnId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Rango_Edad]"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Rango_Edad]" />
+                        <inputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].Columns[ID_Calendario]"
+                          cachedDataType="i4"
+                          cachedName="ID_Calendario"
+                          externalMetadataColumnId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Calendario]"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Calendario]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Calendario]"
+                          dataType="i4"
+                          name="ID_Calendario" />
+                        <externalMetadataColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Centro]"
+                          dataType="i4"
+                          name="ID_Centro" />
+                        <externalMetadataColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Sexo]"
+                          dataType="i4"
+                          name="ID_Sexo" />
+                        <externalMetadataColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].ExternalColumns[Num_Empleados]"
+                          dataType="i4"
+                          name="Num_Empleados" />
+                        <externalMetadataColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input].ExternalColumns[ID_Rango_Edad]"
+                          dataType="i4"
+                          name="ID_Rango_Edad" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="src_Fac_Edad"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  -- FecProceso,
+		ID_Calendario,
+		-- CodCentro,
+		ID_Centro,
+		-- Cod_Sexo,
+		ID_Sexo,
+		ID_Rango_Edad,
+		-- Antiguedad,
+		(SELECT COUNT(Fec_Alta) FROM [Dimension].[Dim_Empleado] DEA
+			WHERE [Sistema].[Edad](DEA.Fec_Nacimiento) = Edad
+					AND DEA.Fec_Nacimiento &lt;= FecProceso
+					AND DEA.[Cod_Centro] = CodCentro
+					AND DEA.[Cod_Sexo] = Cod_Sexo) AS Num_Empleados
+	FROM (
+	SELECT DISTINCT Dimension.Dim_Empleado.Fec_Nacimiento AS FecProceso, 
+			Dimension.Calendario.idCalendario AS ID_Calendario, 
+			Dimension.Dim_Centro.CodCentro AS CodCentro,
+			Dimension.Dim_Centro.Id_Centro AS ID_Centro,
+			Dimension.Dim_Sexo.Cod_Sexo AS Cod_Sexo, 
+			Dimension.Dim_Sexo.Id_Sexo AS ID_Sexo,
+			(SELECT [Id_Rango_Edad] FROM [Dimension].[Dim_Rango_Edad]
+						WHERE [Sistema].[Edad](Fec_Nacimiento) BETWEEN Rango_Min AND Rango_Max) AS ID_Rango_Edad,
+			[Sistema].[Edad](Dimension.Dim_Empleado.Fec_Nacimiento) AS Edad
+	FROM   Dimension.Dim_Empleado INNER JOIN
+				 Dimension.Calendario ON Dimension.Dim_Empleado.Fec_Nacimiento = Dimension.Calendario.Fecha INNER JOIN
+				 Dimension.Dim_Sexo ON Dimension.Dim_Empleado.Cod_Sexo = Dimension.Dim_Sexo.Cod_Sexo INNER JOIN
+				 Dimension.Dim_Centro ON Dimension.Dim_Empleado.Cod_Centro = Dimension.Dim_Centro.CodCentro, Dimension.Dim_Centro dc
+	WHERE (Dimension.Dim_Empleado.Ind_Activo = 1)) X  ORDER BY X.ID_Calendario DESC</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Connections[OleDbConnection]"
+                      connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Centro]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].ExternalColumns[ID_Centro]"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Centro]"
+                          name="ID_Centro"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Sexo]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].ExternalColumns[ID_Sexo]"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Sexo]"
+                          name="ID_Sexo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Calendario]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].ExternalColumns[ID_Calendario]"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Calendario]"
+                          name="ID_Calendario"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[Num_Empleados]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].ExternalColumns[Num_Empleados]"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[Num_Empleados]"
+                          name="Num_Empleados"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Rango_Edad]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].ExternalColumns[ID_Rango_Edad]"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].Columns[ID_Rango_Edad]"
+                          name="ID_Rango_Edad"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].ExternalColumns[ID_Centro]"
+                          dataType="i4"
+                          name="ID_Centro" />
+                        <externalMetadataColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].ExternalColumns[ID_Sexo]"
+                          dataType="i4"
+                          name="ID_Sexo" />
+                        <externalMetadataColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].ExternalColumns[ID_Calendario]"
+                          dataType="i4"
+                          name="ID_Calendario" />
+                        <externalMetadataColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].ExternalColumns[Num_Empleados]"
+                          dataType="i4"
+                          name="Num_Empleados" />
+                        <externalMetadataColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output].ExternalColumns[ID_Rango_Edad]"
+                          dataType="i4"
+                          name="ID_Rango_Edad" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ID_Calendario]"
+                          dataType="i4"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ID_Calendario]"
+                          name="ID_Calendario" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ID_Centro]"
+                          dataType="i4"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ID_Centro]"
+                          name="ID_Centro" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ID_Sexo]"
+                          dataType="i4"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ID_Sexo]"
+                          name="ID_Sexo" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ID_Rango_Edad]"
+                          dataType="i4"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ID_Rango_Edad]"
+                          name="ID_Rango_Edad" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[Num_Empleados]"
+                          dataType="i4"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[Num_Empleados]"
+                          name="Num_Empleados" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Edad\Cargar Fac_Edad.Paths[Derived Column Output]"
+                  endId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Edad\Cargar Fac_Edad\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Edad\Cargar Fac_Edad.Paths[OLE DB Source Output]"
+                  endId="Package\Edad\Cargar Fac_Edad\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Edad.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{9aba23cc-c094-4a61-944e-140455e00b8b}"
+          DTS:From="Package\Edad\Borrar Tablas Fact"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\Edad\Cargar Fac_Edad" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Plantillas"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contenedor de secuencias"
+      DTS:DTSID="{2CF5F7DF-5D30-480B-B9D2-5108D5ECEDF6}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Plantillas">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Plantillas\Borrar Tablas Fact"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9cd8ee58-cbcf-4926-8c76-c59fcbe59ad1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Borrar Tablas Fact"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [Hecho].[Fac_Plantilla]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Plantillas\Cargar Fac_Plantilla"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{5ec33aab-13f6-45fa-aaff-2597a07626db}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Cargar Fac_Plantilla"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Outputs[Derived Column Output].Columns[Id_Calendario_1]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Outputs[Derived Column Output].Columns[Id_Calendario_1]"
+                          name="Id_Calendario_1"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[YEAR]([GETDATE]()) * 10000 + [MONTH]([GETDATE]()) * 100 + [DAY]([GETDATE]())</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">YEAR(GETDATE()) * 10000 + MONTH(GETDATE()) * 100 + DAY(GETDATE())</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Fac_Plantilla"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Hecho].[Fac_Plantilla]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Connections[OleDbConnection]"
+                      connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].Columns[ID_Centro]"
+                          cachedDataType="i4"
+                          cachedName="ID_Centro"
+                          externalMetadataColumnId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].ExternalColumns[ID_Centro]"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[ID_Centro]" />
+                        <inputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].Columns[ID_Sexo]"
+                          cachedDataType="i4"
+                          cachedName="ID_Sexo"
+                          externalMetadataColumnId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].ExternalColumns[ID_Sexo]"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[ID_Sexo]" />
+                        <inputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].Columns[Num_Altas]"
+                          cachedDataType="i4"
+                          cachedName="Num_Altas"
+                          externalMetadataColumnId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].ExternalColumns[Num_Altas]"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[Num_Altas]" />
+                        <inputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].Columns[Num_Bajas]"
+                          cachedDataType="i4"
+                          cachedName="Num_Bajas"
+                          externalMetadataColumnId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].ExternalColumns[Num_Bajas]"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[Num_Bajas]" />
+                        <inputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].Columns[ID_Calendario]"
+                          cachedDataType="i4"
+                          cachedName="ID_Calendario"
+                          externalMetadataColumnId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].ExternalColumns[ID_Calendario]"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[ID_Calendario]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].ExternalColumns[ID_Calendario]"
+                          dataType="i4"
+                          name="ID_Calendario" />
+                        <externalMetadataColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].ExternalColumns[ID_Centro]"
+                          dataType="i4"
+                          name="ID_Centro" />
+                        <externalMetadataColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].ExternalColumns[ID_Sexo]"
+                          dataType="i4"
+                          name="ID_Sexo" />
+                        <externalMetadataColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].ExternalColumns[Num_Altas]"
+                          dataType="i4"
+                          name="Num_Altas" />
+                        <externalMetadataColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input].ExternalColumns[Num_Bajas]"
+                          dataType="i4"
+                          name="Num_Bajas" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="src_Fac_Plantilla"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  -- FecProceso,
+		ID_Calendario,
+		-- CodCentro,
+		ID_Centro,
+		-- Cod_Sexo,
+		ID_Sexo,
+		(SELECT COUNT(*) FROM Dimension.Dim_Empleado DMNA
+				WHERE DMNA.Fec_Alta &lt;= FecProceso
+					AND DMNA.[Cod_Centro] = CodCentro
+					AND DMNA.[Cod_Sexo] = Cod_Sexo) AS Num_Altas,
+		(SELECT COUNT(*) FROM Dimension.Dim_Empleado DMNB
+				WHERE DMNB.Fec_Baja &lt;= FecProceso
+					AND DMNB.[Cod_Centro] = CodCentro
+					AND DMNB.[Cod_Sexo] = Cod_Sexo) AS Num_Bajas
+	FROM (
+	SELECT DISTINCT Dimension.Dim_Empleado.Fec_Alta AS FecProceso, 
+			Dimension.Calendario.idCalendario AS ID_Calendario, 
+			Dimension.Dim_Centro.CodCentro AS CodCentro,
+			Dimension.Dim_Centro.Id_Centro AS ID_Centro,
+			Dimension.Dim_Sexo.Cod_Sexo AS Cod_Sexo, 
+			Dimension.Dim_Sexo.Id_Sexo AS ID_Sexo
+	FROM   Dimension.Dim_Empleado INNER JOIN
+				 Dimension.Calendario ON Dimension.Dim_Empleado.Fec_Alta = Dimension.Calendario.Fecha INNER JOIN
+				 Dimension.Dim_Sexo ON Dimension.Dim_Empleado.Cod_Sexo = Dimension.Dim_Sexo.Cod_Sexo INNER JOIN
+				 Dimension.Dim_Centro ON Dimension.Dim_Empleado.Cod_Centro = Dimension.Dim_Centro.CodCentro, Dimension.Dim_Centro dc
+	WHERE (Dimension.Dim_Empleado.Ind_Activo = 1)) X  ORDER BY X.ID_Calendario DESC</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Connections[OleDbConnection]"
+                      connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[ID_Centro]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].ExternalColumns[ID_Centro]"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[ID_Centro]"
+                          name="ID_Centro"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[ID_Sexo]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].ExternalColumns[ID_Sexo]"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[ID_Sexo]"
+                          name="ID_Sexo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[Num_Altas]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].ExternalColumns[Num_Altas]"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[Num_Altas]"
+                          name="Num_Altas"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[Num_Bajas]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].ExternalColumns[Num_Bajas]"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[Num_Bajas]"
+                          name="Num_Bajas"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[ID_Calendario]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].ExternalColumns[ID_Calendario]"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].Columns[ID_Calendario]"
+                          name="ID_Calendario"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].ExternalColumns[ID_Centro]"
+                          dataType="i4"
+                          name="ID_Centro" />
+                        <externalMetadataColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].ExternalColumns[ID_Sexo]"
+                          dataType="i4"
+                          name="ID_Sexo" />
+                        <externalMetadataColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].ExternalColumns[Num_Altas]"
+                          dataType="i4"
+                          name="Num_Altas" />
+                        <externalMetadataColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].ExternalColumns[Num_Bajas]"
+                          dataType="i4"
+                          name="Num_Bajas" />
+                        <externalMetadataColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output].ExternalColumns[ID_Calendario]"
+                          dataType="i4"
+                          name="ID_Calendario" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[ID_Calendario]"
+                          dataType="i4"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[ID_Calendario]"
+                          name="ID_Calendario" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[ID_Centro]"
+                          dataType="i4"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[ID_Centro]"
+                          name="ID_Centro" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[ID_Sexo]"
+                          dataType="i4"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[ID_Sexo]"
+                          name="ID_Sexo" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[Num_Altas]"
+                          dataType="i4"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[Num_Altas]"
+                          name="Num_Altas" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[Num_Bajas]"
+                          dataType="i4"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[Num_Bajas]"
+                          name="Num_Bajas" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Plantillas\Cargar Fac_Plantilla.Paths[Derived Column Output]"
+                  endId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Plantillas\Cargar Fac_Plantilla.Paths[OLE DB Source Output]"
+                  endId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Plantillas.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{FEE669ED-31D7-4810-B0F6-F4B2EC79B4C3}"
+          DTS:From="Package\Plantillas\Borrar Tablas Fact"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\Plantillas\Cargar Fac_Plantilla" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{5D7C9B3D-99F4-4AA2-84A9-20D7D339B5D9}"
+      DTS:From="Package\Plantillas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Antiguedad" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{42FB9ADE-2255-42AD-88EC-72302C36A03F}"
+      DTS:From="Package\Antiguedad"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\Edad" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Plantillas\Borrar Tablas Fact"
+          TopLeft="8.83333333333334,5.06666667441533" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\Plantillas\Cargar Fac_Plantilla"
+          TopLeft="5.50000000000001,108.166666666667" />
+        <EdgeLayout
+          Id="Package\Plantillas.PrecedenceConstraints[Restricción]"
+          TopLeft="91.5,47.733333341082">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.4333333255848"
+              Start="0,0"
+              End="0,52.9333333255848">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.9333333255848" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="182.666666666667,206"
+          Size="182.666666666667,248.666666666667"
+          Id="Package\Plantillas"
+          TopLeft="16.8333333333334,15.4666664884489" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Antiguedad\Borrar Tablas Fact"
+          TopLeft="38.5833284966648,15.9999987602234" />
+        <NodeLayout
+          Size="189.333333333334,42.6666666666667"
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad"
+          TopLeft="28.9999952564638,108.699998938442" />
+        <EdgeLayout
+          Id="Package\Antiguedad.PrecedenceConstraints[Restricción]"
+          TopLeft="122.458328543231,58.66666542689">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.0333335115517"
+              Start="0,0"
+              End="0,42.5333335115517">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5333335115517" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="256,232"
+          Size="256,275.333333333334"
+          Id="Package\Antiguedad"
+          TopLeft="270.91666271165,7.36667215267815" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="199.5,142.416669320564">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.4166627116502,0"
+              Start="0,0"
+              End="63.9166627116502,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="63.9166627116502,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Edad\Borrar Tablas Fact"
+          TopLeft="38.5833284966648,17.2999987369776" />
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Edad\Cargar Fac_Edad"
+          TopLeft="28.9999952564638,108.699998938442" />
+        <EdgeLayout
+          Id="Package\Edad.PrecedenceConstraints[Restricción]"
+          TopLeft="121.249995163331,59.9666654036443">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.2499999068676,48.7333335347977"
+              Start="0,0"
+              End="-12.2499999068676,41.2333335347977">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3666667673989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3666667673989"
+                    Point2="0,24.3666667673989"
+                    Point3="-4,24.3666667673989" />
+                  <mssgle:LineSegment
+                    End="-8.24999990686763,24.3666667673989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.24999990686763,24.3666667673989"
+                    Point2="-12.2499999068676,24.3666667673989"
+                    Point3="-12.2499999068676,28.3666667673989" />
+                  <mssgle:LineSegment
+                    End="-12.2499999068676,41.2333335347977" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="256,232"
+          Size="256,274.666666666667"
+          Id="Package\Edad"
+          TopLeft="586.33332516253,5.19999990701672" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="526.91666271165,143.783336029847">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="59.4166624508798,0"
+              Start="0,0"
+              End="51.9166624508798,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="51.9166624508798,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Plantillas\Cargar Fac_Plantilla">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla"
+          TopLeft="15.5,210.833333333334" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla"
+          TopLeft="5.50000000000001,5.50000000000004" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Plantillas\Cargar Fac_Plantilla\Derived Column"
+          TopLeft="6.83333333333337,108.166666666667" />
+        <EdgeLayout
+          Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[Derived Column Output]"
+          TopLeft="84.1666666666667,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[OLE DB Source Output]"
+          TopLeft="84.1666666666667,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Antiguedad\Cargar Fac_Antiguedad">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad"
+          TopLeft="43.5,214.166666666667" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad"
+          TopLeft="5.50000000000001,5.50000000000004" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column"
+          TopLeft="21.5,111.5" />
+        <EdgeLayout
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[Derived Column Output]"
+          TopLeft="98.8333333333334,154.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22,60.0000000000003"
+              Start="0,0"
+              End="22,52.5000000000003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.0000000000001"
+                    Point2="0,30.0000000000001"
+                    Point3="4,30.0000000000001" />
+                  <mssgle:LineSegment
+                    End="18,30.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18,30.0000000000001"
+                    Point2="22,30.0000000000001"
+                    Point3="22,34.0000000000001" />
+                  <mssgle:LineSegment
+                    End="22,52.5000000000003" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[OLE DB Source Output]"
+          TopLeft="95.8333333333333,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.3333333333337"
+              Start="0,0"
+              End="0,55.8333333333337">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.8333333333337" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Edad\Cargar Fac_Edad">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="125.333333333334,42.6666666666667"
+          Id="Package\Edad\Cargar Fac_Edad\Fac_Edad"
+          TopLeft="30.8333333333333,206.833333333334" />
+        <NodeLayout
+          Size="144,42.6666666666667"
+          Id="Package\Edad\Cargar Fac_Edad\src_Fac_Edad"
+          TopLeft="27.5,8.83333333333337" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Edad\Cargar Fac_Edad\Derived Column"
+          TopLeft="21.5,111.5" />
+        <EdgeLayout
+          Id="Package\Edad\Cargar Fac_Edad.Paths[Derived Column Output]"
+          TopLeft="96.1666666666667,154.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.666666666667"
+              Start="0,0"
+              End="0,45.166666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.166666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Edad\Cargar Fac_Edad.Paths[OLE DB Source Output]"
+          TopLeft="99.1666666666667,51.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Edad\Cargar Fac_Edad\Fac_Edad">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Edad\Cargar Fac_Edad\src_Fac_Edad">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

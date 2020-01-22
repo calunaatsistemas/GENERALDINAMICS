@@ -1,0 +1,2825 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/8/2020 8:09:18 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="gd"
+  DTS:CreatorName="gd\gd"
+  DTS:DTSID="{32C912A5-647D-4F7B-92CF-1F9834CF699C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1900.80"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Staging_TelefonosFijos"
+  DTS:PackageType="5"
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{36AECA08-3F31-40F3-8576-2D04D3CF7232}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TelefonosFijos]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{E72E996F-4040-4434-BA5E-B15BCBF549D6}"
+      DTS:ObjectName="TelefonosFijos">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::RutaPersonal]+ @[$Project::File_PersonalTelefonosFijos]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="Z:\PersonalSBS\Telefonos-Fijos.dat">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NBI"
+              DTS:DTSID="{3888AAC9-488B-4D31-B364-017D11D8382B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Apellido 1"
+              DTS:DTSID="{EC2BA703-54E0-44EA-A349-6B44D0DE5906}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Apellido 2"
+              DTS:DTSID="{3DCD1227-E78E-439B-BFC1-7FC1C22DAC49}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Nombre"
+              DTS:DTSID="{26AAEC6F-5A02-4596-B2B0-86CC60A4811F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Externas"
+              DTS:DTSID="{D81E57B4-0C91-4AFF-A10B-58886A87C4B3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Internas"
+              DTS:DTSID="{E0BF663E-7238-4CE4-9091-7C01C7635962}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C3CF0AA3-2CC2-464F-B754-F0B102166D24}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NombreProceso">
+      <DTS:VariableValue
+        DTS:DataType="8">PersonalTelefonosFijos</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{68C84932-9EA2-441B-82E1-7FC71243131C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\BEGIN TRANSACTION Telefonos Fijos"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{4f11fe7f-dfb3-4b80-96f4-a594b41fe640}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="BEGIN TRANSACTION Telefonos Fijos"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+          SQLTask:SqlStatementSource="Begin transaction TelefonosFijos" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\COMIT Telefonos Fijos"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5a71c43c-503c-4f9f-9710-11dc58a31a26}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="COMIT Telefonos Fijos"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+          SQLTask:SqlStatementSource="Commit Transaction TelefonosFijos" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Copia ficheros procesados"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{029063ca-74fa-4a08-ada8-e8cfd9ca8993}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copia ficheros procesados"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_5716fc6c706b430fb973db89498d33e7"
+          VSTAMajorVersion="14"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="$Project::RutaBalance,$Project::RutaBalanceProcesado,$Project::RutaCompras,$Project::RutaComprasProcesado,$Project::RutaOrdenes,$Project::RutaOrdenesProcesado,$Project::RutaPersonal,$Project::RutaPersonalProcesado,$Project::RutaVentas,$Project::RutaVentasProcesado,$Project::File_Clientes,$Project::File_OrdenesSE,$Project::File_OrdenesTR,$Project::File_PedidosDetalle,$Project::File_PersonalDatoseis,$Project::File_PersonalDatosManager,$Project::File_PersonalDatosUsuarios,$Project::File_PersonalTelefonosFijos,$Project::File_PersonalTelefonosMoviles,$Project::File_PlanContableMaestro,$Project::File_Proveedores,$Project::File_VentasEvolucionDetalle,$Project::File_BalancePG">
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.IO;
+#endregion
+
+namespace ST_5ae326371b954542aafe6c6156878bb6
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+		/// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+		public void Main()
+		{
+            // TODO: Add your code here
+            string fileName = Dts.Variables["$Project::File_PersonalTelefonosFijos"].Value.ToString();
+            string sourcePath = Dts.Variables["$Project::RutaPersonal"].Value.ToString();
+            string targetPath = Dts.Variables["$Project::RutaPersonalProcesado"].Value.ToString();
+
+            // Utilice la clase de ruta para manipular rutas de archivos y directorios.
+            string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+
+            string nombre = Path.GetFileNameWithoutExtension(fileName);
+            string extension = Path.GetExtension(fileName);
+
+            string destFile = System.IO.Path.Combine(targetPath, nombre + DateTime.Now.ToString("yyyy-MM-dd") + extension);
+
+            // Para copiar el contenido de una carpeta a una nueva ubicación:
+            // Crea una nueva carpeta de destino. 
+            // Si el directorio ya existe, este método no crea un nuevo directorio.
+            if (!System.IO.Directory.Exists(targetPath))
+            { System.IO.Directory.CreateDirectory(targetPath); }
+
+            // Para copiar un archivo a otra ubicación y
+            // sobrescribe el archivo de destino si ya existe
+            if (System.IO.Directory.Exists(sourcePath))
+            {                
+                System.IO.File.Copy(sourceFile, destFile, true);
+                System.IO.File.Delete(sourceFile);
+            }           
+            Dts.TaskResult = (int)ScriptResults.Success;
+		}
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_5716fc6c706b430fb973db89498d33e7.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{EE1B6ED9-477B-4AFF-9138-C162B5D7626D}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_5ae326371b954542aafe6c6156878bb6</RootNamespace><AssemblyName>ST_5716fc6c706b430fb973db89498d33e7</AssemblyName><TargetFrameworkVersion>v4.5</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" /><Host Name="ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST130</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_5ae326371b954542aafe6c6156878bb6</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_5ae326371b954542aafe6c6156878bb6</msb:DisplayName>
+		<msb:ProjectId>{C9BBB6D3-C3CF-4AE8-B5B0-DD09DD385699}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_5716fc6c706b430fb973db89498d33e7.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_5ae326371b954542aafe6c6156878bb6.Properties.Settings.get_Default():ST_5ae326371b954542aafe6c6156878bb6.Properties.Sett" +
+    "ings")]
+
+namespace ST_5ae326371b954542aafe6c6156878bb6.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_5ae326371b954542aafe6c6156878bb6")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_5ae326371b954542aafe6c6156878bb6")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_5ae326371b954542aafe6c6156878bb6.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_5ae326371b954542aafe6c6156878bb6.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_5ae326371b954542aafe6c6156878bb6.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_5ae326371b954542aafe6c6156878bb6.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_5ae326371b954542aafe6c6156878bb6.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_5716fc6c706b430fb973db89498d33e7.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDACzXJl4AAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAJjAA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAANQvAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAALBAAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAI
+MAAAAAAAAEgAAAACAAUAkCEAAIwNAAABAAAAAAAAABwvAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBQDLAAAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
+AAAKbxQAAAoKAigQAAAKbxEAAApyTQAAcG8SAAAKbxMAAApvFAAACgIoEAAACm8RAAAKcnsAAHBv
+EgAACm8TAAAKbxQAAAoLJQYoFQAACgwGKBYAAAoNBigXAAAKEwQHCSgYAAAKEwYSBnK7AABwKBkA
+AAoRBCgaAAAKKBUAAAoTBQcoGwAACi0HBygcAAAKJigbAAAKLA8IEQUXKB0AAAoIKB4AAAoCKBAA
+AAoWbx8AAAoqHgIoIAAACioeAighAAAKKq5+AQAABC0ectEAAHDQAwAAAigiAAAKbyMAAApzJAAA
+CoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKh4CKCUAAAoqLnMIAAAGgAMAAAQqAAAA
+QlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAHAQAACN+AACIBAAAEAYAACNTdHJp
+bmdzAAAAAJgKAABEAQAAI1VTANwLAAAQAAAAI0dVSUQAAADsCwAAoAEAACNCbG9iAAAAAAAAAAIA
+AAFXHaIBCQMAAAD6ATMAFgAAAQAAACMAAAAFAAAABgAAAAkAAAABAAAAJQAAAAIAAAAQAAAAAQAA
+AAIAAAADAAAABAAAAAEAAAAEAAAAAQAAAAEAAAAAAMUDAQAAAAAABgBwAswEBgD/AswEBgC8AbkE
+DwBABQAABgDpAWwEBgBTAmwEBgA0AmwEBgDmAmwEBgCQAmwEBgCpAmwEBgAAAmwEBgAbAi0DCgDE
+AnQDCgA0AXQDBgDOAPYDBgD9A/YDBgCfAbkEBgDBBfYDBgCcBOwEBgB+BFcEDgBoAa8DDgDQAa8D
+DgBQAUIEBgCEAcwECgCdA3QDEgCCBdcAEgCcANcABgBQA1IABgBJA/YDBgADBlIABgCKBFIABgDJ
+AFIABgD/APYDBgClAPYDBgDvBWwEAAAAAEkAAAAAAAEAAQABABAADgQBADkAAQABAAAAEADzBE8F
+SQABAAMAAAEQAIwFTwVdAAMABwADAQAApQUAAEEABAAKABEAAgSkABEAJAGoABEAjACsAAYGewCw
+AFaAlQWzAFaABAGzAFAgAAAAAIYAFAQGAAEAJyEAAAAAhhisBAYAAQAvIQAAAACDGKwEBgABADch
+AAAAAJMImAS3AAEAYyEAAAAAkwgMAbwAAQBqIQAAAACTCBgBwQABAHIhAAAAAJYIyAXHAAIAeSEA
+AAAAhhisBAYAAgCBIQAAAACRGLIEzAACAAAAAQAnAwkArAQBABEArAQGABkArAQKACkArAQQADEA
+rAQQADkArAQQAEEArAQQAEkArAQQAFEArAQQAFkArAQQAGEArAQQAGkArAQGAIkArAQGALEArAQV
+AMEArAQGAHEAnQUmAMkAfgUrANEA7QMwANkAHQM2AJEARwM6AOEA9wA+AOEAJgREAOEAGQREAHkA
+4wVJAHkARwNOAOkAugVTAPEAswVaAPEA/QVfAAEB+AVlAAEBfQFsAMkA1AUBAHEArAQGAJEArAQG
+AAkBtwBxAAkB6wV6AJkArASAALkArAQGAAgAFACaAAgAGACfACkAcwAHAS4ACwDfAC4AEwDoAC4A
+GwAHAS4AIwAQAS4AKwA5AS4AMwA5AS4AOwA5AS4AQwAQAS4ASwA/AS4AUwA5AS4AWwBWAUMAYwCf
+AEkAcwAHAWEAewCfAGMAawCfABsAAwABAAQAAwAAAJwE0AAAACwB1QAAAMwF2gACAAQAAwACAAUA
+BQABAAYABQACAAcABwAEgAAAAQAAAJ0cFkwAAAAAAAAlAAAABAAAAAAAAAAAAAAAiACDAAAAAAAN
+AAAAAAAAAAAAAACRAFUDAAAAAAQAAAAAAAAAAAAAAIgA9gMAAAAADQAAAAAAAAAAAAAAkQBcAAAA
+AAAAAAAAAQAAAP0EAAAFAAIAAAAAU1RfNWFlMzI2MzcxYjk1NDU0MmFhZmU2YzYxNTY4NzhiYjYA
+U1RfNTcxNmZjNmM3MDZiNDMwZmI5NzNkYjg5NDk4ZDMzZTcAPE1vZHVsZT4AU3lzdGVtLklPAE1p
+Y3Jvc29mdC5TcWxTZXJ2ZXIuTWFuYWdlZERUUwB2YWx1ZV9fAG1zY29ybGliAGRlZmF1bHRJbnN0
+YW5jZQBWYXJpYWJsZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBGaWxlAERh
+dGVUaW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUAQ29tYmluZQBUeXBlAEZhaWx1
+cmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAFZTVEFSVFNjcmlwdE9i
+amVjdE1vZGVsQmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBFZGl0b3JCcm93c2FibGVTdGF0
+ZQBEZWxldGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0
+dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3Nl
+bWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1l
+d29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNj
+cmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5
+UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0VGFz
+a0VudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21w
+YXRpYmlsaXR5QXR0cmlidXRlAGdldF9WYWx1ZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9u
+aW5nAFRvU3RyaW5nAFBhdGgATWljcm9zb2Z0LlNxbFNlcnZlci5TY3JpcHRUYXNrAE1pY3Jvc29m
+dC5TcWxTZXJ2ZXIuRHRzLlRhc2tzLlNjcmlwdFRhc2sAU2NyaXB0T2JqZWN0TW9kZWwAU3lzdGVt
+LkNvbXBvbmVudE1vZGVsAFNUXzU3MTZmYzZjNzA2YjQzMGZiOTczZGI4OTQ5OGQzM2U3LmRsbABn
+ZXRfSXRlbQBTeXN0ZW0ARW51bQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAEdldEV4dGVuc2lvbgBH
+ZXRGaWxlTmFtZVdpdGhvdXRFeHRlbnNpb24AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkds
+b2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24AQ3VsdHVyZUluZm8ARGlyZWN0b3J5SW5mbwBn
+ZXRfUmVzb3VyY2VNYW5hZ2VyAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVt
+LlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNUXzVhZTMyNjM3MWI5
+NTQ1NDJhYWZlNmM2MTU2ODc4YmI2LlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1
+Z2dpbmdNb2RlcwBTVF81YWUzMjYzNzFiOTU0NTQyYWFmZTZjNjE1Njg3OGJiNi5Qcm9wZXJ0aWVz
+AGdldF9WYXJpYWJsZXMAU2V0dGluZ3MAU3VjY2VzcwBnZXRfRHRzAFNjcmlwdFJlc3VsdHMARXhp
+c3RzAENvbmNhdABPYmplY3QAZ2V0X0RlZmF1bHQAc2V0X1Rhc2tSZXN1bHQAZ2V0X05vdwBnZXRf
+QXNzZW1ibHkAQ29weQBDcmVhdGVEaXJlY3RvcnkAAAAAAEskAFAAcgBvAGoAZQBjAHQAOgA6AEYA
+aQBsAGUAXwBQAGUAcgBzAG8AbgBhAGwAVABlAGwAZQBmAG8AbgBvAHMARgBpAGoAbwBzAAAtJABQ
+AHIAbwBqAGUAYwB0ADoAOgBSAHUAdABhAFAAZQByAHMAbwBuAGEAbAAAPyQAUAByAG8AagBlAGMA
+dAA6ADoAUgB1AHQAYQBQAGUAcgBzAG8AbgBhAGwAUAByAG8AYwBlAHMAYQBkAG8AABV5AHkAeQB5
+AC0ATQBNAC0AZABkAAFxUwBUAF8ANQBhAGUAMwAyADYAMwA3ADEAYgA5ADUANAA1ADQAMgBhAGEA
+ZgBlADYAYwA2ADEANQA2ADgANwA4AGIAYgA2AC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBz
+AG8AdQByAGMAZQBzAAAAr6D6erjQwEOLDTMcoPm8EgAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQER
+VQoHBw4ODg4ODhE9BCAAEmUEIAASaQUgARJtHAMgABwDIAAOBQACDg4OBAABDg4EAAARPQQgAQ4O
+BgADDg4ODgQAAQIOBQABEn0OBgADAQ4OAgQAAQEOCAABEoCFEYCJBSAAEoCNByACAQ4SgI0It3pc
+Vhk04IkIiYRdzYCAzJEEAAAAAAQBAAAAAwYSTQMGElEDBhIQAgYIAwYRFAQAABJNBAAAElEFAAEB
+ElEEAAASEAMAAAEECAASTQQIABJRBAgAEhAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRp
+b25UaHJvd3MBCAEAAgAAAAAAKAEAI1NUXzVhZTMyNjM3MWI5NTQ1NDJhYWZlNmM2MTU2ODc4YmI2
+AAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjAAAEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249
+djQuNQEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC41tAAAAM7K774B
+AAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lv
+bj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUw
+ODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQ
+tAAAAPwvAAAAAAAAAAAAABYwAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIMAAAAAAAAAAAAAAA
+AF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABABZMnRwAAAEAFkydHD8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBUAF8ANQBhAGUAMwAyADYAMwA3ADEAYgA5ADUANAA1ADQAMgBhAGEAZgBlADYAYwA2ADEA
+NQA2ADgANwA4AGIAYgA2AAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADcAMwAyADUALgAxADkANAA3ADgAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAA
+UwBUAF8ANQA3ADEANgBmAGMANgBjADcAMAA2AGIANAAzADAAZgBiADkANwAzAGQAYgA4ADkANAA5
+ADgAZAAzADMAZQA3AC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQA
+AABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADAAAAAqAAEAAQBMAGUAZwBhAGwAVABy
+AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
+YQBtAGUAAABTAFQAXwA1ADcAMQA2AGYAYwA2AGMANwAwADYAYgA0ADMAMABmAGIAOQA3ADMAZABi
+ADgAOQA0ADkAOABkADMAMwBlADcALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
+ZQAAAAAAUwBUAF8ANQBhAGUAMwAyADYAMwA3ADEAYgA5ADUANAA1ADQAMgBhAGEAZgBlADYAYwA2
+ADEANQA2ADgANwA4AGIAYgA2AAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
+MQAuADAALgA3ADMAMgA1AC4AMQA5ADQANwA4AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA3ADMAMgA1AC4AMQA5ADQANwA4AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAACgwAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Ejecutar Datos Cuarentena"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5e84b0b0-7ef1-4bb7-8c51-9b2f1fd9cb07}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Ejecutar Datos Cuarentena"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+          SQLTask:SqlStatementSource="exec  [Sistema].[CuarentenaGenerar] ?,?,?,? " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::NombreProceso"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="50" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="200" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::MachineName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="200" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="200" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Log Auditoria"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5dc64154-d723-4a7e-b34b-bbf098e90560}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Log Auditoria"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="SqlStatementSource">"INSERT INTO [Sistema].[Auditoria]
+           (MachineName  
+		   ,PackageName
+		   ,PackageUser
+           ,StartTime  
+           ,[Table] 
+		   ,NumberRecords
+		   ,FileName)
+     VALUES
+          ('" + @[System::MachineName] + "'
+		  ,'" + @[System::PackageName] + "'
+		  ,'" + @[System::UserName] + "' 
+		  ,'" + (DT_WSTR,25)@[System::StartTime] + "'
+		  ,'[Staging].[PersonalTelefonosFijos]'
+		  ," +  (DT_WSTR, 12)@[User::RecordCount] + "
+		  ,'" + @[$Project::File_PersonalTelefonosFijos] + "')"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+          SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('gd'&#xA;&#x9;&#x9;  ,'Staging_TelefonosFijos'&#xA;&#x9;&#x9;  ,'gd\gd' &#xA;&#x9;&#x9;  ,'1/21/2020 12:09:47 PM'&#xA;&#x9;&#x9;  ,'[Staging].[PersonalTelefonosFijos]'&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'Telefonos-Fijos.dat')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Telefonos Fijos"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8FAF8E62-0A86-40F8-9F65-E50CA3F0FC74}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Telefonos Fijos">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Telefonos Fijos\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{D48A6096-A607-4274-BF92-D1861B7231A1}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Proceso]"
+                          cachedDataType="wstr"
+                          cachedLength="150"
+                          cachedName="Proceso"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Proceso]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Archivo]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Archivo"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Archivo]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[NBI]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NBI"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[NBI]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Apellido 1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Apellido 1"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Apellido 1]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Apellido 2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Apellido 2"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Apellido 2]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Nombre]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Nombre"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Nombre]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Externas]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Externas"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Externas]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Internas]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Internas"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Internas]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[FechaInsert]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FechaInsert"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaInsert]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[FechaUpdate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FechaUpdate"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaUpdate]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Proceso]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="150"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Proceso]"
+                          name="Proceso"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Proceso]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Archivo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Archivo]"
+                          name="Archivo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Archivo]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[NBI]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="4"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[NBI]"
+                          name="NBI"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[NBI]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido 1]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido 1]"
+                          name="Apellido 1"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Apellido 1]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido 2]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido 2]"
+                          name="Apellido 2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Apellido 2]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Nombre]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Nombre]"
+                          name="Nombre"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Nombre]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Externas]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="20"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Externas]"
+                          name="Externas"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Externas]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Internas]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="20"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Internas]"
+                          name="Internas"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Internas]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaInsert]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaInsert]"
+                          name="FechaInsert"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaInsert]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaUpdate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaUpdate]"
+                          name="FechaUpdate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaUpdate]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="dc_incluyeCamposAuditoria"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaInsert]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaInsert]"
+                          name="FechaInsert"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[GETDATE]()</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">GETDATE()</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaUpdate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaUpdate]"
+                          name="FechaUpdate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[GETDATE]()</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">GETDATE()</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Proceso]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="150"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Proceso]"
+                          name="Proceso"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::PackageName]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Archivo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Archivo]"
+                          name="Archivo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Project::File_PersonalTelefonosFijos]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Project::File_PersonalTelefonosFijos]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="dest_PersonalTelefonosFijos"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[PersonalTelefonosFijos]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Connections[OleDbConnection]"
+                      connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].Columns[NBI]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="NBI"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[NBI]"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[NBI]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].Columns[Apellido 1]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Apellido 1"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Apellido1]"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido 1]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].Columns[Apellido 2]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Apellido 2"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Apellido2]"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido 2]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Nombre"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Nombre]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].Columns[Externas]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Externas"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Externas]"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Externas]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].Columns[Internas]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Internas"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Internas]"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Internas]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].Columns[FechaInsert]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FechaInsert"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[FechaInsert]"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaInsert]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].Columns[FechaUpdate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FechaUpdate"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[FechaUpdate]"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaUpdate]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].Columns[Proceso]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="Proceso"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Proceso]"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Proceso]" />
+                        <inputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].Columns[Archivo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Archivo"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Archivo]"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Archivo]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[NBI]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="NBI" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Apellido1]"
+                          dataType="wstr"
+                          length="50"
+                          name="Apellido1" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Apellido2]"
+                          dataType="wstr"
+                          length="50"
+                          name="Apellido2" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="80"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Externas]"
+                          dataType="wstr"
+                          length="20"
+                          name="Externas" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Internas]"
+                          dataType="wstr"
+                          length="20"
+                          name="Internas" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[FechaInsert]"
+                          dataType="dbTimeStamp"
+                          name="FechaInsert" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[FechaUpdate]"
+                          dataType="dbTimeStamp"
+                          name="FechaUpdate" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Proceso]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="Proceso" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input].ExternalColumns[Archivo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Archivo" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Telefonos Fijos\Data Flow Task\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordCount</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Telefonos Fijos\Data Flow Task\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Telefonos Fijos\Data Flow Task\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Telefonos Fijos\Data Flow Task\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="Source_TelefonosFijos"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[TelefonosFijos]"
+                      connectionManagerRefId="Package.ConnectionManagers[TelefonosFijos]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[NBI]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[NBI]"
+                          length="50"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[NBI]"
+                          name="NBI"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Apellido 1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[Apellido 1]"
+                          length="50"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Apellido 1]"
+                          name="Apellido 1"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Apellido 2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[Apellido 2]"
+                          length="50"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Apellido 2]"
+                          name="Apellido 2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Nombre]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[Nombre]"
+                          length="50"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Nombre]"
+                          name="Nombre"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Externas]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[Externas]"
+                          length="50"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Externas]"
+                          name="Externas"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Internas]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[Internas]"
+                          length="50"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].Columns[Internas]"
+                          name="Internas"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[NBI]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NBI" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[Apellido 1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Apellido 1" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[Apellido 2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Apellido 2" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[Nombre]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[Externas]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Externas" />
+                        <externalMetadataColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output].ExternalColumns[Internas]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Internas" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Telefonos Fijos\Data Flow Task.Paths[Data Conversion Output]"
+                  endId="Package\Telefonos Fijos\Data Flow Task\Row Count.Inputs[Row Count Input 1]"
+                  name="Data Conversion Output"
+                  startId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Telefonos Fijos\Data Flow Task.Paths[Derived Column Output]"
+                  endId="Package\Telefonos Fijos\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Derived Column Output"
+                  startId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Telefonos Fijos\Data Flow Task.Paths[Flat File Source Output]"
+                  endId="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria.Inputs[Derived Column Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos.Outputs[Flat File Source Output]" />
+                <path
+                  refId="Package\Telefonos Fijos\Data Flow Task.Paths[Row Count Output 1]"
+                  endId="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Telefonos Fijos\Data Flow Task\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Telefonos Fijos\Truncate PersonalTelefonosFijos"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CFCCE7F4-0077-45BA-90A0-D2A54EE84F7B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate PersonalTelefonosFijos"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+              SQLTask:SqlStatementSource="truncate table [Staging].[PersonalTelefonosFijos];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Telefonos Fijos.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{5D962679-A252-41F0-97E3-1B7EB5F6E031}"
+          DTS:From="Package\Telefonos Fijos\Truncate PersonalTelefonosFijos"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Telefonos Fijos\Data Flow Task" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{509F970A-8E3A-4314-B753-AC73CFD32D64}"
+      DTS:From="Package\BEGIN TRANSACTION Telefonos Fijos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Telefonos Fijos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{4DB96492-C2F1-403D-BCFA-D62F9A5DF734}"
+      DTS:From="Package\Telefonos Fijos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\COMIT Telefonos Fijos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{E70B8081-5837-4A26-85E0-B2C8717A2695}"
+      DTS:From="Package\COMIT Telefonos Fijos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Copia ficheros procesados" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{C7D2BEE2-4722-4ABB-A59C-3DD785420925}"
+      DTS:From="Package\Copia ficheros procesados"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Ejecutar Datos Cuarentena" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{9C73DA56-4C98-4F47-9F77-39A47A392AA5}"
+      DTS:From="Package\Ejecutar Datos Cuarentena"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Log Auditoria" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{C5988B39-0C21-4941-A87B-A80E4C427DBE}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{8DE1A5EA-06F5-47BF-BA73-AC04BF25CC15}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Log Errores"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7c617f8d-f0d1-4836-b272-b55a65ef77c5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Log Errores">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"INSERT INTO [Error].[PackageError]
+           ([PackageErrorID]
+           ,[MachineName]
+           ,[PackageName]
+           ,[TaskName]
+           ,[ErrorCode]
+           ,[ErrorDescription])
+     VALUES
+           ('" + @[System::PackageID]  + "'
+           ,'" + @[System::MachineName] + "'
+           ,'" + @[System::PackageName] + "'
+           ,'" + @[System::TaskName] + "'
+           ," +  (DT_WSTR, 12)@[System::ErrorCode] + "
+           ,'" + @[System::ErrorDescription] + "')"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{9A614EB1-E73B-4900-A4C9-7FB12FA03C1F}"
+              SQLTask:SqlStatementSource="INSERT INTO [Error].[PackageError]&#xA;           ([PackageErrorID]&#xA;           ,[MachineName]&#xA;           ,[PackageName]&#xA;           ,[TaskName]&#xA;           ,[ErrorCode]&#xA;           ,[ErrorDescription])&#xA;     VALUES&#xA;           ('{32C912A5-647D-4F7B-92CF-1F9834CF699C}'&#xA;           ,'gd'&#xA;           ,'Staging_TelefonosFijos'&#xA;           ,'Log Errores'&#xA;           ,0&#xA;           ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Script Task"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{b77eb355-2adb-442b-a644-67fd62ba4ec2}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Script Task">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_91a95854587944338d98210e83f04507"
+              VSTAMajorVersion="14"
+              VSTAMinorVersion="0"
+              Language="CSharp"
+              ReadOnlyVariables="System::ErrorDescription,System::StartTime">
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+#endregion
+
+namespace ST_48a07eefc4eb40df8434d4b92eece029
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+        /// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+        /// [STAThread]
+        public void Main()
+		{
+            // TODO: Add your code here
+            // @[System::ErrorDescription]
+
+            try
+            {
+                string strMensaje;
+                DateTime startTime = (DateTime)Dts.Variables["System::StartTime"].Value;
+                strMensaje = "Fecha hora: " + startTime.ToLongDateString().ToUpper() + System.Environment.NewLine + System.Environment.NewLine;
+                strMensaje += "Descripcion del error: " + (string)Dts.Variables["System::ErrorDescription"].Value + System.Environment.NewLine;
+                // Clipboard.SetText(strMensaje);
+                MessageBox.Show(strMensaje,"Error ...",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                // Clipboard.SetText(ex.ToString());
+                Dts.TaskResult = (int)ScriptResults.Failure;
+            }
+        }
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+              <ProjectItem
+                Name="ST_91a95854587944338d98210e83f04507.csproj"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{3D7541E8-00C5-4A89-951E-D3DABC433117}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_48a07eefc4eb40df8434d4b92eece029</RootNamespace><AssemblyName>ST_91a95854587944338d98210e83f04507</AssemblyName><TargetFrameworkVersion>v4.5</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" /><Host Name="ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST130</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_48a07eefc4eb40df8434d4b92eece029</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_48a07eefc4eb40df8434d4b92eece029</msb:DisplayName>
+		<msb:ProjectId>{3E528896-85B1-4FBA-B381-A6704181C141}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_91a95854587944338d98210e83f04507.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_48a07eefc4eb40df8434d4b92eece029.Properties.Settings.get_Default():ST_48a07eefc4eb40df8434d4b92eece029.Properties.Sett" +
+    "ings")]
+
+namespace ST_48a07eefc4eb40df8434d4b92eece029.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_48a07eefc4eb40df8434d4b92eece029")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_48a07eefc4eb40df8434d4b92eece029")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_48a07eefc4eb40df8434d4b92eece029.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_48a07eefc4eb40df8434d4b92eece029.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_48a07eefc4eb40df8434d4b92eece029.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_48a07eefc4eb40df8434d4b92eece029.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_48a07eefc4eb40df8434d4b92eece029.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <BinaryItem
+                Name="ST_48a07eefc4eb40df8434d4b92eece029.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAPXHFV4AAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAAzi8A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAHwvAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA1A8AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACw
+LwAAAAAAAEgAAAACAAUAeCEAAEwNAAABAAAAAAAAAMQuAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABswBACkAAAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
+AAAKpQ8AAAEKciUAAHASACgUAAAKbxUAAAooFgAACigWAAAKKBcAAApyPwAAcAIoEAAACm8RAAAK
+cm8AAHBvEgAACm8TAAAKdB0AAAEoFgAACigXAAAKcqEAAHAWHxAoGAAACiYCKBAAAAoWbxkAAAre
+GW8aAAAKKBsAAAomAigQAAAKF28ZAAAK3gAqARAAAAAAAACKigAZEAAAAR4CKBwAAAoqHgIoHQAA
+CiqufgEAAAQtHnK1AABw0AMAAAIoHgAACm8fAAAKcyAAAAqAAQAABH4BAAAEKhp+AgAABCoeAoAC
+AAAEKhp+AwAABCoeAighAAAKKi5zCAAABoADAAAEKgAAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAz
+MTkAAAAABQBsAAAAJAQAACN+AACQBAAA/AUAACNTdHJpbmdzAAAAAIwKAAAoAQAAI1VTALQLAAAQ
+AAAAI0dVSUQAAADECwAAiAEAACNCbG9iAAAAAAAAAAIAAAFXHaIBCQMAAAD6ATMAFgAAAQAAACUA
+AAAFAAAABgAAAAkAAAABAAAAIQAAAAIAAAAQAAAAAQAAAAIAAAADAAAABAAAAAEAAAAFAAAAAQAA
+AAEAAAAAAJsDAQAAAAAABgA6AowEBgDJAowEBgCGAXkEDwAABQAABgCzASgEBgAdAigEBgD+ASgE
+BgCwAigEBgBaAigEBgBzAigEBgDKASgEBgDlAfcCCgCOAkoDCgAFAUoDBgCbAMwDBgA6BMwDBgDT
+A8wDBgBpAXkEBgChBcwDBgBUBKwEBgBEBBMEDgA5AYUDDgCaAYUDDgAhAf4DBgBOAYwECgBzA0oD
+EgBCBaQAEgBuAKQABgAkA8wDBgDQBcwDFgDhBVUFFgC0BVUFFgBqBVUFFgDvA1UFBgDQAMwDBgB3
+AMwDBgDwBSgEAAAAACUAAAAAAAEAAQABABAA5AMBADkAAQABAAAAEACzBA8FTQABAAMAAAEQAEwF
+DwVhAAMABwADAQAAjAUAAEUABAAKABEA2AOMABEA9QCQABEAXgCUAAYGTQCYAFaAfAWbAFaA1QCb
+AFAgAAAAAIYA6gMGAAEAECEAAAAAhhhsBAYAAQAYIQAAAACDGGwEBgABACAhAAAAAJMIUASfAAEA
+TCEAAAAAkwjdAKQAAQBTIQAAAACTCOkAqQABAFshAAAAAJYIqAWvAAIAYiEAAAAAhhhsBAYAAgBq
+IQAAAACRGHIEtAACAAAAAQDxAgkAbAQBABEAbAQGABkAbAQKACkAbAQQADEAbAQQADkAbAQQAEEA
+bAQQAEkAbAQQAFEAbAQQAFkAbAQQAGEAbAQQAGkAbAQGAJEAbAQGALkAbAQVAMkAbAQGAHEAhAUg
+ANEAPgUlANkAwwMqAOEA5wIwAHkAEQM0AOkAZAQ0APEAxAA4AOkAmgU8APkA3AVEANEAwQUBAJkA
+IgM0APkA3AVSAHEAbAQGAJkAbAQGABkBiQBZABkB7AViAKEAbARoAMEAbAQGAAgAFACCAAgAGACH
+ACkAcwDvAC4ACwDHAC4AEwDQAC4AGwDvAC4AIwD4AC4AKwAhAS4AMwAhAS4AOwAhAS4AQwD4AC4A
+SwAnAS4AUwAhAS4AWwA+AUMAYwCHAEkAcwDvAGEAewCHAGMAawCHABsAAwABAAQAAwAAAFQEuAAA
+AP0AvQAAAKwFwgACAAQAAwACAAUABQABAAYABQACAAcABwAEgAAAAQAAAJAcQl0AAAAAAAABAAAA
+BAAAAAAAAAAAAAAAcABVAAAAAAANAAAAAAAAAAAAAAB5ACsDAAAAAAQAAAAAAAAAAAAAAHAAzAMA
+AAAADQAAAAAAAAAAAAAAeQAuAAAAAAAEAAAAAAAAAAAAAABwAFUFAAAAAAAAAAABAAAAvQQAAAUA
+AgAAAABTVF80OGEwN2VlZmM0ZWI0MGRmODQzNGQ0YjkyZWVjZTAyOQA8TW9kdWxlPgBNaWNyb3Nv
+ZnQuU3FsU2VydmVyLk1hbmFnZWREVFMAdmFsdWVfXwBtc2NvcmxpYgBkZWZhdWx0SW5zdGFuY2UA
+VmFyaWFibGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUARGF0ZVRpbWUATWlj
+cm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZQBnZXRfTmV3TGluZQBUeXBlAEZhaWx1cmUAZ2V0
+X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAFZTVEFSVFNjcmlwdE9iamVjdE1v
+ZGVsQmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21w
+aWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVn
+Z2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRy
+aWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRl
+AEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmli
+dXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmli
+dXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0
+dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRy
+aWJ1dGUAZ2V0X1ZhbHVlAHZhbHVlAFN5c3RlbS5SdW50aW1lLlZlcnNpb25pbmcAVG9Mb25nRGF0
+ZVN0cmluZwBUb1N0cmluZwBNaWNyb3NvZnQuU3FsU2VydmVyLlNjcmlwdFRhc2sATWljcm9zb2Z0
+LlNxbFNlcnZlci5EdHMuVGFza3MuU2NyaXB0VGFzawBTY3JpcHRPYmplY3RNb2RlbABTeXN0ZW0u
+Q29tcG9uZW50TW9kZWwAU1RfNDhhMDdlZWZjNGViNDBkZjg0MzRkNGI5MmVlY2UwMjkuZGxsAGdl
+dF9JdGVtAFN5c3RlbQBFbnVtAHJlc291cmNlTWFuAFNjcmlwdE1haW4ATWVzc2FnZUJveEljb24A
+U3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rp
+b24ARXhjZXB0aW9uAEN1bHR1cmVJbmZvAGdldF9SZXNvdXJjZU1hbmFnZXIAVG9VcHBlcgAuY3Rv
+cgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2Vydmlj
+ZXMAU3lzdGVtLlJlc291cmNlcwBTVF80OGEwN2VlZmM0ZWI0MGRmODQzNGQ0YjkyZWVjZTAyOS5Q
+cm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU1RfNDhhMDdlZWZj
+NGViNDBkZjg0MzRkNGI5MmVlY2UwMjkuUHJvcGVydGllcwBnZXRfVmFyaWFibGVzAFNldHRpbmdz
+AFN5c3RlbS5XaW5kb3dzLkZvcm1zAE1lc3NhZ2VCb3hCdXR0b25zAFN1Y2Nlc3MAZ2V0X0R0cwBT
+Y3JpcHRSZXN1bHRzAENvbmNhdABPYmplY3QAZ2V0X0RlZmF1bHQARGlhbG9nUmVzdWx0AHNldF9U
+YXNrUmVzdWx0AEVudmlyb25tZW50AFNob3cATWVzc2FnZUJveABnZXRfQXNzZW1ibHkAAAAAACNT
+AHkAcwB0AGUAbQA6ADoAUwB0AGEAcgB0AFQAaQBtAGUAABlGAGUAYwBoAGEAIABoAG8AcgBhADoA
+IAAAL0QAZQBzAGMAcgBpAHAAYwBpAG8AbgAgAGQAZQBsACAAZQByAHIAbwByADoAIAAAMVMAeQBz
+AHQAZQBtADoAOgBFAHIAcgBvAHIARABlAHMAYwByAGkAcAB0AGkAbwBuAAATRQByAHIAbwByACAA
+LgAuAC4AAHFTAFQAXwA0ADgAYQAwADcAZQBlAGYAYwA0AGUAYgA0ADAAZABmADgANAAzADQAZAA0
+AGIAOQAyAGUAZQBjAGUAMAAyADkALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIA
+YwBlAHMAAACfuiE/Ksc2R5s9TZaoqEqcAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFZBAcBET0E
+IAASaQQgABJtBSABEnEcAyAAHAMgAA4DAAAOBwAEDg4ODg4NAAQRgIEODhGAhRGAiQYAARGAgQ4I
+AAESgI0RgJEFIAASgJUHIAIBDhKAlQi3elxWGTTgiQiJhF3NgIDMkQQAAAAABAEAAAADBhJRAwYS
+VQMGEhACBggDBhEUBAAAElEEAAASVQUAAQESVQQAABIQAwAAAQQIABJRBAgAElUECAASEAgBAAgA
+AAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU1RfNDhhMDdl
+ZWZjNGViNDBkZjg0MzRkNGI5MmVlY2UwMjkAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAyMAAA
+SQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC41AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIu
+TkVUIEZyYW1ld29yayA0LjW0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3Vy
+Y2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVi
+bGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNv
+dXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAApC8AAAAAAAAAAAAAvi8AAAAgAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAALAvAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8l
+ACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAABoEAAAAAAAAAAAAABoENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQBCXZAcAAABAEJdkBw/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsAR6AwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAABWAwAAAQAwADAA
+MAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABh
+AG4AeQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A
+AAAAAFMAVABfADQAOABhADAANwBlAGUAZgBjADQAZQBiADQAMABkAGYAOAA0ADMANABkADQAYgA5
+ADIAZQBlAGMAZQAwADIAOQAAAD4ADwABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAA
+LgA3ADMAMQAyAC4AMgAzADgANwA0AAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAA
+AFMAVABfADQAOABhADAANwBlAGUAZgBjADQAZQBiADQAMABkAGYAOAA0ADMANABkADQAYgA5ADIA
+ZQBlAGMAZQAwADIAOQAuAGQAbABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0
+AAAAQwBvAHAAeQByAGkAZwBoAHQAIABAACAAIAAyADAAMgAwAAAAKgABAAEATABlAGcAYQBsAFQA
+cgBhAGQAZQBtAGEAcgBrAHMAAAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBu
+AGEAbQBlAAAAUwBUAF8ANAA4AGEAMAA3AGUAZQBmAGMANABlAGIANAAwAGQAZgA4ADQAMwA0AGQA
+NABiADkAMgBlAGUAYwBlADAAMgA5AC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBt
+AGUAAAAAAFMAVABfADQAOABhADAANwBlAGUAZgBjADQAZQBiADQAMABkAGYAOAA0ADMANABkADQA
+YgA5ADIAZQBlAGMAZQAwADIAOQAAAEIADwABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAA
+ADEALgAwAC4ANwAzADEAMgAuADIAMwA4ADcANAAAAAAARgAPAAEAQQBzAHMAZQBtAGIAbAB5ACAA
+VgBlAHIAcwBpAG8AbgAAADEALgAwAC4ANwAzADEAMgAuADIAMwA4ADcANAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAADQPwAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnError].PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{e9abeb1c-2a6f-4d58-aff3-05bb0eea0bff}"
+          DTS:From="Package.EventHandlers[OnError]\Log Errores"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package.EventHandlers[OnError]\Script Task" />
+      </DTS:PrecedenceConstraints>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="228,42.6666666666667"
+          Id="Package\BEGIN TRANSACTION Telefonos Fijos"
+          TopLeft="12.8333333333333,5.49999999999993" />
+        <NodeLayout
+          Size="168.666666666667,42.6666666666667"
+          Id="Package\COMIT Telefonos Fijos"
+          TopLeft="42.5000000000001,416.833333333333" />
+        <NodeLayout
+          Size="202.666666666667,42.6666666666667"
+          Id="Package\Copia ficheros procesados"
+          TopLeft="25.5000000000001,519.5" />
+        <NodeLayout
+          Size="205.333333333334,42.6666666666667"
+          Id="Package\Ejecutar Datos Cuarentena"
+          TopLeft="24.1666666666668,622.166666666667" />
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Log Auditoria"
+          TopLeft="56.1666666666668,724.833333333333" />
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\Telefonos Fijos\Data Flow Task"
+          TopLeft="45.5,108.166666666667" />
+        <NodeLayout
+          Size="232,42.6666666666667"
+          Id="Package\Telefonos Fijos\Truncate PersonalTelefonosFijos"
+          TopLeft="5.50000000000001,5.50000000000004" />
+        <EdgeLayout
+          Id="Package\Telefonos Fijos.PrecedenceConstraints[Constraint]"
+          TopLeft="121.5,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="242.666666666667,206"
+          Size="242.666666666667,248.666666666667"
+          Id="Package\Telefonos Fijos"
+          TopLeft="5.50000000000004,108.166666666666" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="126.833333333333,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="126.833333333333,356.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="126.833333333333,459.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="126.833333333333,562.166666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="126.833333333333,664.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="133.333333333334,42.6666666666667"
+          Id="Package.EventHandlers[OnError]\Log Errores"
+          TopLeft="306,52.6666666666667" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package.EventHandlers[OnError]\Script Task"
+          TopLeft="310.000000000001,196.000000000001" />
+        <EdgeLayout
+          Id="Package.EventHandlers[OnError].PrecedenceConstraints[Restricción]"
+          TopLeft="374.333333333334,95.3333333333334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,100.666666666667"
+              Start="0,0"
+              End="0,93.1666666666673">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,93.1666666666673" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Telefonos Fijos\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="212,42.6666666666667"
+          Id="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos"
+          TopLeft="437.083326820284,343.488882746829" />
+        <NodeLayout
+          Size="208,42.6666666666667"
+          Id="Package\Telefonos Fijos\Data Flow Task\dc_incluyeCamposAuditoria"
+          TopLeft="116.666664928198,139.90475940307" />
+        <NodeLayout
+          Size="185.333333333334,42.6666666666667"
+          Id="Package\Telefonos Fijos\Data Flow Task\Source_TelefonosFijos"
+          TopLeft="128.749998081475,38.5666659770409" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Telefonos Fijos\Data Flow Task\Data Conversion"
+          TopLeft="144.047616901142,244.523805151383" />
+        <NodeLayout
+          Size="131.333333333334,42.6666666666667"
+          Id="Package\Telefonos Fijos\Data Flow Task\Row Count"
+          TopLeft="155.499997764826,344.366660607259" />
+        <EdgeLayout
+          Id="Package\Telefonos Fijos\Data Flow Task.Paths[Row Count Output 1]"
+          TopLeft="286.833331098159,365.261105010377">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="150.249995722125,0"
+              Start="0,0"
+              End="142.749995722125,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="142.749995722125,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Telefonos Fijos\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="221.04166483817,81.2333326437076">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.6714267593623"
+              Start="0,0"
+              End="0,51.1714267593623">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.1714267593623" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Telefonos Fijos\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="221.690474248003,182.571426069737">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.9523790816465"
+              Start="0,0"
+              End="0,54.4523790816465">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.4523790816465" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Telefonos Fijos\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="221.940473999651,287.19047181805">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.1761887892089"
+              Start="0,0"
+              End="0,49.6761887892089">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.6761887892089" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Telefonos Fijos\Data Flow Task\dest_PersonalTelefonosFijos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="gd.GeneralDynamicsDB"
+  DTS:DTSID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::CadenaDeConexion]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:Retain="True"
+      DTS:ConnectionString="Data Source=40.68.149.248\gd,1433;Initial Catalog=GeneralDynamicsDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;integratedsecurity=True;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
