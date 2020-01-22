@@ -11,20 +11,20 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="CopiarArchivos1"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{0A17BF36-04EC-4D79-AB7E-F985EE4022DC}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{CEE64241-FEE5-4B41-A0A7-31D47DB9A27D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Script Task"
+      DTS:refId="Package\Script Task new"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
       DTS:DTSID="{E0B9E404-83D7-4F65-9585-F98F3194CAF1}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Script Task"
+      DTS:ObjectName="Script Task new"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -35,14 +35,35 @@
           Language="CSharp"
           ReadOnlyVariables="$Project::RutaBalance,$Project::RutaBalanceProcesado,$Project::RutaCompras,$Project::RutaComprasProcesado,$Project::RutaOrdenes,$Project::RutaOrdenesProcesado,$Project::RutaPersonal,$Project::RutaPersonalProcesado,$Project::RutaVentas,$Project::RutaVentasProcesado,$Project::File_Clientes,$Project::File_OrdenesSE,$Project::File_OrdenesTR,$Project::File_PedidosDetalle,$Project::File_PersonalDatoseis,$Project::File_PersonalDatosManager,$Project::File_PersonalDatosUsuarios,$Project::File_PersonalTelefonosFijos,$Project::File_PersonalTelefonosMoviles,$Project::File_PlanContableMaestro,$Project::File_Proveedores,$Project::File_VentasEvolucionDetalle,$Project::File_BalancePG">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_5ae326371b954542aafe6c6156878bb6")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_5ae326371b954542aafe6c6156878bb6")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -437,35 +458,14 @@ namespace ST_5ae326371b954542aafe6c6156878bb6.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_5ae326371b954542aafe6c6156878bb6")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_5ae326371b954542aafe6c6156878bb6")]
-[assembly: AssemblyCopyright("Copyright @  2020")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -669,8 +669,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="132,43"
-          Id="Package\Script Task"
+          Size="154,42"
+          Id="Package\Script Task new"
           TopLeft="142.916664537042,89.2666650704543" />
       </GraphLayout>
     </LayoutInfo>
