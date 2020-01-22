@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">AT-5CD943HWRS</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3RdP5s3wmkelXdQLvZarKwAAAAACAAAAAAAQZgAAAAEAACAAAABA8LPWmAGLfbA79/PcgjsQa7N2J2OhFog5hLhAZeKrCgAAAAAOgAAAAAIAACAAAAAr5YxzFqDYfOt0NdSRTJWRsB3dBr9FzElq/9RBz46stJAAAAAENOX8YtHEGOT/6sec1ZdRlIZOuG1yzYKj3oADVFcLjDLpRp2i3uqetBeKBPqLKgOxibLpTlPSZ9qObBHECP1MDAhd2ujCx64Uzk4JrsJMiikmsGi+BQM92moFCcSZhM7mSEPTWj1f39z5HfW7eFO8gzxTr/UVM1ZR+EMWjinb1YKXzve1ORT08CnegA9DBOxAAAAAht5+2fL1AibbZwq51YdrbtcTW/FyMrqc0ErlZNaH03i8LB/Xd4DaCOjIcy02ym+hCq4oIOIKgSaK6pS4lk0V1A==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3RdP5s3wmkelXdQLvZarKwAAAAACAAAAAAAQZgAAAAEAACAAAADnMsuaPsFmBHJJN5uea/nQn9v2aqm3UPNFCwHLLqbIUAAAAAAOgAAAAAIAACAAAACPB7NiZCctNs/J7Vte01bon8AvFE87ZIUu9pHdQpLis5AAAACAR2fKmmk76vI0OR243aH1pMPeOQIRJ8fRmQDFhzbATliA5KnsUNuzUaCpZX1nA9mq+dnmNf3egev5XgxVJTYHvCRBX2241dA8EtbRdPvc/OOcur3UknXAaFfidU9Jr+1iSxlX3hPH/YqUzJaCeus+YSz7NftycAaBlON2J5AFIB/PGvnZNjrjsrtbJqkxhGtAAAAA+BQySi2ZcIjl5UEb+DEjwHwIWvLOt0cvrQpGQhZBZ37wDAUlV3Cwflyxc6Vhywmm4UTkxFGuMi3f54SSip9zTg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -35,8 +35,6 @@
           <SSIS:Package SSIS:Name="Staging_DatosManager.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Staging_PersonalDatoseis.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Staging_PersonalDatosUsuarios.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Prueba.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Dimension_Centro.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Dimension_Empleado.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Hechos.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
@@ -1783,40 +1781,6 @@
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Prueba.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{EA6A266E-9AC5-4D3F-BD52-24A80EB970FD}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Prueba</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">9</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{34B43A2E-68E1-43E6-97AC-C37ABEC39E90}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Dimension_Centro.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{17C8FF13-2909-4948-A6C8-D9467CC2E3C7}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6418DC6D-74E2-4AB0-9693-89D43CBFF8C2}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="Dimension_Empleado.dtsx">
               <SSIS:Properties>
