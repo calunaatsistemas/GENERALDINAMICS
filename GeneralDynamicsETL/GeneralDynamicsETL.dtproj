@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">AT-5CD943HWRS</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3RdP5s3wmkelXdQLvZarKwAAAAACAAAAAAAQZgAAAAEAACAAAADxWLq02vhzGietEGbXfY2Wid7sVsvX0+NGaYQJOqARAwAAAAAOgAAAAAIAACAAAAA/1Z1cIcXJvorf/Uy2SGbYM+bLA7eCqWcOfnnx+YJ8R5AAAADj1emgWy1W4HCUOVhfW35fNEByJ+rV01VTgH9Cp1+ytk+HVH4+IxcUnAIXpATcRvGKjIs1Un3Wu5tYiwjWHhnka7t2HGafqNEPudNchmlKjsf89REUEMj2Kxgwt++76uMF+bY5zvrh9uBsjM6zhLF4I3I8opVm9lgb9j8pKXdj/lc+BLQ5OA4FPTbATvuw2gJAAAAAiQZ9TrhtbucUivftH+xG04mBR+fbIsAlUgKyE+d4kUUREnNeNFJ5wq3WXC+F56Xt3MUpq/lgMRtC4rVc1crpBw==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3RdP5s3wmkelXdQLvZarKwAAAAACAAAAAAAQZgAAAAEAACAAAAD+kgLADA0gip8urOi+/Aj+eFUapHYc/xD6e+f1kyOKDgAAAAAOgAAAAAIAACAAAACWfIBONcWALF6zrVpFM1ib0xGOvTdAuS1jwe3CHGi56ZAAAAAVAt8OjDpx2is/xfMg6o1izJCDNUuwWsela6mS1HcxL0cxYw0T1khT8d/rRVVUeDVk+R7yne18hGJe2UXKMCOzMaMSCeymr0mtBQejZBQPculwWum6f/jwYa0qOYLClAW6dhEMdpASIgwrTKAeOiBY0TwXJEzPl6xoaEeyuXWT9Dic+CJP8LGN/6PISCj6dU1AAAAAx9UtBv6PME61IpK0g3qLG1FnOGZ+SNNLc7vCUmDBv/tS7LJ1bc2BAoUGabEBM5E1AZMhv2maPNoG5RoBAg91mg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -37,9 +37,9 @@
           <SSIS:Package SSIS:Name="Staging_PersonalDatosUsuarios.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Prueba.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Dimension_Centro.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="CopiarArchivos.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Dimension_Empleado.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Hechos.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="CopiarArchivos1.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="gd.GeneralDynamicsDB CC.conmgr" />
@@ -1819,23 +1819,6 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="CopiarArchivos.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D159AB44-BBA3-4814-B052-CCB139460330}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">CopiarArchivos</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3E32E58C-B1EB-4E43-A65E-00A063C10045}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="Dimension_Empleado.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{9A93D1A7-B2AA-4647-A353-9F49251A2595}</SSIS:Property>
@@ -1863,6 +1846,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{741353BB-58D7-49A6-AE26-A89EB52A771A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="CopiarArchivos1.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{3F4F8F6A-389E-411B-9A33-BD9027CA1C84}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">CopiarArchivos1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0A17BF36-04EC-4D79-AB7E-F985EE4022DC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
