@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="gd.GeneralDynamicsDB ControlErrores"
+  DTS:ObjectName="gd GeneralDynamicsDB ControlErrores"
   DTS:DTSID="{9A614EB1-E73B-4900-A4C9-7FB12FA03C1F}"
   DTS:CreationName="OLEDB">
   <DTS:PropertyExpression
