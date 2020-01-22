@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="gd.GeneralDynamicsDB"
+  DTS:ObjectName="gd GeneralDynamicsDB"
   DTS:DTSID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
   DTS:CreationName="OLEDB">
   <DTS:PropertyExpression
