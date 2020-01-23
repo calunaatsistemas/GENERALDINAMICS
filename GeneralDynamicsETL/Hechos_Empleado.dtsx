@@ -5,17 +5,36 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="gd"
   DTS:CreatorName="gd\gd"
-  DTS:DTSID="{9FFDCC3A-5EAB-483D-974A-7AF3163B907C}"
+  DTS:DTSID="{24F8202D-D1A3-4BEE-9796-C4F9A22AA975}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.1300.371"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Hechos"
+  DTS:ObjectName="Hechos_Empleado"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{C47B37FD-2C5D-4323-8843-422EDA2D2A65}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{5BEA61DB-E674-4197-A49F-080C1FD619F8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BD47770B-3A1E-4453-A520-374ED613CB9B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ActualizaNumeroRegistros">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{17E90832-7911-4997-B244-DBA2B34591C7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="NuevoNumeroRegistros">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Antiguedad"
@@ -284,6 +303,35 @@
                   </outputs>
                 </component>
                 <component
+                  refId="Package\Antiguedad\Cargar Fac_Antiguedad\NuevoNumeroRegistros"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Recuento de filas;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+                  description="Cuenta las filas a medida que pasan por un flujo de datos. Por ejemplo, se usa el número de filas procesadas para determinar si deben o no realizarse operaciones de limpieza o actualizar el texto de un mensaje de correo electrónico para comunicar el estado de procesamiento."
+                  name="NuevoNumeroRegistros">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el recuento de filas."
+                      name="VariableName">User::NuevoNumeroRegistros</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Antiguedad\Cargar Fac_Antiguedad\NuevoNumeroRegistros.Inputs[Entrada de Recuento de filas 1]"
+                      hasSideEffects="true"
+                      name="Entrada de Recuento de filas 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Antiguedad\Cargar Fac_Antiguedad\NuevoNumeroRegistros.Outputs[Salida de Recuento de filas 1]"
+                      name="Salida de Recuento de filas 1"
+                      synchronousInputId="Package\Antiguedad\Cargar Fac_Antiguedad\NuevoNumeroRegistros.Inputs[Entrada de Recuento de filas 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -528,7 +576,7 @@
               <paths>
                 <path
                   refId="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[Derived Column Output]"
-                  endId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input]"
+                  endId="Package\Antiguedad\Cargar Fac_Antiguedad\NuevoNumeroRegistros.Inputs[Entrada de Recuento de filas 1]"
                   name="Derived Column Output"
                   startId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Outputs[Derived Column Output]" />
                 <path
@@ -536,8 +584,48 @@
                   endId="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column.Inputs[Derived Column Input]"
                   name="OLE DB Source Output"
                   startId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[Salida de Recuento de filas 1]"
+                  endId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Inputs[OLE DB Destination Input]"
+                  name="Salida de Recuento de filas 1"
+                  startId="Package\Antiguedad\Cargar Fac_Antiguedad\NuevoNumeroRegistros.Outputs[Salida de Recuento de filas 1]" />
               </paths>
             </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Antiguedad\Log Auditoria"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{ae3a7f4e-a0ed-49ab-8346-1769dd893038}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Log Auditoria"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"INSERT INTO [Sistema].[Auditoria]
+           (MachineName  
+		   ,PackageName
+		   ,PackageUser
+           ,StartTime  
+           ,[Table] 
+		   ,NumberRecords
+		   ,NumberRecordsUpdate 
+		   ,FileName)
+     VALUES
+          ('" + @[System::MachineName] + "'
+		  ,'" + @[System::PackageName] + "'
+		  ,'" + @[System::UserName] + "' 
+		  ,'" + (DT_WSTR,25)@[System::StartTime] + "'
+		  ,'[Dimension].[Dim_Empleado] '
+		  ," +  (DT_WSTR, 12)@[User::NuevoNumeroRegistros] + "
+		  ," +  (DT_WSTR, 12)@[User::ActualizaNumeroRegistros] + "
+		  ,'')"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+              SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('AT-5CD943HWRP'&#xA;&#x9;&#x9;  ,'Hechos_Empleado'&#xA;&#x9;&#x9;  ,'ATSISTEMAS\caluna' &#xA;&#x9;&#x9;  ,'1/23/2020 9:17:27 AM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -550,6 +638,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción"
           DTS:To="Package\Antiguedad\Cargar Fac_Antiguedad" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Antiguedad.PrecedenceConstraints[Restricción 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{65F5FE20-FFCB-4CAC-9D11-23312155FBCC}"
+          DTS:From="Package\Antiguedad\Cargar Fac_Antiguedad"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 1"
+          DTS:To="Package\Antiguedad\Log Auditoria" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -819,6 +915,35 @@
                   </outputs>
                 </component>
                 <component
+                  refId="Package\Edad\Cargar Fac_Edad\NuevoNumeroRegistros"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Recuento de filas;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+                  description="Cuenta las filas a medida que pasan por un flujo de datos. Por ejemplo, se usa el número de filas procesadas para determinar si deben o no realizarse operaciones de limpieza o actualizar el texto de un mensaje de correo electrónico para comunicar el estado de procesamiento."
+                  name="NuevoNumeroRegistros">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el recuento de filas."
+                      name="VariableName">User::NuevoNumeroRegistros</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Edad\Cargar Fac_Edad\NuevoNumeroRegistros.Inputs[Entrada de Recuento de filas 1]"
+                      hasSideEffects="true"
+                      name="Entrada de Recuento de filas 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Edad\Cargar Fac_Edad\NuevoNumeroRegistros.Outputs[Salida de Recuento de filas 1]"
+                      name="Salida de Recuento de filas 1"
+                      synchronousInputId="Package\Edad\Cargar Fac_Edad\NuevoNumeroRegistros.Inputs[Entrada de Recuento de filas 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -849,7 +974,7 @@
 		ID_Centro,
 		-- Cod_Sexo,
 		ID_Sexo,
-		ID_Rango_Edad,
+		ISNULL(ID_Rango_Edad,-1) AS ID_Rango_Edad,
 		-- Antiguedad,
 		(SELECT COUNT(Fec_Alta) FROM [Dimension].[Dim_Empleado] DEA
 			WHERE [Sistema].[Edad](DEA.Fec_Nacimiento) = Edad
@@ -1027,7 +1152,7 @@
               <paths>
                 <path
                   refId="Package\Edad\Cargar Fac_Edad.Paths[Derived Column Output]"
-                  endId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input]"
+                  endId="Package\Edad\Cargar Fac_Edad\NuevoNumeroRegistros.Inputs[Entrada de Recuento de filas 1]"
                   name="Derived Column Output"
                   startId="Package\Edad\Cargar Fac_Edad\Derived Column.Outputs[Derived Column Output]" />
                 <path
@@ -1035,8 +1160,48 @@
                   endId="Package\Edad\Cargar Fac_Edad\Derived Column.Inputs[Derived Column Input]"
                   name="OLE DB Source Output"
                   startId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Edad\Cargar Fac_Edad.Paths[Salida de Recuento de filas 1]"
+                  endId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Inputs[OLE DB Destination Input]"
+                  name="Salida de Recuento de filas 1"
+                  startId="Package\Edad\Cargar Fac_Edad\NuevoNumeroRegistros.Outputs[Salida de Recuento de filas 1]" />
               </paths>
             </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Edad\Log Auditoria"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5890ccfc-3121-452f-a022-364e80bd6985}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Log Auditoria"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"INSERT INTO [Sistema].[Auditoria]
+           (MachineName  
+		   ,PackageName
+		   ,PackageUser
+           ,StartTime  
+           ,[Table] 
+		   ,NumberRecords
+		   ,NumberRecordsUpdate 
+		   ,FileName)
+     VALUES
+          ('" + @[System::MachineName] + "'
+		  ,'" + @[System::PackageName] + "'
+		  ,'" + @[System::UserName] + "' 
+		  ,'" + (DT_WSTR,25)@[System::StartTime] + "'
+		  ,'[Dimension].[Dim_Empleado] '
+		  ," +  (DT_WSTR, 12)@[User::NuevoNumeroRegistros] + "
+		  ," +  (DT_WSTR, 12)@[User::ActualizaNumeroRegistros] + "
+		  ,'')"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+              SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('AT-5CD943HWRP'&#xA;&#x9;&#x9;  ,'Hechos_Empleado'&#xA;&#x9;&#x9;  ,'ATSISTEMAS\caluna' &#xA;&#x9;&#x9;  ,'1/23/2020 9:17:27 AM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -1049,6 +1214,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción"
           DTS:To="Package\Edad\Cargar Fac_Edad" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Edad.PrecedenceConstraints[Restricción 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{1D1E317C-71E1-4AAB-8471-2FCA68914D15}"
+          DTS:From="Package\Edad\Cargar Fac_Edad"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 1"
+          DTS:To="Package\Edad\Log Auditoria" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -1318,6 +1491,35 @@
                   </outputs>
                 </component>
                 <component
+                  refId="Package\Plantillas\Cargar Fac_Plantilla\NuevoNumeroRegistros"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Recuento de filas;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+                  description="Cuenta las filas a medida que pasan por un flujo de datos. Por ejemplo, se usa el número de filas procesadas para determinar si deben o no realizarse operaciones de limpieza o actualizar el texto de un mensaje de correo electrónico para comunicar el estado de procesamiento."
+                  name="NuevoNumeroRegistros">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el recuento de filas."
+                      name="VariableName">User::NuevoNumeroRegistros</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Plantillas\Cargar Fac_Plantilla\NuevoNumeroRegistros.Inputs[Entrada de Recuento de filas 1]"
+                      hasSideEffects="true"
+                      name="Entrada de Recuento de filas 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Plantillas\Cargar Fac_Plantilla\NuevoNumeroRegistros.Outputs[Salida de Recuento de filas 1]"
+                      name="Salida de Recuento de filas 1"
+                      synchronousInputId="Package\Plantillas\Cargar Fac_Plantilla\NuevoNumeroRegistros.Inputs[Entrada de Recuento de filas 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -1524,7 +1726,7 @@
               <paths>
                 <path
                   refId="Package\Plantillas\Cargar Fac_Plantilla.Paths[Derived Column Output]"
-                  endId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input]"
+                  endId="Package\Plantillas\Cargar Fac_Plantilla\NuevoNumeroRegistros.Inputs[Entrada de Recuento de filas 1]"
                   name="Derived Column Output"
                   startId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Outputs[Derived Column Output]" />
                 <path
@@ -1532,8 +1734,48 @@
                   endId="Package\Plantillas\Cargar Fac_Plantilla\Derived Column.Inputs[Derived Column Input]"
                   name="OLE DB Source Output"
                   startId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Plantillas\Cargar Fac_Plantilla.Paths[Salida de Recuento de filas 1]"
+                  endId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Inputs[OLE DB Destination Input]"
+                  name="Salida de Recuento de filas 1"
+                  startId="Package\Plantillas\Cargar Fac_Plantilla\NuevoNumeroRegistros.Outputs[Salida de Recuento de filas 1]" />
               </paths>
             </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Plantillas\Log Auditoria"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{aa3684be-e4cb-493a-abe8-f89a65480407}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Log Auditoria"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"INSERT INTO [Sistema].[Auditoria]
+           (MachineName  
+		   ,PackageName
+		   ,PackageUser
+           ,StartTime  
+           ,[Table] 
+		   ,NumberRecords
+		   ,NumberRecordsUpdate 
+		   ,FileName)
+     VALUES
+          ('" + @[System::MachineName] + "'
+		  ,'" + @[System::PackageName] + "'
+		  ,'" + @[System::UserName] + "' 
+		  ,'" + (DT_WSTR,25)@[System::StartTime] + "'
+		  ,'[Dimension].[Dim_Empleado] '
+		  ," +  (DT_WSTR, 12)@[User::NuevoNumeroRegistros] + "
+		  ," +  (DT_WSTR, 12)@[User::ActualizaNumeroRegistros] + "
+		  ,'')"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+              SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('AT-5CD943HWRP'&#xA;&#x9;&#x9;  ,'Hechos_Empleado'&#xA;&#x9;&#x9;  ,'ATSISTEMAS\caluna' &#xA;&#x9;&#x9;  ,'1/23/2020 9:17:27 AM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -1546,6 +1788,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción"
           DTS:To="Package\Plantillas\Cargar Fac_Plantilla" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Plantillas.PrecedenceConstraints[Restricción 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{435FE352-432E-42D1-96CD-BC84DD09F7B3}"
+          DTS:From="Package\Plantillas\Cargar Fac_Plantilla"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 1"
+          DTS:To="Package\Plantillas\Log Auditoria" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -1578,29 +1828,55 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="165.333333333334,42.6666666666667"
           Id="Package\Antiguedad\Borrar Tablas Fact"
-          TopLeft="38.5833284966648,15.9999987602234" />
+          TopLeft="17.5,5.50000000000004" />
         <NodeLayout
           Size="189.333333333334,42.6666666666667"
           Id="Package\Antiguedad\Cargar Fac_Antiguedad"
-          TopLeft="28.9999952564638,108.699998938442" />
+          TopLeft="5.50000000000003,108.166666666667" />
         <EdgeLayout
           Id="Package\Antiguedad.PrecedenceConstraints[Restricción]"
-          TopLeft="122.458328543231,58.66666542689">
+          TopLeft="100.166666666667,48.1666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50.0333335115517"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,42.5333335115517">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.5333335115517" />
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Antiguedad\Log Auditoria"
+          TopLeft="29.5,210.833333333334" />
+        <EdgeLayout
+          Id="Package\Antiguedad.PrecedenceConstraints[Restricción 1]"
+          TopLeft="100.166666666667,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1612,44 +1888,58 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="256,232"
-          Size="256,274.666666666667"
+          PanelSize="200.666666666667,308"
+          Size="200.666666666667,351.333333333334"
           Id="Package\Antiguedad"
-          TopLeft="270.91666271165,7.36667215267815" />
+          TopLeft="279.249995920807,22.9666718737284" />
         <NodeLayout
           Size="165.333333333334,42.6666666666667"
           Id="Package\Edad\Borrar Tablas Fact"
-          TopLeft="38.5833284966648,17.2999987369776" />
+          TopLeft="5.50000000000001,5.50000000000004" />
         <NodeLayout
           Size="160,42.6666666666667"
           Id="Package\Edad\Cargar Fac_Edad"
-          TopLeft="28.9999952564638,108.699998938442" />
+          TopLeft="8.1666666666667,108.166666666667" />
         <EdgeLayout
           Id="Package\Edad.PrecedenceConstraints[Restricción]"
-          TopLeft="121.249995163331,59.9666654036443">
+          TopLeft="88.1666666666667,48.1666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-12.2499999068676,48.7333335347977"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="-12.2499999068676,41.2333335347977">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.3666667673989" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.3666667673989"
-                    Point2="0,24.3666667673989"
-                    Point3="-4,24.3666667673989" />
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Edad\Log Auditoria"
+          TopLeft="17.5,210.833333333334" />
+        <EdgeLayout
+          Id="Package\Edad.PrecedenceConstraints[Restricción 1]"
+          TopLeft="88.1666666666667,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-8.24999990686763,24.3666667673989" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-8.24999990686763,24.3666667673989"
-                    Point2="-12.2499999068676,24.3666667673989"
-                    Point3="-12.2499999068676,28.3666667673989" />
-                  <mssgle:LineSegment
-                    End="-12.2499999068676,41.2333335347977" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1661,32 +1951,58 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="256,232"
-          Size="256,274.666666666667"
+          PanelSize="176.666666666667,316"
+          Size="176.666666666667,359.333333333334"
           Id="Package\Edad"
-          TopLeft="619.999992325902,11.4666668371359" />
+          TopLeft="572.916659694165,19.3333332558472" />
         <NodeLayout
           Size="165.333333333334,42.6666666666667"
           Id="Package\Plantillas\Borrar Tablas Fact"
-          TopLeft="8.83333333333334,5.06666667441533" />
+          TopLeft="8.83333333333334,5.50000000000004" />
         <NodeLayout
           Size="172,42.6666666666667"
           Id="Package\Plantillas\Cargar Fac_Plantilla"
-          TopLeft="5.50000000000001,108.166666666667" />
+          TopLeft="5.50000000000003,108.166666666667" />
         <EdgeLayout
           Id="Package\Plantillas.PrecedenceConstraints[Restricción]"
-          TopLeft="91.5,47.733333341082">
+          TopLeft="91.5,48.1666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.4333333255848"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,52.9333333255848">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.9333333255848" />
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Plantillas\Log Auditoria"
+          TopLeft="20.8333333333334,210.833333333334" />
+        <EdgeLayout
+          Id="Package\Plantillas.PrecedenceConstraints[Restricción 1]"
+          TopLeft="91.5,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1698,24 +2014,24 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="182.666666666667,206"
-          Size="182.666666666667,249.333333333334"
+          PanelSize="182.666666666667,308.666666666667"
+          Size="182.666666666667,351.333333333334"
           Id="Package\Plantillas"
           TopLeft="16.8333333333334,15.4666664884489" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="199.5,142.416669320564">
+          TopLeft="199.5,194.883335847755">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="71.4166627116502,0"
+              EndConnector="79.749995920807,0"
               Start="0,0"
-              End="63.9166627116502,0">
+              End="72.249995920807,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="63.9166627116502,0" />
+                    End="72.249995920807,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1726,18 +2042,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="526.91666271165,146.75000282824">
+          TopLeft="479.916662587474,198.816669231454">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="93.0833296142521,0"
+              EndConnector="92.9999971066912,0"
               Start="0,0"
-              End="85.5833296142521,0">
+              End="85.4999971066912,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="85.5833296142521,0" />
+                    End="85.4999971066912,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1757,29 +2073,55 @@
         <NodeLayout
           Size="154.666666666667,42.6666666666667"
           Id="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad"
-          TopLeft="43.5,214.166666666667" />
+          TopLeft="23.5,313.5" />
         <NodeLayout
           Size="174.666666666667,42.6666666666667"
           Id="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad"
-          TopLeft="5.50000000000001,5.50000000000004" />
+          TopLeft="13.5,5.50000000000004" />
         <NodeLayout
           Size="154.666666666667,42.6666666666667"
           Id="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column"
-          TopLeft="21.5,111.5" />
+          TopLeft="23.5,108.166666666667" />
         <EdgeLayout
           Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[OLE DB Source Output]"
-          TopLeft="95.8333333333333,48.1666666666667">
+          TopLeft="100.833333333333,48.1666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,63.3333333333337"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,55.8333333333337">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.8333333333337" />
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad\NuevoNumeroRegistros"
+          TopLeft="5.50000000000003,210.833333333334" />
+        <EdgeLayout
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[Derived Column Output]"
+          TopLeft="100.833333333333,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1789,31 +2131,19 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[Derived Column Output]"
-          TopLeft="98.8333333333334,154.166666666667">
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[Salida de Recuento de filas 1]"
+          TopLeft="100.833333333333,253.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="22,60.0000000000003"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="22,52.5000000000003">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.0000000000001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.0000000000001"
-                    Point2="0,30.0000000000001"
-                    Point3="4,30.0000000000001" />
-                  <mssgle:LineSegment
-                    End="18,30.0000000000001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="18,30.0000000000001"
-                    Point2="22,30.0000000000001"
-                    Point3="22,34.0000000000001" />
-                  <mssgle:LineSegment
-                    End="22,52.5000000000003" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1854,41 +2184,55 @@
         <NodeLayout
           Size="125.333333333334,42.6666666666667"
           Id="Package\Edad\Cargar Fac_Edad\Fac_Edad"
-          TopLeft="30.8333333333333,206.833333333334" />
+          TopLeft="38.1666666666667,313.5" />
         <NodeLayout
           Size="144,42.6666666666667"
           Id="Package\Edad\Cargar Fac_Edad\src_Fac_Edad"
-          TopLeft="245.5,38.8333333333334" />
+          TopLeft="28.8333333333333,5.50000000000004" />
         <NodeLayout
           Size="154.666666666667,42.6666666666667"
           Id="Package\Edad\Cargar Fac_Edad\Derived Column"
-          TopLeft="21.5,111.5" />
+          TopLeft="23.5,108.166666666667" />
         <EdgeLayout
           Id="Package\Edad\Cargar Fac_Edad.Paths[OLE DB Source Output]"
-          TopLeft="317.5,81.5">
+          TopLeft="100.833333333333,48.1666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-218.666666666667,30"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="-218.666666666667,22.5">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11"
-                    Point2="0,15"
-                    Point3="-4,15" />
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Edad\Cargar Fac_Edad\NuevoNumeroRegistros"
+          TopLeft="5.50000000000003,210.833333333334" />
+        <EdgeLayout
+          Id="Package\Edad\Cargar Fac_Edad.Paths[Derived Column Output]"
+          TopLeft="100.833333333333,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-214.666666666667,15" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-214.666666666667,15"
-                    Point2="-218.666666666667,15"
-                    Point3="-218.666666666667,19" />
-                  <mssgle:LineSegment
-                    End="-218.666666666667,22.5" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1898,19 +2242,19 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Edad\Cargar Fac_Edad.Paths[Derived Column Output]"
-          TopLeft="96.1666666666667,154.166666666667">
+          Id="Package\Edad\Cargar Fac_Edad.Paths[Salida de Recuento de filas 1]"
+          TopLeft="100.833333333333,253.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,52.666666666667"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,45.166666666667">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.166666666667" />
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1947,22 +2291,22 @@
     design-time-name="Package\Plantillas\Cargar Fac_Plantilla">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="137.333333333334,42.6666666666667"
           Id="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla"
-          TopLeft="15.5,210.833333333334" />
+          TopLeft="32.1666666666667,313.5" />
         <NodeLayout
           Size="157.333333333334,42.6666666666667"
           Id="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla"
-          TopLeft="5.50000000000001,5.50000000000004" />
+          TopLeft="22.1666666666667,5.50000000000004" />
         <NodeLayout
           Size="154.666666666667,42.6666666666667"
           Id="Package\Plantillas\Cargar Fac_Plantilla\Derived Column"
-          TopLeft="6.83333333333337,108.166666666667" />
+          TopLeft="23.5,108.166666666667" />
         <EdgeLayout
           Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[OLE DB Source Output]"
-          TopLeft="84.1666666666667,48.1666666666667">
+          TopLeft="100.833333333333,48.1666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1979,14 +2323,38 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Plantillas\Cargar Fac_Plantilla\NuevoNumeroRegistros"
+          TopLeft="5.50000000000003,210.833333333334" />
+        <EdgeLayout
+          Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[Derived Column Output]"
+          TopLeft="100.833333333333,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[Derived Column Output]"
-          TopLeft="84.1666666666667,150.833333333333">
+          Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[Salida de Recuento de filas 1]"
+          TopLeft="100.833333333333,253.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2003,9 +2371,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
