@@ -7,12 +7,12 @@
   DTS:CreatorName="gd\gd"
   DTS:DTSID="{24F8202D-D1A3-4BEE-9796-C4F9A22AA975}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LastModifiedProductVersion="15.0.1900.80"
   DTS:LocaleID="1033"
   DTS:ObjectName="Hechos_Empleado"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{5BEA61DB-E674-4197-A49F-080C1FD619F8}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{D5CEA2C1-A76C-4B03-9139-44A7DD4C7548}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -618,14 +618,14 @@
 		  ,'" + @[System::PackageName] + "'
 		  ,'" + @[System::UserName] + "' 
 		  ,'" + (DT_WSTR,25)@[System::StartTime] + "'
-		  ,'[Dimension].[Dim_Empleado] '
+		  ,'[Hecho].[Fac_Antiguedad] '
 		  ," +  (DT_WSTR, 12)@[User::NuevoNumeroRegistros] + "
 		  ," +  (DT_WSTR, 12)@[User::ActualizaNumeroRegistros] + "
 		  ,'')"</DTS:PropertyExpression>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
-              SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('AT-5CD943HWRP'&#xA;&#x9;&#x9;  ,'Hechos_Empleado'&#xA;&#x9;&#x9;  ,'ATSISTEMAS\caluna' &#xA;&#x9;&#x9;  ,'1/23/2020 9:17:27 AM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('gd'&#xA;&#x9;&#x9;  ,'Hechos_Empleado'&#xA;&#x9;&#x9;  ,'gd\gd' &#xA;&#x9;&#x9;  ,'1/23/2020 9:30:41 AM'&#xA;&#x9;&#x9;  ,'[Hecho].[Fac_Antiguedad] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -1194,14 +1194,14 @@
 		  ,'" + @[System::PackageName] + "'
 		  ,'" + @[System::UserName] + "' 
 		  ,'" + (DT_WSTR,25)@[System::StartTime] + "'
-		  ,'[Dimension].[Dim_Empleado] '
+		  ,'[Hecho].[Fac_Edad]'
 		  ," +  (DT_WSTR, 12)@[User::NuevoNumeroRegistros] + "
 		  ," +  (DT_WSTR, 12)@[User::ActualizaNumeroRegistros] + "
 		  ,'')"</DTS:PropertyExpression>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
-              SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('AT-5CD943HWRP'&#xA;&#x9;&#x9;  ,'Hechos_Empleado'&#xA;&#x9;&#x9;  ,'ATSISTEMAS\caluna' &#xA;&#x9;&#x9;  ,'1/23/2020 9:17:27 AM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('gd'&#xA;&#x9;&#x9;  ,'Hechos_Empleado'&#xA;&#x9;&#x9;  ,'gd\gd' &#xA;&#x9;&#x9;  ,'1/23/2020 9:30:41 AM'&#xA;&#x9;&#x9;  ,'[Hecho].[Fac_Edad]'&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -1768,14 +1768,14 @@
 		  ,'" + @[System::PackageName] + "'
 		  ,'" + @[System::UserName] + "' 
 		  ,'" + (DT_WSTR,25)@[System::StartTime] + "'
-		  ,'[Dimension].[Dim_Empleado] '
+		  ,'[Hecho].[Fac_Plantilla] '
 		  ," +  (DT_WSTR, 12)@[User::NuevoNumeroRegistros] + "
 		  ," +  (DT_WSTR, 12)@[User::ActualizaNumeroRegistros] + "
 		  ,'')"</DTS:PropertyExpression>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
-              SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('AT-5CD943HWRP'&#xA;&#x9;&#x9;  ,'Hechos_Empleado'&#xA;&#x9;&#x9;  ,'ATSISTEMAS\caluna' &#xA;&#x9;&#x9;  ,'1/23/2020 9:17:27 AM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('gd'&#xA;&#x9;&#x9;  ,'Hechos_Empleado'&#xA;&#x9;&#x9;  ,'gd\gd' &#xA;&#x9;&#x9;  ,'1/23/2020 9:30:41 AM'&#xA;&#x9;&#x9;  ,'[Hecho].[Fac_Plantilla] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -1818,12 +1818,12 @@
       DTS:To="Package\Edad" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -1837,6 +1837,10 @@
           Size="189.333333333334,42.6666666666667"
           Id="Package\Antiguedad\Cargar Fac_Antiguedad"
           TopLeft="5.50000000000003,108.166666666667" />
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Antiguedad\Log Auditoria"
+          TopLeft="29.5,210.833333333334" />
         <EdgeLayout
           Id="Package\Antiguedad.PrecedenceConstraints[Restricción]"
           TopLeft="100.166666666667,48.1666666666667">
@@ -1859,10 +1863,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="141.333333333334,42.6666666666667"
-          Id="Package\Antiguedad\Log Auditoria"
-          TopLeft="29.5,210.833333333334" />
         <EdgeLayout
           Id="Package\Antiguedad.PrecedenceConstraints[Restricción 1]"
           TopLeft="100.166666666667,150.833333333333">
@@ -1888,7 +1888,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="200.666666666667,308"
+          PanelSize="200.666666666667,308.666666666667"
           Size="200.666666666667,351.333333333334"
           Id="Package\Antiguedad"
           TopLeft="279.249995920807,22.9666718737284" />
@@ -1900,6 +1900,10 @@
           Size="160,42.6666666666667"
           Id="Package\Edad\Cargar Fac_Edad"
           TopLeft="8.1666666666667,108.166666666667" />
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Edad\Log Auditoria"
+          TopLeft="17.5,210.833333333334" />
         <EdgeLayout
           Id="Package\Edad.PrecedenceConstraints[Restricción]"
           TopLeft="88.1666666666667,48.1666666666667">
@@ -1922,10 +1926,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="141.333333333334,42.6666666666667"
-          Id="Package\Edad\Log Auditoria"
-          TopLeft="17.5,210.833333333334" />
         <EdgeLayout
           Id="Package\Edad.PrecedenceConstraints[Restricción 1]"
           TopLeft="88.1666666666667,150.833333333333">
@@ -1951,7 +1951,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="176.666666666667,316"
+          PanelSize="176.666666666667,316.666666666667"
           Size="176.666666666667,359.333333333334"
           Id="Package\Edad"
           TopLeft="572.916659694165,19.3333332558472" />
@@ -1963,6 +1963,10 @@
           Size="172,42.6666666666667"
           Id="Package\Plantillas\Cargar Fac_Plantilla"
           TopLeft="5.50000000000003,108.166666666667" />
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Plantillas\Log Auditoria"
+          TopLeft="20.8333333333334,210.833333333334" />
         <EdgeLayout
           Id="Package\Plantillas.PrecedenceConstraints[Restricción]"
           TopLeft="91.5,48.1666666666667">
@@ -1985,10 +1989,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="141.333333333334,42.6666666666667"
-          Id="Package\Plantillas\Log Auditoria"
-          TopLeft="20.8333333333334,210.833333333334" />
         <EdgeLayout
           Id="Package\Plantillas.PrecedenceConstraints[Restricción 1]"
           TopLeft="91.5,150.833333333333">
@@ -2069,67 +2069,23 @@
     design-time-name="Package\Antiguedad\Cargar Fac_Antiguedad">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="154.666666666667,42.6666666666667"
           Id="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad"
           TopLeft="23.5,313.5" />
         <NodeLayout
-          Size="174.666666666667,42.6666666666667"
-          Id="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad"
-          TopLeft="13.5,5.50000000000004" />
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad\NuevoNumeroRegistros"
+          TopLeft="5.50000000000003,210.833333333334" />
         <NodeLayout
           Size="154.666666666667,42.6666666666667"
           Id="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column"
           TopLeft="23.5,108.166666666667" />
-        <EdgeLayout
-          Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[OLE DB Source Output]"
-          TopLeft="100.833333333333,48.1666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="190.666666666667,42.6666666666667"
-          Id="Package\Antiguedad\Cargar Fac_Antiguedad\NuevoNumeroRegistros"
-          TopLeft="5.50000000000003,210.833333333334" />
-        <EdgeLayout
-          Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[Derived Column Output]"
-          TopLeft="100.833333333333,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad"
+          TopLeft="13.5,5.50000000000004" />
         <EdgeLayout
           Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[Salida de Recuento de filas 1]"
           TopLeft="100.833333333333,253.5">
@@ -2149,7 +2105,57 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[OLE DB Source Output]"
+          TopLeft="100.833333333333,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[Derived Column Output]"
+          TopLeft="100.833333333333,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2180,67 +2186,23 @@
     design-time-name="Package\Edad\Cargar Fac_Edad">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="125.333333333334,42.6666666666667"
           Id="Package\Edad\Cargar Fac_Edad\Fac_Edad"
           TopLeft="38.1666666666667,313.5" />
         <NodeLayout
-          Size="144,42.6666666666667"
-          Id="Package\Edad\Cargar Fac_Edad\src_Fac_Edad"
-          TopLeft="28.8333333333333,5.50000000000004" />
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Edad\Cargar Fac_Edad\NuevoNumeroRegistros"
+          TopLeft="5.50000000000003,210.833333333334" />
         <NodeLayout
           Size="154.666666666667,42.6666666666667"
           Id="Package\Edad\Cargar Fac_Edad\Derived Column"
           TopLeft="23.5,108.166666666667" />
-        <EdgeLayout
-          Id="Package\Edad\Cargar Fac_Edad.Paths[OLE DB Source Output]"
-          TopLeft="100.833333333333,48.1666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="190.666666666667,42.6666666666667"
-          Id="Package\Edad\Cargar Fac_Edad\NuevoNumeroRegistros"
-          TopLeft="5.50000000000003,210.833333333334" />
-        <EdgeLayout
-          Id="Package\Edad\Cargar Fac_Edad.Paths[Derived Column Output]"
-          TopLeft="100.833333333333,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="144,42.6666666666667"
+          Id="Package\Edad\Cargar Fac_Edad\src_Fac_Edad"
+          TopLeft="28.8333333333333,5.50000000000004" />
         <EdgeLayout
           Id="Package\Edad\Cargar Fac_Edad.Paths[Salida de Recuento de filas 1]"
           TopLeft="100.833333333333,253.5">
@@ -2260,7 +2222,57 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Edad\Cargar Fac_Edad.Paths[OLE DB Source Output]"
+          TopLeft="100.833333333333,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Edad\Cargar Fac_Edad.Paths[Derived Column Output]"
+          TopLeft="100.833333333333,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2291,67 +2303,23 @@
     design-time-name="Package\Plantillas\Cargar Fac_Plantilla">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="137.333333333334,42.6666666666667"
           Id="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla"
           TopLeft="32.1666666666667,313.5" />
         <NodeLayout
-          Size="157.333333333334,42.6666666666667"
-          Id="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla"
-          TopLeft="22.1666666666667,5.50000000000004" />
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Plantillas\Cargar Fac_Plantilla\NuevoNumeroRegistros"
+          TopLeft="5.50000000000003,210.833333333334" />
         <NodeLayout
           Size="154.666666666667,42.6666666666667"
           Id="Package\Plantillas\Cargar Fac_Plantilla\Derived Column"
           TopLeft="23.5,108.166666666667" />
-        <EdgeLayout
-          Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[OLE DB Source Output]"
-          TopLeft="100.833333333333,48.1666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="190.666666666667,42.6666666666667"
-          Id="Package\Plantillas\Cargar Fac_Plantilla\NuevoNumeroRegistros"
-          TopLeft="5.50000000000003,210.833333333334" />
-        <EdgeLayout
-          Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[Derived Column Output]"
-          TopLeft="100.833333333333,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla"
+          TopLeft="22.1666666666667,5.50000000000004" />
         <EdgeLayout
           Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[Salida de Recuento de filas 1]"
           TopLeft="100.833333333333,253.5">
@@ -2371,7 +2339,57 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[OLE DB Source Output]"
+          TopLeft="100.833333333333,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[Derived Column Output]"
+          TopLeft="100.833333333333,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

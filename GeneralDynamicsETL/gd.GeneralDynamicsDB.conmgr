@@ -8,6 +8,6 @@
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:Retain="True"
-      DTS:ConnectionString="Data Source=40.68.149.248\gd,1433;Initial Catalog=GeneralDynamicsDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;integratedsecurity=True;" />
+      DTS:ConnectionString="Data Source=gd;Initial Catalog=GeneralDynamicsDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;integratedsecurity=True;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

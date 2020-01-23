@@ -604,7 +604,7 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">Data Source=40.68.149.248\gd,1433;Initial Catalog=GeneralDynamicsDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;integratedsecurity=True;</SSIS:Property>
+        SSIS:Name="Value">Data Source=gd;Initial Catalog=GeneralDynamicsDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;integratedsecurity=True;</SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>
