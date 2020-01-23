@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Dimension_Empleado"
   DTS:PackageType="5"
-  DTS:VersionBuild="127"
-  DTS:VersionGUID="{C8B6724C-3744-4CAF-A062-C7F411434574}">
+  DTS:VersionBuild="128"
+  DTS:VersionGUID="{FF0C5E0B-5915-4780-B4AE-553428CF5738}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -68,7 +68,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
-          SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('gd'&#xA;&#x9;&#x9;  ,'Dimension_Empleado'&#xA;&#x9;&#x9;  ,'gd\gd' &#xA;&#x9;&#x9;  ,'1/23/2020 2:59:59 PM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('gd'&#xA;&#x9;&#x9;  ,'Dimension_Empleado'&#xA;&#x9;&#x9;  ,'gd\gd' &#xA;&#x9;&#x9;  ,'1/23/2020 3:47:38 PM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -466,6 +466,11 @@ where nbi =?</property>
                       cachedLength="2"
                       cachedName="CentroID"
                       lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[CentroID]" />
+                    <inputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Inputs[Data Conversion Input].Columns[IRPF]"
+                      cachedDataType="r8"
+                      cachedName="IRPF"
+                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[IRPF]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -477,50 +482,6 @@ where nbi =?</property>
                   name="Data Conversion Output"
                   synchronousInputId="Package\Transforma Dim Empleado\Data Conversion.Inputs[Data Conversion Input]">
                   <outputColumns>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Titulacion]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Titulacion]"
-                      name="Titulacion"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Titulacion]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]"
-                      name="Tratamiento"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tratamiento]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
                     <outputColumn
                       refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido1]"
                       codePage="1252"
@@ -566,21 +527,87 @@ where nbi =?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Nombre]"
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Categoria]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Categoria]"
+                      name="Categoria"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Categoria]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[CategoriaLaboral]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="5"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[CategoriaLaboral]"
+                      name="CategoriaLaboral"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[CategoriaLaboral]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[CentroID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[CentroID]"
+                      name="CentroID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[CentroID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Departamento]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="80"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Nombre]"
-                      name="Nombre"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Departamento]"
+                      name="Departamento"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Nombre]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Departamento]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -588,307 +615,21 @@ where nbi =?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoMunicipio]"
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioCodigoPostal]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoMunicipio]"
-                      name="NacimientoMunicipio"
+                      length="6"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioCodigoPostal]"
+                      name="DomicilioCodigoPostal"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NacimientoMunicipio]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoPais]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoPais]"
-                      name="NacimientoPais"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NacimientoPais]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoLocalidad]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoLocalidad]"
-                      name="NacimientoLocalidad"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NacimientoLocalidad]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoProvincia]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoProvincia]"
-                      name="NacimientoProvincia"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NacimientoProvincia]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[EstadoCivil]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="20"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[EstadoCivil]"
-                      name="EstadoCivil"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[EstadoCivil]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Fijo1]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="20"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Fijo1]"
-                      name="Tlf_Fijo1"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Fijo1]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Fijo2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="20"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Fijo2]"
-                      name="Tlf_Fijo2"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Fijo2]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="20"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil2]"
-                      name="Tlf_Movil2"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Movil2]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil3]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="20"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil3]"
-                      name="Tlf_Movil3"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Movil3]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil1]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="20"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil1]"
-                      name="Tlf_Movil1"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Movil1]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext1]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="20"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext1]"
-                      name="Tlf_Ext1"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Ext1]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="20"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext2]"
-                      name="Tlf_Ext2"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Ext2]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext3]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="20"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext3]"
-                      name="Tlf_Ext3"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Ext3]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Email]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="80"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Email]"
-                      name="Email"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Email]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[DomicilioCodigoPostal]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -911,50 +652,6 @@ where nbi =?</property>
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
                           name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[DomicilioDireccion]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioNumero]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="10"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioNumero]"
-                      name="DomicilioNumero"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[DomicilioNumero]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioNumeroPiso]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioNumeroPiso]"
-                      name="DomicilioNumeroPiso"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[DomicilioNumeroPiso]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -1028,21 +725,43 @@ where nbi =?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioCodigoPostal]"
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioNumero]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="6"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioCodigoPostal]"
-                      name="DomicilioCodigoPostal"
+                      length="10"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioNumero]"
+                      name="DomicilioNumero"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[DomicilioCodigoPostal]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[DomicilioNumero]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioNumeroPiso]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[DomicilioNumeroPiso]"
+                      name="DomicilioNumeroPiso"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[DomicilioNumeroPiso]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -1094,65 +813,153 @@ where nbi =?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[CategoriaLaboral]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="5"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[CategoriaLaboral]"
-                      name="CategoriaLaboral"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[CategoriaLaboral]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Categoria]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Categoria]"
-                      name="Categoria"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Categoria]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Departamento]"
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Email]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="80"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Departamento]"
-                      name="Departamento"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Email]"
+                      name="Email"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Departamento]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Email]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[EstadoCivil]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[EstadoCivil]"
+                      name="EstadoCivil"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[EstadoCivil]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoLocalidad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoLocalidad]"
+                      name="NacimientoLocalidad"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NacimientoLocalidad]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoMunicipio]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoMunicipio]"
+                      name="NacimientoMunicipio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NacimientoMunicipio]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoPais]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoPais]"
+                      name="NacimientoPais"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NacimientoPais]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoProvincia]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoProvincia]"
+                      name="NacimientoProvincia"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NacimientoProvincia]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="80"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Nombre]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -1175,50 +982,6 @@ where nbi =?</property>
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
                           name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Situacion]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[SituacionNBI]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="100"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[SituacionNBI]"
-                      name="SituacionNBI"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[SituacionNBI]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[SituacionNombre]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="80"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[SituacionNombre]"
-                      name="SituacionNombre"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[SituacionNombre]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -1270,21 +1033,263 @@ where nbi =?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[UsuarioRed]"
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[SituacionNBI]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="100"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[UsuarioRed]"
-                      name="UsuarioRed"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[SituacionNBI]"
+                      name="SituacionNBI"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[UsuarioRed]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[SituacionNBI]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[SituacionNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="80"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[SituacionNombre]"
+                      name="SituacionNombre"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[SituacionNombre]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Titulacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Titulacion]"
+                      name="Titulacion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Titulacion]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext1]"
+                      name="Tlf_Ext1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Ext1]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext2]"
+                      name="Tlf_Ext2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Ext2]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Ext3]"
+                      name="Tlf_Ext3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Ext3]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Fijo1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Fijo1]"
+                      name="Tlf_Fijo1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Fijo1]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Fijo2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Fijo2]"
+                      name="Tlf_Fijo2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Fijo2]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil1]"
+                      name="Tlf_Movil1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Movil1]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil2]"
+                      name="Tlf_Movil2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Movil2]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tlf_Movil3]"
+                      name="Tlf_Movil3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tlf_Movil3]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]"
+                      name="Tratamiento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Tratamiento]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -1314,21 +1319,42 @@ where nbi =?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[CentroID]"
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[UsuarioRed]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="2"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[CentroID]"
-                      name="CentroID"
+                      length="100"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[UsuarioRed]"
+                      name="UsuarioRed"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[CentroID]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[UsuarioRed]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[IRPF_1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[IRPF_1]"
+                      name="IRPF_1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[IRPF]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -2463,7 +2489,7 @@ Fec_Alta
 ,
 RTRIM(LTRIM([Titulacion]))  AS Titulacion
 , 
-IRPF
+convert(nvarchar(50),IRPF) as IRPF
 , 
 Estado_Plantilla
 , 
@@ -2485,7 +2511,7 @@ Fec_Alta
 ,
 RTRIM(LTRIM([Titulacion]))  AS Titulacion
 , 
-IRPF
+convert(nvarchar(50),IRPF) as IRPF
 , 
 Estado_Plantilla
 , 
@@ -2494,7 +2520,7 @@ Nbi_Aprob_Sarce
 [DWH_Hash]
 
 FROM [Dimension].[Dim_Empleado]) [refTable]
-where [refTable].[NBI] = ? and [refTable].[Fec_Alta] = ? and [refTable].[Fec_Baja] = ? and [refTable].[Titulacion] = ? and [refTable].[Cod_Centro] = ?</property>
+where [refTable].[NBI] = ? and [refTable].[Fec_Alta] = ? and [refTable].[Fec_Baja] = ? and [refTable].[Estado_Plantilla] = ? and [refTable].[Nbi_Aprob_Sarce] = ? and [refTable].[Cod_Centro] = ? and [refTable].[Titulacion] = ? and [refTable].[IRPF] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -2525,12 +2551,12 @@ where [refTable].[NBI] = ? and [refTable].[Fec_Alta] = ? and [refTable].[Fec_Baj
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="NBI" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Cod_Centro" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Fec_Alta" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Fec_Baja" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Titulacion" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IRPF" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Estado_Plantilla" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Nbi_Aprob_Sarce" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DWH_Hash" dataType="DT_STR" length="32" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="NBI" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Cod_Centro" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Fec_Alta" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Fec_Baja" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Titulacion" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IRPF" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Estado_Plantilla" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Nbi_Aprob_Sarce" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DWH_Hash" dataType="DT_STR" length="32" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NBI]};#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[FechAlta]};#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[FechaBaja]};#{Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Titulacion]};#{Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[CentroID]};</property>
+                  name="ParameterMap">#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NBI]};#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[FechAlta]};#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[FechaBaja]};#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Estado]};#{Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NBIAprobSarce]};#{Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[CentroID]};#{Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Titulacion]};#{Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[IRPF_1]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2564,11 +2590,11 @@ where [refTable].[NBI] = ? and [refTable].[Fec_Alta] = ? and [refTable].[Fec_Baj
                       <properties>
                         <property
                           dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">NBI</property>
                         <property
                           dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
@@ -2580,11 +2606,11 @@ where [refTable].[NBI] = ? and [refTable].[Fec_Alta] = ? and [refTable].[Fec_Baj
                       <properties>
                         <property
                           dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">Fec_Alta</property>
                         <property
                           dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
@@ -2596,11 +2622,47 @@ where [refTable].[NBI] = ? and [refTable].[Fec_Alta] = ? and [refTable].[Fec_Baj
                       <properties>
                         <property
                           dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">Fec_Baja</property>
                         <property
                           dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transforma Dim Empleado\Lookup.Inputs[Lookup Input].Columns[Estado]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Estado"
+                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Estado]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Estado_Plantilla</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transforma Dim Empleado\Lookup.Inputs[Lookup Input].Columns[NBIAprobSarce]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="NBIAprobSarce"
+                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NBIAprobSarce]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Nbi_Aprob_Sarce</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
@@ -2614,11 +2676,11 @@ where [refTable].[NBI] = ? and [refTable].[Fec_Alta] = ? and [refTable].[Fec_Baj
                       <properties>
                         <property
                           dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">Cod_Centro</property>
                         <property
                           dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
@@ -2632,11 +2694,28 @@ where [refTable].[NBI] = ? and [refTable].[Fec_Alta] = ? and [refTable].[Fec_Baj
                       <properties>
                         <property
                           dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">Titulacion</property>
                         <property
                           dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transforma Dim Empleado\Lookup.Inputs[Lookup Input].Columns[IRPF_1]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="IRPF_1"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[IRPF_1]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">IRPF</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
@@ -12590,24 +12669,24 @@ ON A.Centro = C.NombreLargo
               startId="Package\Transforma Dim Empleado\Cierra Vigencia.Outputs[OLE DB Command Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output3]"
-              endId="Package\Transforma Dim Empleado\srt_Datoseis.Inputs[Sort Input]"
+              endId="Package\Transforma Dim Empleado\srt_Moviles.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output]" />
+              startId="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output2]"
-              endId="Package\Transforma Dim Empleado\srt_Usuarios.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
               endId="Package\Transforma Dim Empleado\srt_Fijos.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
-              endId="Package\Transforma Dim Empleado\srt_Moviles.Inputs[Sort Input]"
+              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
+              endId="Package\Transforma Dim Empleado\srt_Datoseis.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles.Outputs[OLE DB Source Output]" />
+              startId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
+              endId="Package\Transforma Dim Empleado\srt_Usuarios.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[Row Count Output 1]"
               endId="Package\Transforma Dim Empleado\Cierra Vigencia.Inputs[OLE DB Command Input]"
@@ -12620,19 +12699,19 @@ ON A.Centro = C.NombreLargo
               startId="Package\Transforma Dim Empleado\ActualizaNumeroRegistros.Outputs[Row Count Output 1]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[Sort Output2]"
+              endId="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Transforma Dim Empleado\srt_Usuarios.Outputs[Sort Output]" />
+            <path
+              refId="Package\Transforma Dim Empleado.Paths[Sort Output]"
               endId="Package\Transforma Dim Empleado\Merge Join.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Transforma Dim Empleado\srt_Fijos.Outputs[Sort Output]" />
             <path
-              refId="Package\Transforma Dim Empleado.Paths[Sort Output]"
+              refId="Package\Transforma Dim Empleado.Paths[Sort Output1]"
               endId="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Transforma Dim Empleado\srt_Datoseis.Outputs[Sort Output]" />
-            <path
-              refId="Package\Transforma Dim Empleado.Paths[Sort Output1]"
-              endId="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\Transforma Dim Empleado\srt_Usuarios.Outputs[Sort Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[Sort Output3]"
               endId="Package\Transforma Dim Empleado\Merge Join.Inputs[Merge Join Right Input]"
@@ -12804,13 +12883,25 @@ ON A.Centro = C.NombreLargo
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="137.333333333334,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\srt_Usuarios"
-          TopLeft="271.833333333333,108.166666666666" />
+          Size="190.666666666667,42"
+          Id="Package\Transforma Dim Empleado\Staging_Dim_Empleado"
+          TopLeft="533.750000006209,824.166666666667" />
         <NodeLayout
           Size="154.666666666667,42.6666666666667"
           Id="Package\Transforma Dim Empleado\Derived Column"
           TopLeft="552.166666666667,516.833333333333" />
+        <NodeLayout
+          Size="228,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios"
+          TopLeft="226.5,5.49999999999993" />
+        <NodeLayout
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\srt_Usuarios"
+          TopLeft="271.833333333333,108.166666666666" />
+        <NodeLayout
+          Size="228,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos"
+          TopLeft="515.5,5.49999999999993" />
         <NodeLayout
           Size="182.666666666667,42"
           Id="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios"
@@ -12820,67 +12911,123 @@ ON A.Centro = C.NombreLargo
           Id="Package\Transforma Dim Empleado\srt_Moviles"
           TopLeft="749.5,108.166666666666" />
         <NodeLayout
-          Size="130,42"
-          Id="Package\Transforma Dim Empleado\Merge Join"
-          TopLeft="564.5,210.833333333333" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Transforma Dim Empleado\mrg_empleados"
-          TopLeft="552.5,312.833333333333" />
-        <NodeLayout
-          Size="190.666666666667,42"
-          Id="Package\Transforma Dim Empleado\Staging_Dim_Empleado"
-          TopLeft="533.750000006209,824.166666666667" />
-        <NodeLayout
-          Size="118.666666666667,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\srt_Fijos"
-          TopLeft="570.166666666667,108.166666666666" />
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\srt_Datoseis"
+          TopLeft="73.8333333333334,108.166666666666" />
         <NodeLayout
           Size="156,42"
           Id="Package\Transforma Dim Empleado\Data Conversion"
           TopLeft="551.083333339542,414.833333333333" />
         <NodeLayout
-          Size="113.333333333334,42"
-          Id="Package\Transforma Dim Empleado\Lookup"
-          TopLeft="572.833333333333,619.5" />
-        <NodeLayout
-          Size="241.333333333334,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles"
-          TopLeft="803.833333333333,5.49999999999993" />
-        <NodeLayout
-          Size="228,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos"
-          TopLeft="515.5,5.49999999999993" />
+          Size="154,42"
+          Id="Package\Transforma Dim Empleado\mrg_empleados"
+          TopLeft="552.5,312.833333333333" />
         <NodeLayout
           Size="209.333333333334,42"
           Id="Package\Transforma Dim Empleado\Dimension_Dim_Empleado"
           TopLeft="258.083333513389,926.166666666667" />
         <NodeLayout
-          Size="137.333333333334,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\srt_Datoseis"
-          TopLeft="73.8333333333334,108.166666666666" />
+          Size="241.333333333334,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles"
+          TopLeft="803.833333333333,5.49999999999993" />
         <NodeLayout
-          Size="160,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\Staging_Datoseis"
-          TopLeft="5.5,5.49999999999993" />
+          Size="118.666666666667,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\srt_Fijos"
+          TopLeft="570.166666666667,108.166666666666" />
         <NodeLayout
-          Size="228,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios"
-          TopLeft="226.5,5.49999999999993" />
+          Size="113.333333333334,42"
+          Id="Package\Transforma Dim Empleado\Lookup"
+          TopLeft="572.833333333333,619.5" />
         <NodeLayout
-          Size="190.666666666667,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\NuevoNumeroRegistros"
-          TopLeft="262.166666666667,721.5" />
+          Size="130,42"
+          Id="Package\Transforma Dim Empleado\Merge Join"
+          TopLeft="564.5,210.833333333333" />
         <NodeLayout
           Size="149.333333333334,42"
           Id="Package\Transforma Dim Empleado\Cierra Vigencia"
           TopLeft="282.833333333333,824.166666666667" />
         <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\Staging_Datoseis"
+          TopLeft="5.5,5.49999999999993" />
+        <NodeLayout
           Size="232.666666666667,42.6666666666667"
           Id="Package\Transforma Dim Empleado\ActualizaNumeroRegistros"
           TopLeft="513.166666666667,721.5" />
+        <NodeLayout
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\NuevoNumeroRegistros"
+          TopLeft="262.166666666667,721.5" />
         <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[Sort Output]"
+          Id="Package\Transforma Dim Empleado.Paths[Sort Output3]"
+          TopLeft="815.5,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-165.666666666667,59.9999999999999"
+              Start="0,0"
+              End="-165.666666666667,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5623100303951"
+                    Point2="0,35.5623100303951"
+                    Point3="-4,35.5623100303951" />
+                  <mssgle:LineSegment
+                    End="-161.666666666667,35.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-161.666666666667,35.5623100303951"
+                    Point2="-165.666666666667,35.5623100303951"
+                    Point3="-165.666666666667,39.5623100303951" />
+                  <mssgle:LineSegment
+                    End="-165.666666666667,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[Sort Output2]"
+          TopLeft="340.5,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.1111111111111,59.9999999999999"
+              Start="0,0"
+              End="29.1111111111111,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.6874095513748" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6874095513748"
+                    Point2="0,35.6874095513748"
+                    Point3="4,35.6874095513748" />
+                  <mssgle:LineSegment
+                    End="25.1111111111111,35.6874095513748" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.1111111111111,35.6874095513748"
+                    Point2="29.1111111111111,35.6874095513748"
+                    Point3="29.1111111111111,39.6874095513748" />
+                  <mssgle:LineSegment
+                    End="29.1111111111111,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[Sort Output1]"
           TopLeft="142.5,150.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -12905,6 +13052,40 @@ ON A.Centro = C.NombreLargo
                     Point3="168.888888888889,39.6874095513748" />
                   <mssgle:LineSegment
                     End="168.888888888889,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[Sort Output]"
+          TopLeft="629.5,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20.3333333333334,59.9999999999999"
+              Start="0,0"
+              End="-20.3333333333334,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5623100303951"
+                    Point2="0,35.5623100303951"
+                    Point3="-4,35.5623100303951" />
+                  <mssgle:LineSegment
+                    End="-16.3333333333334,35.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16.3333333333334,35.5623100303951"
+                    Point2="-20.3333333333334,35.5623100303951"
+                    Point3="-20.3333333333334,39.5623100303951" />
+                  <mssgle:LineSegment
+                    End="-20.3333333333334,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12959,62 +13140,6 @@ ON A.Centro = C.NombreLargo
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output3]"
-          TopLeft="85.5,48.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="57.0000000000001,59.9999999999999"
-              Start="0,0"
-              End="57.0000000000001,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.9999999999999" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.9999999999999"
-                    Point2="0,29.9999999999999"
-                    Point3="4,29.9999999999999" />
-                  <mssgle:LineSegment
-                    End="53.0000000000001,29.9999999999999" />
-                  <mssgle:CubicBezierSegment
-                    Point1="53.0000000000001,29.9999999999999"
-                    Point2="57.0000000000001,29.9999999999999"
-                    Point3="57.0000000000001,33.9999999999999" />
-                  <mssgle:LineSegment
-                    End="57.0000000000001,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output2]"
-          TopLeft="340.5,48.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
-              Start="0,0"
-              End="0,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
           TopLeft="924.5,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13048,7 +13173,7 @@ ON A.Centro = C.NombreLargo
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
+          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output2]"
           TopLeft="629.5,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13061,6 +13186,62 @@ ON A.Centro = C.NombreLargo
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
+          TopLeft="340.5,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
+          TopLeft="85.5,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57.0000000000001,59.9999999999999"
+              Start="0,0"
+              End="57.0000000000001,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.9999999999999"
+                    Point2="0,29.9999999999999"
+                    Point3="4,29.9999999999999" />
+                  <mssgle:LineSegment
+                    End="53.0000000000001,29.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.0000000000001,29.9999999999999"
+                    Point2="57.0000000000001,29.9999999999999"
+                    Point3="57.0000000000001,33.9999999999999" />
+                  <mssgle:LineSegment
+                    End="57.0000000000001,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13297,108 +13478,6 @@ ON A.Centro = C.NombreLargo
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[Sort Output3]"
-          TopLeft="815.5,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-165.666666666667,59.9999999999999"
-              Start="0,0"
-              End="-165.666666666667,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5623100303951"
-                    Point2="0,35.5623100303951"
-                    Point3="-4,35.5623100303951" />
-                  <mssgle:LineSegment
-                    End="-161.666666666667,35.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-161.666666666667,35.5623100303951"
-                    Point2="-165.666666666667,35.5623100303951"
-                    Point3="-165.666666666667,39.5623100303951" />
-                  <mssgle:LineSegment
-                    End="-165.666666666667,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[Sort Output2]"
-          TopLeft="629.5,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-20.3333333333334,59.9999999999999"
-              Start="0,0"
-              End="-20.3333333333334,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5623100303951"
-                    Point2="0,35.5623100303951"
-                    Point3="-4,35.5623100303951" />
-                  <mssgle:LineSegment
-                    End="-16.3333333333334,35.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-16.3333333333334,35.5623100303951"
-                    Point2="-20.3333333333334,35.5623100303951"
-                    Point3="-20.3333333333334,39.5623100303951" />
-                  <mssgle:LineSegment
-                    End="-20.3333333333334,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[Sort Output1]"
-          TopLeft="340.5,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="29.1111111111111,59.9999999999999"
-              Start="0,0"
-              End="29.1111111111111,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.6874095513748" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.6874095513748"
-                    Point2="0,35.6874095513748"
-                    Point3="4,35.6874095513748" />
-                  <mssgle:LineSegment
-                    End="25.1111111111111,35.6874095513748" />
-                  <mssgle:CubicBezierSegment
-                    Point1="25.1111111111111,35.6874095513748"
-                    Point2="29.1111111111111,35.6874095513748"
-                    Point3="29.1111111111111,39.6874095513748" />
-                  <mssgle:LineSegment
-                    End="29.1111111111111,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -13416,30 +13495,7 @@ ON A.Centro = C.NombreLargo
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transforma Dim Empleado\Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles">
+    design-time-name="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13478,7 +13534,7 @@ ON A.Centro = C.NombreLargo
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transforma Dim Empleado\Staging_Datoseis">
+    design-time-name="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13491,7 +13547,30 @@ ON A.Centro = C.NombreLargo
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios">
+    design-time-name="Package\Transforma Dim Empleado\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transforma Dim Empleado\Staging_Datoseis">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
