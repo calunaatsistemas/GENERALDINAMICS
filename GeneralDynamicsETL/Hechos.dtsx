@@ -7,12 +7,12 @@
   DTS:CreatorName="gd\gd"
   DTS:DTSID="{9FFDCC3A-5EAB-483D-974A-7AF3163B907C}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LastModifiedProductVersion="15.0.1300.371"
   DTS:LocaleID="1033"
   DTS:ObjectName="Hechos"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{E42C9CAA-EA25-40C9-87F2-0AF0184C74BC}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{C47B37FD-2C5D-4323-8843-422EDA2D2A65}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -190,7 +190,7 @@
                     <connection
                       refId="Package\Antiguedad\Cargar Fac_Antiguedad\Fac_Antiguedad.Connections[OleDbConnection]"
                       connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      connectionManagerRefId="Project.ConnectionManagers[gd GeneralDynamicsDB]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -308,14 +308,14 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  -- FecProceso,
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  FecProceso,
 		ID_Calendario,
 		-- CodCentro,
 		ID_Centro,
 		-- Cod_Sexo,
 		ID_Sexo,
-		ID_Rango_Antiguedad,
-		-- Antiguedad,
+		ISNULL(ID_Rango_Antiguedad,-1) AS ID_Rango_Antiguedad,
+		 Antiguedad,
 		(SELECT COUNT(Fec_Alta) FROM [Dimension].[Dim_Empleado] DEA
 			WHERE [Sistema].[Antiguedad](DEA.Fec_Alta) = Antiguedad
 					AND DEA.Fec_Alta &lt;= FecProceso
@@ -362,7 +362,7 @@
                     <connection
                       refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Connections[OleDbConnection]"
                       connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      connectionManagerRefId="Project.ConnectionManagers[gd GeneralDynamicsDB]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -416,6 +416,24 @@
                           lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[Num_Empleados]"
                           name="Num_Empleados"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[FecProceso]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[FecProceso]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[FecProceso]"
+                          name="FecProceso"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[Antiguedad]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[Antiguedad]"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].Columns[Antiguedad]"
+                          name="Antiguedad"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -439,6 +457,14 @@
                           refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[Num_Empleados]"
                           dataType="i4"
                           name="Num_Empleados" />
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[FecProceso]"
+                          dataType="dbDate"
+                          name="FecProceso" />
+                        <externalMetadataColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Output].ExternalColumns[Antiguedad]"
+                          dataType="i2"
+                          name="Antiguedad" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -446,6 +472,11 @@
                       isErrorOut="true"
                       name="OLE DB Source Error Output">
                       <outputColumns>
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[FecProceso]"
+                          dataType="dbDate"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[FecProceso]"
+                          name="FecProceso" />
                         <outputColumn
                           refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ID_Calendario]"
                           dataType="i4"
@@ -466,6 +497,11 @@
                           dataType="i4"
                           lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[ID_Rango_Antiguedad]"
                           name="ID_Rango_Antiguedad" />
+                        <outputColumn
+                          refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[Antiguedad]"
+                          dataType="i2"
+                          lineageId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[Antiguedad]"
+                          name="Antiguedad" />
                         <outputColumn
                           refId="Package\Antiguedad\Cargar Fac_Antiguedad\src_Fac_Antiguedad.Outputs[OLE DB Source Error Output].Columns[Num_Empleados]"
                           dataType="i4"
@@ -689,7 +725,7 @@
                     <connection
                       refId="Package\Edad\Cargar Fac_Edad\Fac_Edad.Connections[OleDbConnection]"
                       connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      connectionManagerRefId="Project.ConnectionManagers[gd GeneralDynamicsDB]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -861,7 +897,7 @@
                     <connection
                       refId="Package\Edad\Cargar Fac_Edad\src_Fac_Edad.Connections[OleDbConnection]"
                       connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      connectionManagerRefId="Project.ConnectionManagers[gd GeneralDynamicsDB]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1188,7 +1224,7 @@
                     <connection
                       refId="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla.Connections[OleDbConnection]"
                       connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      connectionManagerRefId="Project.ConnectionManagers[gd GeneralDynamicsDB]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1358,7 +1394,7 @@
                     <connection
                       refId="Package\Plantillas\Cargar Fac_Plantilla\src_Fac_Plantilla.Connections[OleDbConnection]"
                       connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      connectionManagerRefId="Project.ConnectionManagers[gd GeneralDynamicsDB]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1544,11 +1580,11 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="165,43"
+          Size="165.333333333334,42.6666666666667"
           Id="Package\Antiguedad\Borrar Tablas Fact"
           TopLeft="38.5833284966648,15.9999987602234" />
         <NodeLayout
-          Size="189,43"
+          Size="189.333333333334,42.6666666666667"
           Id="Package\Antiguedad\Cargar Fac_Antiguedad"
           TopLeft="28.9999952564638,108.699998938442" />
         <EdgeLayout
@@ -1577,15 +1613,15 @@
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="256,232"
-          Size="256,275"
+          Size="256,274.666666666667"
           Id="Package\Antiguedad"
           TopLeft="270.91666271165,7.36667215267815" />
         <NodeLayout
-          Size="165,43"
+          Size="165.333333333334,42.6666666666667"
           Id="Package\Edad\Borrar Tablas Fact"
           TopLeft="38.5833284966648,17.2999987369776" />
         <NodeLayout
-          Size="160,43"
+          Size="160,42.6666666666667"
           Id="Package\Edad\Cargar Fac_Edad"
           TopLeft="28.9999952564638,108.699998938442" />
         <EdgeLayout
@@ -1626,15 +1662,15 @@
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="256,232"
-          Size="256,275"
+          Size="256,274.666666666667"
           Id="Package\Edad"
-          TopLeft="653.33332516253,26.1999999070167" />
+          TopLeft="619.999992325902,11.4666668371359" />
         <NodeLayout
-          Size="165,43"
+          Size="165.333333333334,42.6666666666667"
           Id="Package\Plantillas\Borrar Tablas Fact"
           TopLeft="8.83333333333334,5.06666667441533" />
         <NodeLayout
-          Size="172,43"
+          Size="172,42.6666666666667"
           Id="Package\Plantillas\Cargar Fac_Plantilla"
           TopLeft="5.50000000000001,108.166666666667" />
         <EdgeLayout
@@ -1662,8 +1698,8 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="183,206"
-          Size="183,249"
+          PanelSize="182.666666666667,206"
+          Size="182.666666666667,249.333333333334"
           Id="Package\Plantillas"
           TopLeft="16.8333333333334,15.4666664884489" />
         <EdgeLayout
@@ -1690,30 +1726,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="526.91666271165,144.866672152678">
+          TopLeft="526.91666271165,146.75000282824">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="126.41666245088,18.8333277543386"
+              EndConnector="93.0833296142521,0"
               Start="0,0"
-              End="118.91666245088,18.8333277543386">
+              End="85.5833296142521,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="59.20833122544,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="59.20833122544,0"
-                    Point2="63.20833122544,0"
-                    Point3="63.20833122544,4" />
-                  <mssgle:LineSegment
-                    End="63.20833122544,14.8333277543386" />
-                  <mssgle:CubicBezierSegment
-                    Point1="63.20833122544,14.8333277543386"
-                    Point2="63.20833122544,18.8333277543386"
-                    Point3="67.20833122544,18.8333277543386" />
-                  <mssgle:LineSegment
-                    End="118.91666245088,18.8333277543386" />
+                    End="85.5833296142521,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1743,6 +1767,28 @@
           Id="Package\Antiguedad\Cargar Fac_Antiguedad\Derived Column"
           TopLeft="21.5,111.5" />
         <EdgeLayout
+          Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[OLE DB Source Output]"
+          TopLeft="95.8333333333333,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.3333333333337"
+              Start="0,0"
+              End="0,55.8333333333337">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.8333333333337" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[Derived Column Output]"
           TopLeft="98.8333333333334,154.166666666667">
           <EdgeLayout.Curve>
@@ -1768,28 +1814,6 @@
                     Point3="22,34.0000000000001" />
                   <mssgle:LineSegment
                     End="22,52.5000000000003" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Antiguedad\Cargar Fac_Antiguedad.Paths[OLE DB Source Output]"
-          TopLeft="95.8333333333333,48.1666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,63.3333333333337"
-              Start="0,0"
-              End="0,55.8333333333337">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55.8333333333337" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1834,11 +1858,45 @@
         <NodeLayout
           Size="144,42.6666666666667"
           Id="Package\Edad\Cargar Fac_Edad\src_Fac_Edad"
-          TopLeft="27.5,8.83333333333337" />
+          TopLeft="245.5,38.8333333333334" />
         <NodeLayout
           Size="154.666666666667,42.6666666666667"
           Id="Package\Edad\Cargar Fac_Edad\Derived Column"
           TopLeft="21.5,111.5" />
+        <EdgeLayout
+          Id="Package\Edad\Cargar Fac_Edad.Paths[OLE DB Source Output]"
+          TopLeft="317.5,81.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-218.666666666667,30"
+              Start="0,0"
+              End="-218.666666666667,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11"
+                    Point2="0,15"
+                    Point3="-4,15" />
+                  <mssgle:LineSegment
+                    End="-214.666666666667,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-214.666666666667,15"
+                    Point2="-218.666666666667,15"
+                    Point3="-218.666666666667,19" />
+                  <mssgle:LineSegment
+                    End="-218.666666666667,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Edad\Cargar Fac_Edad.Paths[Derived Column Output]"
           TopLeft="96.1666666666667,154.166666666667">
@@ -1853,28 +1911,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,45.166666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Edad\Cargar Fac_Edad.Paths[OLE DB Source Output]"
-          TopLeft="99.1666666666667,51.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1911,7 +1947,7 @@
     design-time-name="Package\Plantillas\Cargar Fac_Plantilla">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="137.333333333334,42.6666666666667"
           Id="Package\Plantillas\Cargar Fac_Plantilla\Fac_Plantilla"
@@ -1924,28 +1960,6 @@
           Size="154.666666666667,42.6666666666667"
           Id="Package\Plantillas\Cargar Fac_Plantilla\Derived Column"
           TopLeft="6.83333333333337,108.166666666667" />
-        <EdgeLayout
-          Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[Derived Column Output]"
-          TopLeft="84.1666666666667,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[OLE DB Source Output]"
           TopLeft="84.1666666666667,48.1666666666667">
@@ -1965,7 +1979,33 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Plantillas\Cargar Fac_Plantilla.Paths[Derived Column Output]"
+          TopLeft="84.1666666666667,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
