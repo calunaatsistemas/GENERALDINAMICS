@@ -1,0 +1,1443 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/23/2020 3:35:30 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="gd"
+  DTS:CreatorName="gd\rhuaman"
+  DTS:DTSID="{CD472BBA-B033-4C6A-9A9E-95E1635BF8E4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1900.80"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Staging_Clients"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{CF1B6ACB-56A1-492F-9A75-342E81198728}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Telefonos-Moviles.dat]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{E711FFBE-C33C-4C5C-AD14-EEE9BC81995C}"
+      DTS:ObjectName="Telefonos-Moviles.dat">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::RutaPersonal] +@[$Project::File_PersonalTelefonosMoviles]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="Z:\PersonalSBS\Telefonos-Moviles.dat">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Clave   NBI + Centro"
+              DTS:DTSID="{9AB3EC8A-B203-44DC-A3FE-39E5136AE502}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Nombre"
+              DTS:DTSID="{1CCABA3B-4EC8-4E05-A45B-EADC28804059}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Apellido -1-"
+              DTS:DTSID="{88F91732-8D7E-4F82-9D37-B96B8A56ABC7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Apellido -2-"
+              DTS:DTSID="{4AEBC10C-1A00-4E0A-8510-1FC2571D824D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Nº Teléfono"
+              DTS:DTSID="{5211B798-08D0-4A13-9CA7-FB6EF3E5205D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Extensión Corta"
+              DTS:DTSID="{7312F551-5602-470B-BAE2-1E62F3B2F289}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\BEGIN TRANSACTION Clients"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1f5bf635-39c5-4a43-a632-dc7a057ecccd}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="BEGIN TRANSACTION Clients"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+          SQLTask:SqlStatementSource="Begin transaction Clients" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Clients"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{90a73172-dde4-4d24-8200-afae6fb2a819}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clients">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Clients\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{4da6c3be-99db-4c74-9d22-37b54f6f7753}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Clients\Data Flow Task\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Clave   NBI + Centro]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Clave   NBI + Centro"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Nombre]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Nombre"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nombre]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Apellido -1-]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Apellido -1-"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -1-]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Apellido -2-]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Apellido -2-"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -2-]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Nº Teléfono]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Nº Teléfono"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nº Teléfono]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Extensión Corta]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Extensión Corta"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Extensión Corta]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[FechaInsert]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FechaInsert"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaInsert]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[FechaUpdate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FechaUpdate"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaUpdate]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Proceso]"
+                          cachedDataType="wstr"
+                          cachedLength="150"
+                          cachedName="Proceso"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Proceso]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Archivo]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Archivo"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Archivo]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Centro]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="Centro"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Centro]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[NBI]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="4"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[NBI]"
+                          name="NBI"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Nombre]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="80"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Nombre]"
+                          name="Nombre"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nombre]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido -1-]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido -1-]"
+                          name="Apellido -1-"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -1-]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido -2-]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido -2-]"
+                          name="Apellido -2-"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -2-]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Nº Teléfono]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="20"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Nº Teléfono]"
+                          name="Nº Teléfono"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nº Teléfono]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Extensión Corta]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="20"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Extensión Corta]"
+                          name="Extensión Corta"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Extensión Corta]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaInsert]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaInsert]"
+                          name="FechaInsert"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaInsert]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaUpdate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaUpdate]"
+                          name="FechaUpdate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaUpdate]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Proceso]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="150"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Proceso]"
+                          name="Proceso"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Proceso]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Archivo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Archivo]"
+                          name="Archivo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Archivo]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Centro]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="2"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Centro]"
+                          name="Centro"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Centro]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="dc_incluyeCamposAuditoria"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Inputs[Derived Column Input].Columns[Clave   NBI + Centro]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Clave   NBI + Centro"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[LEFT](#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]},4)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">LEFT([Clave   NBI + Centro],4)</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaInsert]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaInsert]"
+                          name="FechaInsert"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[GETDATE]()</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">GETDATE()</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaUpdate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[FechaUpdate]"
+                          name="FechaUpdate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[GETDATE]()</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">GETDATE()</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Proceso]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="150"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Proceso]"
+                          name="Proceso"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::PackageName]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Archivo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Archivo]"
+                          name="Archivo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Project::File_PersonalTelefonosMoviles]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Project::File_PersonalTelefonosMoviles]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Centro]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="2"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output].Columns[Centro]"
+                          name="Centro"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[RIGHT](#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]},2)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">RIGHT([Clave   NBI + Centro],2)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="dest_PersonalTelefonosMoviles"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[PersonalTelefonosMoviles]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Connections[OleDbConnection]"
+                      connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[gd GeneralDynamicsDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].Columns[NBI]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="NBI"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[NBI]"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[NBI]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].Columns[Centro]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="Centro"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[CentroID]"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Centro]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                          cachedDataType="wstr"
+                          cachedLength="80"
+                          cachedName="Nombre"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Nombre]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].Columns[Apellido -1-]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Apellido -1-"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Apellido1]"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido -1-]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].Columns[Apellido -2-]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Apellido -2-"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Apellido2]"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Apellido -2-]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].Columns[Nº Teléfono]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Nº Teléfono"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Telefono]"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Nº Teléfono]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].Columns[Extensión Corta]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Extensión Corta"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[ExtensionCorta]"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Extensión Corta]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].Columns[FechaInsert]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FechaInsert"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[FechaInsert]"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaInsert]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].Columns[FechaUpdate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FechaUpdate"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[FechaUpdate]"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaUpdate]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].Columns[Proceso]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="Proceso"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Proceso]"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Proceso]" />
+                        <inputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].Columns[Archivo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Archivo"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Archivo]"
+                          lineageId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Archivo]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[NBI]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="NBI" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[CentroID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="CentroID" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="80"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Apellido1]"
+                          dataType="wstr"
+                          length="50"
+                          name="Apellido1" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Apellido2]"
+                          dataType="wstr"
+                          length="50"
+                          name="Apellido2" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Telefono]"
+                          dataType="wstr"
+                          length="20"
+                          name="Telefono" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[ExtensionCorta]"
+                          dataType="wstr"
+                          length="20"
+                          name="ExtensionCorta" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[FechaInsert]"
+                          dataType="dbTimeStamp"
+                          name="FechaInsert" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[FechaUpdate]"
+                          dataType="dbTimeStamp"
+                          name="FechaUpdate" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Proceso]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="Proceso" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input].ExternalColumns[Archivo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Archivo" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Clients\Data Flow Task\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordCount</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Clients\Data Flow Task\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Clients\Data Flow Task\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Clients\Data Flow Task\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Clients\Data Flow Task\Source_Clientes"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="Source_Clientes"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Clients\Data Flow Task\Source_Clientes.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Telefonos-Moviles.dat]"
+                      connectionManagerRefId="Package.ConnectionManagers[Telefonos-Moviles.dat]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Clave   NBI + Centro]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]"
+                          name="Clave   NBI + Centro"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nombre]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Nombre]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nombre]"
+                          name="Nombre"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -1-]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Apellido -1-]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -1-]"
+                          name="Apellido -1-"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -2-]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Apellido -2-]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -2-]"
+                          name="Apellido -2-"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nº Teléfono]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Nº Teléfono]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nº Teléfono]"
+                          name="Nº Teléfono"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Extensión Corta]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Extensión Corta]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Extensión Corta]"
+                          name="Extensión Corta"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Clave   NBI + Centro]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Clave   NBI + Centro" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Nombre]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Apellido -1-]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Apellido -1-" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Apellido -2-]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Apellido -2-" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Nº Teléfono]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Nº Teléfono" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Extensión Corta]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Extensión Corta" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Clients\Data Flow Task.Paths[Data Conversion Output]"
+                  endId="Package\Clients\Data Flow Task\Row Count.Inputs[Row Count Input 1]"
+                  name="Data Conversion Output"
+                  startId="Package\Clients\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Clients\Data Flow Task.Paths[Derived Column Output]"
+                  endId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Derived Column Output"
+                  startId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Clients\Data Flow Task.Paths[Flat File Source Output]"
+                  endId="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria.Inputs[Derived Column Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output]" />
+                <path
+                  refId="Package\Clients\Data Flow Task.Paths[Row Count Output 1]"
+                  endId="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Clients\Data Flow Task\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Clients\Truncate Clients"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{b5c6f49e-2540-48ed-8b6b-51550e257a25}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Clients"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [Staging].[Clientes]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Clients.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{4d3686e6-3522-4a85-937d-ca4c0da6f439}"
+          DTS:From="Package\Clients\Truncate Clients"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Clients\Data Flow Task" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7B30638B-0B65-4B86-B52A-9CCDF8360F56}"
+      DTS:From="Package\BEGIN TRANSACTION Clients"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Clients" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="272,42"
+          Id="Package\BEGIN TRANSACTION Clients"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\Clients\Data Flow Task"
+          TopLeft="12.5,107.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Clients\Truncate Clients"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\Clients.PrecedenceConstraints[Constraint]"
+          TopLeft="88.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="177.333333333334,205.333333333334"
+          Size="177.333333333334,248"
+          Id="Package\Clients"
+          TopLeft="52.8333333333334,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="141.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Clients\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="225.333333333334,42.6666666666667"
+          Id="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles"
+          TopLeft="5.50000000000004,415.5" />
+        <NodeLayout
+          Size="208,42.6666666666667"
+          Id="Package\Clients\Data Flow Task\dc_incluyeCamposAuditoria"
+          TopLeft="14.1666666666667,107.5" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Clients\Data Flow Task\Data Conversion"
+          TopLeft="39.5,210.166666666667" />
+        <NodeLayout
+          Size="131.333333333334,42.6666666666667"
+          Id="Package\Clients\Data Flow Task\Row Count"
+          TopLeft="52.5,312.833333333334" />
+        <NodeLayout
+          Size="161.333333333334,42"
+          Id="Package\Clients\Data Flow Task\Source_Clientes"
+          TopLeft="37.5,5.5" />
+        <EdgeLayout
+          Id="Package\Clients\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="118.166666666667,150.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clients\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="118.166666666667,252.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clients\Data Flow Task.Paths[Row Count Output 1]"
+          TopLeft="118.166666666667,355.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clients\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="118.166666666667,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

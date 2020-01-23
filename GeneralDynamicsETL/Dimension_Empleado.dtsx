@@ -7,12 +7,12 @@
   DTS:CreatorName="gd\gd"
   DTS:DTSID="{9A93D1A7-B2AA-4647-A353-9F49251A2595}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LastModifiedProductVersion="15.0.1900.80"
   DTS:LocaleID="1033"
   DTS:ObjectName="Dimension_Empleado"
   DTS:PackageType="5"
-  DTS:VersionBuild="124"
-  DTS:VersionGUID="{98821F28-54A5-4247-9646-1B5C5CBBDA4A}">
+  DTS:VersionBuild="127"
+  DTS:VersionGUID="{C8B6724C-3744-4CAF-A062-C7F411434574}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -68,7 +68,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
-          SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('AT-5CD943HWRP'&#xA;&#x9;&#x9;  ,'Dimension_Empleado'&#xA;&#x9;&#x9;  ,'ATSISTEMAS\caluna' &#xA;&#x9;&#x9;  ,'1/23/2020 9:15:42 AM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('gd'&#xA;&#x9;&#x9;  ,'Dimension_Empleado'&#xA;&#x9;&#x9;  ,'gd\gd' &#xA;&#x9;&#x9;  ,'1/23/2020 2:59:59 PM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1381,25 +1381,7 @@ where nbi =?</property>
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Tratamiento"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]} == "Sr." ? "H" : "M"</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">[Data Conversion].Tratamiento == "Sr." ? "H" : "M"</property>
-                      </properties>
-                    </inputColumn>
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1476,6 +1458,29 @@ where nbi =?</property>
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
                           name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Derived Column.Outputs[Derived Column Output].Columns[Cod_Sexo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Transforma Dim Empleado\Derived Column.Outputs[Derived Column Output].Columns[Cod_Sexo]"
+                      name="Cod_Sexo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]} == "Sr." ? "H" : "M"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Data Conversion].Tratamiento == "Sr." ? "H" : "M"</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1617,38 +1622,6 @@ where nbi =?</property>
                       externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[DIECSO]"
                       lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Diecso]" />
                     <inputColumn
-                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[ESXX]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="ESXX"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[ESXX]"
-                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[ESXX]" />
-                    <inputColumn
-                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Banco]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="Banco"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Banco]"
-                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Banco]" />
-                    <inputColumn
-                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Agencia]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="Agencia"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Agencia]"
-                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Agencia]" />
-                    <inputColumn
-                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[DC]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="2"
-                      cachedName="DC"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[DC]"
-                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[DC]" />
-                    <inputColumn
                       refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Tlf_Fijo3]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -1682,14 +1655,6 @@ where nbi =?</property>
                       cachedName="Ind_Activo"
                       externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Ind_Activo]"
                       lineageId="Package\Transforma Dim Empleado\Derived Column.Outputs[Derived Column Output].Columns[Ind_Activo]" />
-                    <inputColumn
-                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Tratamiento]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Tratamiento"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Sexo]"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]" />
                     <inputColumn
                       refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Nombre]"
                       cachedCodepage="1252"
@@ -1979,14 +1944,6 @@ where nbi =?</property>
                       externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Estado_Plantilla]"
                       lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Estado]" />
                     <inputColumn
-                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[NumeroCuenta]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="NumeroCuenta"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Num_Cuenta]"
-                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NumeroCuenta]" />
-                    <inputColumn
                       refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[NBIAprobSarce]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -2080,6 +2037,21 @@ where nbi =?</property>
                       cachedName="Titulacion"
                       externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Titulacion]"
                       lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Titulacion]" />
+                    <inputColumn
+                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Cod_Sexo]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Cod_Sexo"
+                      externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Sexo]"
+                      lineageId="Package\Transforma Dim Empleado\Derived Column.Outputs[Derived Column Output].Columns[Cod_Sexo]" />
+                    <inputColumn
+                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Tratamiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Tratamiento"
+                      externalMetadataColumnId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Tratamiento]"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2095,9 +2067,8 @@ where nbi =?</property>
                       name="Cod_Centro" />
                     <externalMetadataColumn
                       refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Sexo]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="1"
                       name="Cod_Sexo" />
                     <externalMetadataColumn
                       refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[NBI]"
@@ -2362,36 +2333,6 @@ where nbi =?</property>
                       length="1"
                       name="Estado_Plantilla" />
                     <externalMetadataColumn
-                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[ESXX]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4"
-                      name="ESXX" />
-                    <externalMetadataColumn
-                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Banco]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4"
-                      name="Banco" />
-                    <externalMetadataColumn
-                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Agencia]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4"
-                      name="Agencia" />
-                    <externalMetadataColumn
-                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[DC]"
-                      codePage="1252"
-                      dataType="str"
-                      length="2"
-                      name="DC" />
-                    <externalMetadataColumn
-                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Num_Cuenta]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="Num_Cuenta" />
-                    <externalMetadataColumn
                       refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Nbi_Aprob_Sarce]"
                       codePage="1252"
                       dataType="str"
@@ -2465,6 +2406,12 @@ where nbi =?</property>
                       dataType="str"
                       length="32"
                       name="DWH_Hash" />
+                    <externalMetadataColumn
+                      refId="Package\Transforma Dim Empleado\Dimension_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Tratamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Tratamiento" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -10838,38 +10785,6 @@ ON A.Centro = C.NombreLargo
                       externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[DIECSO]"
                       lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Diecso]" />
                     <inputColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[ESXX]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="ESXX"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[ESXX]"
-                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[ESXX]" />
-                    <inputColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Banco]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="Banco"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Banco]"
-                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Banco]" />
-                    <inputColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Agencia]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="Agencia"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Agencia]"
-                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Agencia]" />
-                    <inputColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[DC]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="2"
-                      cachedName="DC"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[DC]"
-                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[DC]" />
-                    <inputColumn
                       refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Tlf_Fijo3]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -10903,14 +10818,6 @@ ON A.Centro = C.NombreLargo
                       cachedName="Ind_Activo"
                       externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Ind_Activo]"
                       lineageId="Package\Transforma Dim Empleado\Derived Column.Outputs[Derived Column Output].Columns[Ind_Activo]" />
-                    <inputColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Tratamiento]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Tratamiento"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Sexo]"
-                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]" />
                     <inputColumn
                       refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[NBI]"
                       cachedCodepage="1252"
@@ -11232,14 +11139,6 @@ ON A.Centro = C.NombreLargo
                       externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Estado_Plantilla]"
                       lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[Estado]" />
                     <inputColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[NumeroCuenta]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="NumeroCuenta"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Num_Cuenta]"
-                      lineageId="Package\Transforma Dim Empleado\mrg_empleados.Outputs[Merge Join Output].Columns[NumeroCuenta]" />
-                    <inputColumn
                       refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[NBIAprobSarce]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -11309,6 +11208,21 @@ ON A.Centro = C.NombreLargo
                       cachedName="UsuarioBaaN"
                       externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[User_BaaN]"
                       lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[UsuarioBaaN]" />
+                    <inputColumn
+                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Cod_Sexo]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Cod_Sexo"
+                      externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Sexo]"
+                      lineageId="Package\Transforma Dim Empleado\Derived Column.Outputs[Derived Column Output].Columns[Cod_Sexo]" />
+                    <inputColumn
+                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].Columns[Tratamiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Tratamiento"
+                      externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Tratamiento]"
+                      lineageId="Package\Transforma Dim Empleado\Data Conversion.Outputs[Data Conversion Output].Columns[Tratamiento]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -11324,9 +11238,8 @@ ON A.Centro = C.NombreLargo
                       name="Cod_Centro" />
                     <externalMetadataColumn
                       refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Sexo]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="2"
                       name="Cod_Sexo" />
                     <externalMetadataColumn
                       refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[NBI]"
@@ -11591,36 +11504,6 @@ ON A.Centro = C.NombreLargo
                       length="1"
                       name="Estado_Plantilla" />
                     <externalMetadataColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[ESXX]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4"
-                      name="ESXX" />
-                    <externalMetadataColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Banco]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4"
-                      name="Banco" />
-                    <externalMetadataColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Agencia]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4"
-                      name="Agencia" />
-                    <externalMetadataColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[DC]"
-                      codePage="1252"
-                      dataType="str"
-                      length="2"
-                      name="DC" />
-                    <externalMetadataColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Num_Cuenta]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="Num_Cuenta" />
-                    <externalMetadataColumn
                       refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Nbi_Aprob_Sarce]"
                       codePage="1252"
                       dataType="str"
@@ -11694,6 +11577,12 @@ ON A.Centro = C.NombreLargo
                       dataType="str"
                       length="32"
                       name="DWH_Hash" />
+                    <externalMetadataColumn
+                      refId="Package\Transforma Dim Empleado\Staging_Dim_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Tratamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Tratamiento" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -12701,24 +12590,24 @@ ON A.Centro = C.NombreLargo
               startId="Package\Transforma Dim Empleado\Cierra Vigencia.Outputs[OLE DB Command Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output3]"
-              endId="Package\Transforma Dim Empleado\srt_Fijos.Inputs[Sort Input]"
+              endId="Package\Transforma Dim Empleado\srt_Datoseis.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos.Outputs[OLE DB Source Output]" />
+              startId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output2]"
-              endId="Package\Transforma Dim Empleado\srt_Moviles.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
               endId="Package\Transforma Dim Empleado\srt_Usuarios.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
-              endId="Package\Transforma Dim Empleado\srt_Datoseis.Inputs[Sort Input]"
+              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
+              endId="Package\Transforma Dim Empleado\srt_Fijos.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output]" />
+              startId="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
+              endId="Package\Transforma Dim Empleado\srt_Moviles.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[Row Count Output 1]"
               endId="Package\Transforma Dim Empleado\Cierra Vigencia.Inputs[OLE DB Command Input]"
@@ -12731,19 +12620,19 @@ ON A.Centro = C.NombreLargo
               startId="Package\Transforma Dim Empleado\ActualizaNumeroRegistros.Outputs[Row Count Output 1]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[Sort Output2]"
+              endId="Package\Transforma Dim Empleado\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Transforma Dim Empleado\srt_Fijos.Outputs[Sort Output]" />
+            <path
+              refId="Package\Transforma Dim Empleado.Paths[Sort Output]"
               endId="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Transforma Dim Empleado\srt_Datoseis.Outputs[Sort Output]" />
             <path
-              refId="Package\Transforma Dim Empleado.Paths[Sort Output]"
+              refId="Package\Transforma Dim Empleado.Paths[Sort Output1]"
               endId="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\Transforma Dim Empleado\srt_Usuarios.Outputs[Sort Output]" />
-            <path
-              refId="Package\Transforma Dim Empleado.Paths[Sort Output1]"
-              endId="Package\Transforma Dim Empleado\Merge Join.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\Transforma Dim Empleado\srt_Fijos.Outputs[Sort Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[Sort Output3]"
               endId="Package\Transforma Dim Empleado\Merge Join.Inputs[Merge Join Right Input]"
@@ -12782,7 +12671,7 @@ ON A.Centro = C.NombreLargo
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
-          SQLTask:SqlStatementSource="update dest&#xA;set&#xA;[Cod_Centro]=upd.[Cod_Centro]&#xA;,[Cod_Sexo]=upd.[Cod_Sexo]&#xA;,[NBI]=upd.[NBI]&#xA;,[NIF]=upd.[NIF]&#xA;,[Apellido1]=upd.[Apellido1]&#xA;,[Apellido2]=upd.[Apellido2]&#xA;,[Nombre]=upd.[Nombre]&#xA;,[Fec_Nacimiento]=upd.[Fec_Nacimiento]&#xA;,[Nacimiento_Localidad]=upd.[Nacimiento_Localidad]&#xA;,[Nacimiento_Provincia]=upd.[Nacimiento_Provincia]&#xA;,[Nacimiento_Municipio]=upd.[Nacimiento_Municipio]&#xA;,[Nacimiento_Pais]=upd.[Nacimiento_Pais]&#xA;,[Estado_Civil]=upd.[Estado_Civil]&#xA;,[Tlf_Fijo1]=upd.[Tlf_Fijo1]&#xA;,[Tlf_Fijo2]=upd.[Tlf_Fijo2]&#xA;,[Tlf_Fijo3]=upd.[Tlf_Fijo3]&#xA;,[Tlf_Movil1]=upd.[Tlf_Movil1]&#xA;,[Tlf_Movil2]=upd.[Tlf_Movil2]&#xA;,[Tlf_Movil3]=upd.[Tlf_Movil3]&#xA;,[Tlf_Ext1]=upd.[Tlf_Ext1]&#xA;,[Tlf_Ext2]=upd.[Tlf_Ext2]&#xA;,[Tlf_Ext3]=upd.[Tlf_Ext3]&#xA;,[Email]=upd.[Email]&#xA;,[Domicilio_Direccion]=upd.[Domicilio_Direccion]&#xA;,[Domicilio_Numero]=upd.[Domicilio_Numero]&#xA;,[Domicilio_Numero_Piso]=upd.[Domicilio_Numero_Piso]&#xA;,[Domicilio_Letra]=upd.[Domicilio_Letra]&#xA;,[Domicilio_Localidad]=upd.[Domicilio_Localidad]&#xA;,[Domicilio_Municipio]=upd.[Domicilio_Municipio]&#xA;,[Domicilio_Provincia]=upd.[Domicilio_Provincia]&#xA;,[Domicilio_Codigo_Postal]=upd.[Domicilio_Codigo_Postal]&#xA;,[Domicilio_Telefono]=upd.[Domicilio_Telefono]&#xA;,[Fec_Alta]=upd.[Fec_Alta]&#xA;,[Fec_Baja]=upd.[Fec_Baja]&#xA;,[Titulacion]=upd.[Titulacion]&#xA;,[Categoria_Laboral]=upd.[Categoria_Laboral]&#xA;,[Cod_Categoria_Laboral]=upd.[Cod_Categoria_Laboral]&#xA;,[Escala_salarial]=upd.[Escala_salarial]&#xA;,[DepartamentoGFH]=upd.[DepartamentoGFH]&#xA;,[Departamento]=upd.[Departamento]&#xA;,[IRPF]=upd.[IRPF]&#xA;,[Num_Pagas]=upd.[Num_Pagas]&#xA;,[Num_Hijos]=upd.[Num_Hijos]&#xA;,[Salario_Mes]=upd.[Salario_Mes]&#xA;,[Fec_Salario]=upd.[Fec_Salario]&#xA;,[DIECSO]=upd.[DIECSO]&#xA;,[Flg_Convenio]=upd.[Flg_Convenio]&#xA;,[Flg_Alta]=upd.[Flg_Alta]&#xA;,[Estado_Plantilla]=upd.[Estado_Plantilla]&#xA;,[ESXX]=upd.[ESXX]&#xA;,[Banco]=upd.[Banco]&#xA;,[Agencia]=upd.[Agencia]&#xA;,[DC]=upd.[DC]&#xA;,[Num_Cuenta]=upd.[Num_Cuenta]&#xA;,[Nbi_Aprob_Sarce]=upd.[Nbi_Aprob_Sarce]&#xA;,[Situacion]=upd.[Situacion]&#xA;,[Situacion_NBI]=upd.[Situacion_NBI]&#xA;,[Situacion_Nombre]=upd.[Situacion_Nombre]&#xA;,[Situacion_Apellido1]=upd.[Situacion_Apellido1]&#xA;,[Situacion_Apellido2]=upd.[Situacion_Apellido2]&#xA;,[Fec_Contrato_Relevo]=upd.[Fec_Contrato_Relevo]&#xA;,[Identificacion_Red]=upd.[Identificacion_Red]&#xA;,[User_BaaN]=upd.[User_BaaN]&#xA;,[Fec_Ini_Vigencia]=upd.[Fec_Ini_Vigencia]&#xA;--,Fec_Fin_Vigencia = getdate()&#xA;,[Fec_Proceso]=upd.[Fec_Proceso]&#xA;--,[Ind_Activo]= 0&#xA;   &#xA;FROM  [Dimension].[Dim_Empleado] dest&#xA;join [Staging].[Dim_Empleado] upd on dest.nbi = upd.nbi and dest.Ind_Activo = 1 and dest.DWH_Hash &lt;&gt; upd.DWH_Hash&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="update dest&#xA;set&#xA;[Cod_Centro]=upd.[Cod_Centro]&#xA;,[Cod_Sexo]=upd.[Cod_Sexo]&#xA;,[NBI]=upd.[NBI]&#xA;,[NIF]=upd.[NIF]&#xA;,[Apellido1]=upd.[Apellido1]&#xA;,[Apellido2]=upd.[Apellido2]&#xA;,[Nombre]=upd.[Nombre]&#xA;,[Fec_Nacimiento]=upd.[Fec_Nacimiento]&#xA;,[Nacimiento_Localidad]=upd.[Nacimiento_Localidad]&#xA;,[Nacimiento_Provincia]=upd.[Nacimiento_Provincia]&#xA;,[Nacimiento_Municipio]=upd.[Nacimiento_Municipio]&#xA;,[Nacimiento_Pais]=upd.[Nacimiento_Pais]&#xA;,[Estado_Civil]=upd.[Estado_Civil]&#xA;,[Tlf_Fijo1]=upd.[Tlf_Fijo1]&#xA;,[Tlf_Fijo2]=upd.[Tlf_Fijo2]&#xA;,[Tlf_Fijo3]=upd.[Tlf_Fijo3]&#xA;,[Tlf_Movil1]=upd.[Tlf_Movil1]&#xA;,[Tlf_Movil2]=upd.[Tlf_Movil2]&#xA;,[Tlf_Movil3]=upd.[Tlf_Movil3]&#xA;,[Tlf_Ext1]=upd.[Tlf_Ext1]&#xA;,[Tlf_Ext2]=upd.[Tlf_Ext2]&#xA;,[Tlf_Ext3]=upd.[Tlf_Ext3]&#xA;,[Email]=upd.[Email]&#xA;,[Domicilio_Direccion]=upd.[Domicilio_Direccion]&#xA;,[Domicilio_Numero]=upd.[Domicilio_Numero]&#xA;,[Domicilio_Numero_Piso]=upd.[Domicilio_Numero_Piso]&#xA;,[Domicilio_Letra]=upd.[Domicilio_Letra]&#xA;,[Domicilio_Localidad]=upd.[Domicilio_Localidad]&#xA;,[Domicilio_Municipio]=upd.[Domicilio_Municipio]&#xA;,[Domicilio_Provincia]=upd.[Domicilio_Provincia]&#xA;,[Domicilio_Codigo_Postal]=upd.[Domicilio_Codigo_Postal]&#xA;,[Domicilio_Telefono]=upd.[Domicilio_Telefono]&#xA;,[Fec_Alta]=upd.[Fec_Alta]&#xA;,[Fec_Baja]=upd.[Fec_Baja]&#xA;,[Titulacion]=upd.[Titulacion]&#xA;,[Categoria_Laboral]=upd.[Categoria_Laboral]&#xA;,[Cod_Categoria_Laboral]=upd.[Cod_Categoria_Laboral]&#xA;,[Escala_salarial]=upd.[Escala_salarial]&#xA;,[DepartamentoGFH]=upd.[DepartamentoGFH]&#xA;,[Departamento]=upd.[Departamento]&#xA;,[IRPF]=upd.[IRPF]&#xA;,[Num_Pagas]=upd.[Num_Pagas]&#xA;,[Num_Hijos]=upd.[Num_Hijos]&#xA;,[Salario_Mes]=upd.[Salario_Mes]&#xA;,[Fec_Salario]=upd.[Fec_Salario]&#xA;,[DIECSO]=upd.[DIECSO]&#xA;,[Flg_Convenio]=upd.[Flg_Convenio]&#xA;,[Flg_Alta]=upd.[Flg_Alta]&#xA;,[Estado_Plantilla]=upd.[Estado_Plantilla]&#xA;,[Nbi_Aprob_Sarce]=upd.[Nbi_Aprob_Sarce]&#xA;,[Situacion]=upd.[Situacion]&#xA;,[Situacion_NBI]=upd.[Situacion_NBI]&#xA;,[Situacion_Nombre]=upd.[Situacion_Nombre]&#xA;,[Situacion_Apellido1]=upd.[Situacion_Apellido1]&#xA;,[Situacion_Apellido2]=upd.[Situacion_Apellido2]&#xA;,[Fec_Contrato_Relevo]=upd.[Fec_Contrato_Relevo]&#xA;,[Identificacion_Red]=upd.[Identificacion_Red]&#xA;,[User_BaaN]=upd.[User_BaaN]&#xA;,[Fec_Ini_Vigencia]=upd.[Fec_Ini_Vigencia]&#xA;--,Fec_Fin_Vigencia = getdate()&#xA;,[Fec_Proceso]=upd.[Fec_Proceso]&#xA;--,[Ind_Activo]= 0&#xA;,[Tratamiento] = upd.[Tratamiento] &#xA;   &#xA;FROM  [Dimension].[Dim_Empleado] dest&#xA;join [Staging].[Dim_Empleado] upd on dest.nbi = upd.nbi and dest.Ind_Activo = 1 and dest.DWH_Hash &lt;&gt; upd.DWH_Hash&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -12813,12 +12702,12 @@ ON A.Centro = C.NombreLargo
       DTS:To="Package\Log Auditoria" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -12923,13 +12812,13 @@ ON A.Centro = C.NombreLargo
           Id="Package\Transforma Dim Empleado\Derived Column"
           TopLeft="552.166666666667,516.833333333333" />
         <NodeLayout
-          Size="137.333333333334,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\srt_Datoseis"
-          TopLeft="73.8333333333334,108.166666666666" />
-        <NodeLayout
           Size="182.666666666667,42"
           Id="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios"
           TopLeft="249.166666666667,210.833333333333" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\srt_Moviles"
+          TopLeft="749.5,108.166666666666" />
         <NodeLayout
           Size="130,42"
           Id="Package\Transforma Dim Empleado\Merge Join"
@@ -12939,17 +12828,25 @@ ON A.Centro = C.NombreLargo
           Id="Package\Transforma Dim Empleado\mrg_empleados"
           TopLeft="552.5,312.833333333333" />
         <NodeLayout
+          Size="190.666666666667,42"
+          Id="Package\Transforma Dim Empleado\Staging_Dim_Empleado"
+          TopLeft="533.750000006209,824.166666666667" />
+        <NodeLayout
           Size="118.666666666667,42.6666666666667"
           Id="Package\Transforma Dim Empleado\srt_Fijos"
           TopLeft="570.166666666667,108.166666666666" />
         <NodeLayout
           Size="156,42"
           Id="Package\Transforma Dim Empleado\Data Conversion"
-          TopLeft="551.5,414.833333333333" />
+          TopLeft="551.083333339542,414.833333333333" />
         <NodeLayout
           Size="113.333333333334,42"
           Id="Package\Transforma Dim Empleado\Lookup"
           TopLeft="572.833333333333,619.5" />
+        <NodeLayout
+          Size="241.333333333334,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles"
+          TopLeft="803.833333333333,5.49999999999993" />
         <NodeLayout
           Size="228,42.6666666666667"
           Id="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos"
@@ -12959,141 +12856,31 @@ ON A.Centro = C.NombreLargo
           Id="Package\Transforma Dim Empleado\Dimension_Dim_Empleado"
           TopLeft="258.083333513389,926.166666666667" />
         <NodeLayout
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\srt_Datoseis"
+          TopLeft="73.8333333333334,108.166666666666" />
+        <NodeLayout
           Size="160,42.6666666666667"
           Id="Package\Transforma Dim Empleado\Staging_Datoseis"
           TopLeft="5.5,5.49999999999993" />
-        <NodeLayout
-          Size="132,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\srt_Moviles"
-          TopLeft="749.5,108.166666666666" />
         <NodeLayout
           Size="228,42.6666666666667"
           Id="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios"
           TopLeft="226.5,5.49999999999993" />
         <NodeLayout
-          Size="232.666666666667,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\ActualizaNumeroRegistros"
-          TopLeft="513.166666666667,721.5" />
-        <NodeLayout
-          Size="241.333333333334,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles"
-          TopLeft="803.833333333333,5.49999999999993" />
-        <NodeLayout
-          Size="190.666666666667,42"
-          Id="Package\Transforma Dim Empleado\Staging_Dim_Empleado"
-          TopLeft="533.750000006209,824.166666666667" />
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\NuevoNumeroRegistros"
+          TopLeft="262.166666666667,721.5" />
         <NodeLayout
           Size="149.333333333334,42"
           Id="Package\Transforma Dim Empleado\Cierra Vigencia"
           TopLeft="282.833333333333,824.166666666667" />
         <NodeLayout
-          Size="190.666666666667,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\NuevoNumeroRegistros"
-          TopLeft="262.166666666667,721.5" />
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[Sort Output3]"
-          TopLeft="815.5,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-165.666666666667,59.9999999999999"
-              Start="0,0"
-              End="-165.666666666667,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5623100303951"
-                    Point2="0,35.5623100303951"
-                    Point3="-4,35.5623100303951" />
-                  <mssgle:LineSegment
-                    End="-161.666666666667,35.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-161.666666666667,35.5623100303951"
-                    Point2="-165.666666666667,35.5623100303951"
-                    Point3="-165.666666666667,39.5623100303951" />
-                  <mssgle:LineSegment
-                    End="-165.666666666667,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[Sort Output1]"
-          TopLeft="629.5,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-20.3333333333334,59.9999999999999"
-              Start="0,0"
-              End="-20.3333333333334,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5623100303951"
-                    Point2="0,35.5623100303951"
-                    Point3="-4,35.5623100303951" />
-                  <mssgle:LineSegment
-                    End="-16.3333333333334,35.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-16.3333333333334,35.5623100303951"
-                    Point2="-20.3333333333334,35.5623100303951"
-                    Point3="-20.3333333333334,39.5623100303951" />
-                  <mssgle:LineSegment
-                    End="-20.3333333333334,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="232.666666666667,42.6666666666667"
+          Id="Package\Transforma Dim Empleado\ActualizaNumeroRegistros"
+          TopLeft="513.166666666667,721.5" />
         <EdgeLayout
           Id="Package\Transforma Dim Empleado.Paths[Sort Output]"
-          TopLeft="340.5,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="29.1111111111111,59.9999999999999"
-              Start="0,0"
-              End="29.1111111111111,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.6874095513748" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.6874095513748"
-                    Point2="0,35.6874095513748"
-                    Point3="4,35.6874095513748" />
-                  <mssgle:LineSegment
-                    End="25.1111111111111,35.6874095513748" />
-                  <mssgle:CubicBezierSegment
-                    Point1="25.1111111111111,35.6874095513748"
-                    Point2="29.1111111111111,35.6874095513748"
-                    Point3="29.1111111111111,39.6874095513748" />
-                  <mssgle:LineSegment
-                    End="29.1111111111111,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[Sort Output2]"
           TopLeft="142.5,150.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13171,85 +12958,7 @@ ON A.Centro = C.NombreLargo
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output2]"
-          TopLeft="924.5,48.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-109,59.9999999999999"
-              Start="0,0"
-              End="-109,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.9999999999999" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.9999999999999"
-                    Point2="0,29.9999999999999"
-                    Point3="-4,29.9999999999999" />
-                  <mssgle:LineSegment
-                    End="-105,29.9999999999999" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-105,29.9999999999999"
-                    Point2="-109,29.9999999999999"
-                    Point3="-109,33.9999999999999" />
-                  <mssgle:LineSegment
-                    End="-109,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output3]"
-          TopLeft="629.5,48.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
-              Start="0,0"
-              End="0,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
-          TopLeft="340.5,48.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
-              Start="0,0"
-              End="0,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
           TopLeft="85.5,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13283,6 +12992,84 @@ ON A.Centro = C.NombreLargo
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output2]"
+          TopLeft="340.5,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
+          TopLeft="924.5,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-109,59.9999999999999"
+              Start="0,0"
+              End="-109,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.9999999999999"
+                    Point2="0,29.9999999999999"
+                    Point3="-4,29.9999999999999" />
+                  <mssgle:LineSegment
+                    End="-105,29.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-105,29.9999999999999"
+                    Point2="-109,29.9999999999999"
+                    Point3="-109,33.9999999999999" />
+                  <mssgle:LineSegment
+                    End="-109,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
+          TopLeft="629.5,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Transforma Dim Empleado.Paths[OLE DB Command Output]"
           TopLeft="360.125000090028,866.166666666667">
           <EdgeLayout.Curve>
@@ -13306,7 +13093,7 @@ ON A.Centro = C.NombreLargo
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transforma Dim Empleado.Paths[Merge Join Output2]"
-          TopLeft="629.5,354.833333333333">
+          TopLeft="629.291666669771,354.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -13426,7 +13213,7 @@ ON A.Centro = C.NombreLargo
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-191.897261284722,29.5011600928075,129.350078125,16"
+              BoundingBox="-191.897261284722,29.5011600928075,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -13462,7 +13249,7 @@ ON A.Centro = C.NombreLargo
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-65.8378168402778,29.5011600928074,114.120078125,16"
+              BoundingBox="-65.8378168402778,29.5011600928074,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -13490,18 +13277,120 @@ ON A.Centro = C.NombreLargo
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transforma Dim Empleado.Paths[Data Conversion Output]"
-          TopLeft="629.5,456.833333333333">
+          TopLeft="629.291666669771,456.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[Sort Output3]"
+          TopLeft="815.5,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-165.666666666667,59.9999999999999"
+              Start="0,0"
+              End="-165.666666666667,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5623100303951"
+                    Point2="0,35.5623100303951"
+                    Point3="-4,35.5623100303951" />
+                  <mssgle:LineSegment
+                    End="-161.666666666667,35.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-161.666666666667,35.5623100303951"
+                    Point2="-165.666666666667,35.5623100303951"
+                    Point3="-165.666666666667,39.5623100303951" />
+                  <mssgle:LineSegment
+                    End="-165.666666666667,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[Sort Output2]"
+          TopLeft="629.5,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20.3333333333334,59.9999999999999"
+              Start="0,0"
+              End="-20.3333333333334,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5623100303951"
+                    Point2="0,35.5623100303951"
+                    Point3="-4,35.5623100303951" />
+                  <mssgle:LineSegment
+                    End="-16.3333333333334,35.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16.3333333333334,35.5623100303951"
+                    Point2="-20.3333333333334,35.5623100303951"
+                    Point3="-20.3333333333334,39.5623100303951" />
+                  <mssgle:LineSegment
+                    End="-20.3333333333334,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[Sort Output1]"
+          TopLeft="340.5,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.1111111111111,59.9999999999999"
+              Start="0,0"
+              End="29.1111111111111,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.6874095513748" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6874095513748"
+                    Point2="0,35.6874095513748"
+                    Point3="4,35.6874095513748" />
+                  <mssgle:LineSegment
+                    End="25.1111111111111,35.6874095513748" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.1111111111111,35.6874095513748"
+                    Point2="29.1111111111111,35.6874095513748"
+                    Point3="29.1111111111111,39.6874095513748" />
+                  <mssgle:LineSegment
+                    End="29.1111111111111,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
