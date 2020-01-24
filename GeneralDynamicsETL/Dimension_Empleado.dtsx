@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Dimension_Empleado"
   DTS:PackageType="5"
-  DTS:VersionBuild="128"
-  DTS:VersionGUID="{FF0C5E0B-5915-4780-B4AE-553428CF5738}">
+  DTS:VersionBuild="131"
+  DTS:VersionGUID="{0F559E62-D2AA-4AA6-96A2-CB52B63AB315}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -68,7 +68,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
-          SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('gd'&#xA;&#x9;&#x9;  ,'Dimension_Empleado'&#xA;&#x9;&#x9;  ,'gd\gd' &#xA;&#x9;&#x9;  ,'1/23/2020 3:47:38 PM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,NumberRecordsUpdate &#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('gd'&#xA;&#x9;&#x9;  ,'Dimension_Empleado'&#xA;&#x9;&#x9;  ,'gd\gd' &#xA;&#x9;&#x9;  ,'1/24/2020 9:55:35 AM'&#xA;&#x9;&#x9;  ,'[Dimension].[Dim_Empleado] '&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -9287,7 +9287,74 @@ where [refTable].[NBI] = ? and [refTable].[Fec_Alta] = ? and [refTable].[Fec_Baj
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select A.*,C.CentroID
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select 
+[Sociedad]
+,A.[Centro]
+,[EnConvenio]
+,[NIF]
+,[NBI]
+,[Apellido1]
+,[Apellido2]
+,[Nombre]
+, CONVERT(DATE,CONVERT(DATETIME,[FechAlta],103)) AS [FechAlta]
+, CONVERT(DATE,CONVERT(DATETIME,[FechaBaja],103)) AS [FechaBaja]
+,[Antiguedad]
+,[CategoriaLaboral]
+,[Categoria]
+,[Titulacion]
+,[EscSalar]
+,[DepartamentoGFH]
+,[Departamento]
+,[IRPF]
+,[Edad]
+, CONVERT(DATE,CONVERT(DATETIME,[NacimientoFecha],103)) AS [NacimientoFecha]
+,[NacimientoLocalidad]
+,[NacimientoProvincia]
+,[NacimientoMunicipio]
+,[NacimientoPais]
+,[DomicilioDireccion]
+,[DomicilioNumero]
+,[DomicilioNumeroPiso]
+,[DomicilioLetra]
+,[DomicilioLocalidad]
+,[DomicilioMunicipio]
+,[DomicilioProvincia]
+,[DomicilioCodigoPostal]
+,[DomicilioTelefofo]
+,[NumeroPagas]
+,[EstadoCivil]
+,[NumeroHijos]
+,[SalarioMes]
+, CONVERT(DATE,CONVERT(DATETIME,[FecSalari],103)) AS [FecSalari]
+,[Diecso]
+,[MarcaAlta]
+,[Estado]
+,[JobDescripcion]
+,[Tratamiento]
+,[Iniciales]
+,[CentroELS]
+,[Situacion]
+,[SituacionNBI]
+,[SituacionNombre]
+,[SituacionApellido1]
+,[SituacionApellido2]
+, CONVERT(DATE,CONVERT(DATETIME,[FechaContratoRelativo],103)) AS [FechaContratoRelativo]
+,[ID]
+,[SituacionCentro]
+,[Email]
+,[CTrabajo]
+,[Area]
+,[ESXX]
+,[Banco]
+,[Agencia]
+,[DC]
+,[NumeroCuenta]
+,[NBIAprobSarce]
+,[FechaInsert]
+,[FechaUpdate]
+,[Proceso]
+,[Archivo]
+,C.CentroID
 from 
 [Staging].[PersonalDatoseis] A  join 
 [Staging].[Centros] C 
@@ -9513,15 +9580,6 @@ ON A.Centro = C.NombreLargo
                       externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].ExternalColumns[Edad]"
                       lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].Columns[Edad]"
                       name="Edad"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].Columns[NacimientoFecha]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].ExternalColumns[NacimientoFecha]"
-                      lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].Columns[NacimientoFecha]"
-                      name="NacimientoFecha"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].Columns[NacimientoLocalidad]"
@@ -9998,6 +10056,15 @@ ON A.Centro = C.NombreLargo
                       lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].Columns[CentroID]"
                       name="CentroID"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].Columns[NacimientoFecha]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].ExternalColumns[NacimientoFecha]"
+                      lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].Columns[NacimientoFecha]"
+                      name="NacimientoFecha"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -10092,10 +10159,6 @@ ON A.Centro = C.NombreLargo
                       refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].ExternalColumns[Edad]"
                       dataType="i4"
                       name="Edad" />
-                    <externalMetadataColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].ExternalColumns[NacimientoFecha]"
-                      dataType="dbDate"
-                      name="NacimientoFecha" />
                     <externalMetadataColumn
                       refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].ExternalColumns[NacimientoLocalidad]"
                       dataType="wstr"
@@ -10336,6 +10399,10 @@ ON A.Centro = C.NombreLargo
                       dataType="str"
                       length="2"
                       name="CentroID" />
+                    <externalMetadataColumn
+                      refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output].ExternalColumns[NacimientoFecha]"
+                      dataType="dbDate"
+                      name="NacimientoFecha" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -10343,6 +10410,18 @@ ON A.Centro = C.NombreLargo
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                     <outputColumn
                       refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[Sociedad]"
                       dataType="wstr"
@@ -10453,11 +10532,6 @@ ON A.Centro = C.NombreLargo
                       dataType="i4"
                       lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[Edad]"
                       name="Edad" />
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[NacimientoFecha]"
-                      dataType="dbDate"
-                      lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[NacimientoFecha]"
-                      name="NacimientoFecha" />
                     <outputColumn
                       refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[NacimientoLocalidad]"
                       dataType="wstr"
@@ -10746,17 +10820,10 @@ ON A.Centro = C.NombreLargo
                       lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[CentroID]"
                       name="CentroID" />
                     <outputColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
+                      refId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[NacimientoFecha]"
+                      dataType="dbDate"
+                      lineageId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Error Output].Columns[NacimientoFecha]"
+                      name="NacimientoFecha" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -12669,24 +12736,24 @@ ON A.Centro = C.NombreLargo
               startId="Package\Transforma Dim Empleado\Cierra Vigencia.Outputs[OLE DB Command Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output3]"
-              endId="Package\Transforma Dim Empleado\srt_Moviles.Inputs[Sort Input]"
+              endId="Package\Transforma Dim Empleado\srt_Usuarios.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles.Outputs[OLE DB Source Output]" />
+              startId="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output2]"
-              endId="Package\Transforma Dim Empleado\srt_Fijos.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
               endId="Package\Transforma Dim Empleado\srt_Datoseis.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\Transforma Dim Empleado\Staging_Datoseis.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
-              endId="Package\Transforma Dim Empleado\srt_Usuarios.Inputs[Sort Input]"
+              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
+              endId="Package\Transforma Dim Empleado\srt_Moviles.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios.Outputs[OLE DB Source Output]" />
+              startId="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
+              endId="Package\Transforma Dim Empleado\srt_Fijos.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[Row Count Output 1]"
               endId="Package\Transforma Dim Empleado\Cierra Vigencia.Inputs[OLE DB Command Input]"
@@ -12699,19 +12766,19 @@ ON A.Centro = C.NombreLargo
               startId="Package\Transforma Dim Empleado\ActualizaNumeroRegistros.Outputs[Row Count Output 1]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[Sort Output2]"
+              endId="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Transforma Dim Empleado\srt_Datoseis.Outputs[Sort Output]" />
+            <path
+              refId="Package\Transforma Dim Empleado.Paths[Sort Output]"
               endId="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\Transforma Dim Empleado\srt_Usuarios.Outputs[Sort Output]" />
             <path
-              refId="Package\Transforma Dim Empleado.Paths[Sort Output]"
+              refId="Package\Transforma Dim Empleado.Paths[Sort Output1]"
               endId="Package\Transforma Dim Empleado\Merge Join.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Transforma Dim Empleado\srt_Fijos.Outputs[Sort Output]" />
-            <path
-              refId="Package\Transforma Dim Empleado.Paths[Sort Output1]"
-              endId="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\Transforma Dim Empleado\srt_Datoseis.Outputs[Sort Output]" />
             <path
               refId="Package\Transforma Dim Empleado.Paths[Sort Output3]"
               endId="Package\Transforma Dim Empleado\Merge Join.Inputs[Merge Join Right Input]"
@@ -12793,7 +12860,7 @@ ON A.Centro = C.NombreLargo
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="141.333333333334,42.6666666666667"
+          Size="141,43"
           Id="Package\Log Auditoria"
           TopLeft="36.8333333333334,311.5" />
         <NodeLayout
@@ -12801,11 +12868,11 @@ ON A.Centro = C.NombreLargo
           Id="Package\Transforma Dim Empleado"
           TopLeft="5.50000000000001,107.5" />
         <NodeLayout
-          Size="182.666666666667,42"
+          Size="183,42"
           Id="Package\Truncate update table"
           TopLeft="16.1666666666667,5.5" />
         <NodeLayout
-          Size="150.666666666667,42"
+          Size="151,42"
           Id="Package\Update Destino"
           TopLeft="32.1666666666667,209.5" />
         <EdgeLayout
@@ -12883,151 +12950,83 @@ ON A.Centro = C.NombreLargo
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="190.666666666667,42"
-          Id="Package\Transforma Dim Empleado\Staging_Dim_Empleado"
-          TopLeft="533.750000006209,824.166666666667" />
-        <NodeLayout
-          Size="154.666666666667,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\Derived Column"
-          TopLeft="552.166666666667,516.833333333333" />
-        <NodeLayout
-          Size="228,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios"
-          TopLeft="226.5,5.49999999999993" />
-        <NodeLayout
-          Size="137.333333333334,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\srt_Usuarios"
-          TopLeft="271.833333333333,108.166666666666" />
-        <NodeLayout
-          Size="228,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos"
-          TopLeft="515.5,5.49999999999993" />
-        <NodeLayout
-          Size="182.666666666667,42"
-          Id="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios"
-          TopLeft="249.166666666667,210.833333333333" />
-        <NodeLayout
-          Size="132,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\srt_Moviles"
-          TopLeft="749.5,108.166666666666" />
-        <NodeLayout
-          Size="137.333333333334,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\srt_Datoseis"
-          TopLeft="73.8333333333334,108.166666666666" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Transforma Dim Empleado\Data Conversion"
-          TopLeft="551.083333339542,414.833333333333" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Transforma Dim Empleado\mrg_empleados"
-          TopLeft="552.5,312.833333333333" />
-        <NodeLayout
-          Size="209.333333333334,42"
-          Id="Package\Transforma Dim Empleado\Dimension_Dim_Empleado"
-          TopLeft="258.083333513389,926.166666666667" />
-        <NodeLayout
-          Size="241.333333333334,42.6666666666667"
+          Size="241,43"
           Id="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles"
           TopLeft="803.833333333333,5.49999999999993" />
         <NodeLayout
-          Size="118.666666666667,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\srt_Fijos"
-          TopLeft="570.166666666667,108.166666666666" />
-        <NodeLayout
-          Size="113.333333333334,42"
-          Id="Package\Transforma Dim Empleado\Lookup"
-          TopLeft="572.833333333333,619.5" />
+          Size="132,43"
+          Id="Package\Transforma Dim Empleado\srt_Moviles"
+          TopLeft="749.5,108.166666666666" />
         <NodeLayout
           Size="130,42"
           Id="Package\Transforma Dim Empleado\Merge Join"
           TopLeft="564.5,210.833333333333" />
         <NodeLayout
-          Size="149.333333333334,42"
-          Id="Package\Transforma Dim Empleado\Cierra Vigencia"
-          TopLeft="282.833333333333,824.166666666667" />
+          Size="156,42"
+          Id="Package\Transforma Dim Empleado\Data Conversion"
+          TopLeft="551.083333339542,414.833333333333" />
         <NodeLayout
-          Size="160,42.6666666666667"
+          Size="119,43"
+          Id="Package\Transforma Dim Empleado\srt_Fijos"
+          TopLeft="570.166666666667,108.166666666666" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Transforma Dim Empleado\mrg_DatoseisUsuarios"
+          TopLeft="249.166666666667,210.833333333333" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\Transforma Dim Empleado\Dimension_Dim_Empleado"
+          TopLeft="258.083333513389,926.166666666667" />
+        <NodeLayout
+          Size="160,43"
           Id="Package\Transforma Dim Empleado\Staging_Datoseis"
           TopLeft="5.5,5.49999999999993" />
         <NodeLayout
-          Size="232.666666666667,42.6666666666667"
+          Size="113,42"
+          Id="Package\Transforma Dim Empleado\Lookup"
+          TopLeft="572.833333333333,619.5" />
+        <NodeLayout
+          Size="228,43"
+          Id="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos"
+          TopLeft="515.5,5.49999999999993" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Transforma Dim Empleado\Staging_Dim_Empleado"
+          TopLeft="533.750000006209,824.166666666667" />
+        <NodeLayout
+          Size="191,43"
+          Id="Package\Transforma Dim Empleado\NuevoNumeroRegistros"
+          TopLeft="262.166666666667,721.5" />
+        <NodeLayout
+          Size="228,43"
+          Id="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios"
+          TopLeft="226.5,5.49999999999993" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Transforma Dim Empleado\mrg_empleados"
+          TopLeft="552.5,312.833333333333" />
+        <NodeLayout
+          Size="137,43"
+          Id="Package\Transforma Dim Empleado\srt_Datoseis"
+          TopLeft="73.8333333333334,108.166666666666" />
+        <NodeLayout
+          Size="137,43"
+          Id="Package\Transforma Dim Empleado\srt_Usuarios"
+          TopLeft="271.833333333333,108.166666666666" />
+        <NodeLayout
+          Size="155,43"
+          Id="Package\Transforma Dim Empleado\Derived Column"
+          TopLeft="552.166666666667,516.833333333333" />
+        <NodeLayout
+          Size="233,43"
           Id="Package\Transforma Dim Empleado\ActualizaNumeroRegistros"
           TopLeft="513.166666666667,721.5" />
         <NodeLayout
-          Size="190.666666666667,42.6666666666667"
-          Id="Package\Transforma Dim Empleado\NuevoNumeroRegistros"
-          TopLeft="262.166666666667,721.5" />
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[Sort Output3]"
-          TopLeft="815.5,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-165.666666666667,59.9999999999999"
-              Start="0,0"
-              End="-165.666666666667,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5623100303951"
-                    Point2="0,35.5623100303951"
-                    Point3="-4,35.5623100303951" />
-                  <mssgle:LineSegment
-                    End="-161.666666666667,35.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-161.666666666667,35.5623100303951"
-                    Point2="-165.666666666667,35.5623100303951"
-                    Point3="-165.666666666667,39.5623100303951" />
-                  <mssgle:LineSegment
-                    End="-165.666666666667,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="149,42"
+          Id="Package\Transforma Dim Empleado\Cierra Vigencia"
+          TopLeft="282.833333333333,824.166666666667" />
         <EdgeLayout
           Id="Package\Transforma Dim Empleado.Paths[Sort Output2]"
-          TopLeft="340.5,150.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="29.1111111111111,59.9999999999999"
-              Start="0,0"
-              End="29.1111111111111,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.6874095513748" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.6874095513748"
-                    Point2="0,35.6874095513748"
-                    Point3="4,35.6874095513748" />
-                  <mssgle:LineSegment
-                    End="25.1111111111111,35.6874095513748" />
-                  <mssgle:CubicBezierSegment
-                    Point1="25.1111111111111,35.6874095513748"
-                    Point2="29.1111111111111,35.6874095513748"
-                    Point3="29.1111111111111,39.6874095513748" />
-                  <mssgle:LineSegment
-                    End="29.1111111111111,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[Sort Output1]"
           TopLeft="142.5,150.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13061,7 +13060,7 @@ ON A.Centro = C.NombreLargo
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[Sort Output]"
+          Id="Package\Transforma Dim Empleado.Paths[Sort Output1]"
           TopLeft="629.5,150.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13086,6 +13085,40 @@ ON A.Centro = C.NombreLargo
                     Point3="-20.3333333333334,39.5623100303951" />
                   <mssgle:LineSegment
                     End="-20.3333333333334,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[Sort Output]"
+          TopLeft="340.5,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.1111111111111,59.9999999999999"
+              Start="0,0"
+              End="29.1111111111111,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.6874095513748" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6874095513748"
+                    Point2="0,35.6874095513748"
+                    Point3="4,35.6874095513748" />
+                  <mssgle:LineSegment
+                    End="25.1111111111111,35.6874095513748" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.1111111111111,35.6874095513748"
+                    Point2="29.1111111111111,35.6874095513748"
+                    Point3="29.1111111111111,39.6874095513748" />
+                  <mssgle:LineSegment
+                    End="29.1111111111111,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13140,62 +13173,6 @@ ON A.Centro = C.NombreLargo
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output3]"
-          TopLeft="924.5,48.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-109,59.9999999999999"
-              Start="0,0"
-              End="-109,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.9999999999999" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.9999999999999"
-                    Point2="0,29.9999999999999"
-                    Point3="-4,29.9999999999999" />
-                  <mssgle:LineSegment
-                    End="-105,29.9999999999999" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-105,29.9999999999999"
-                    Point2="-109,29.9999999999999"
-                    Point3="-109,33.9999999999999" />
-                  <mssgle:LineSegment
-                    End="-109,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output2]"
-          TopLeft="629.5,48.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
-              Start="0,0"
-              End="0,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
           TopLeft="340.5,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13217,7 +13194,7 @@ ON A.Centro = C.NombreLargo
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
+          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output2]"
           TopLeft="85.5,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13242,6 +13219,62 @@ ON A.Centro = C.NombreLargo
                     Point3="57.0000000000001,33.9999999999999" />
                   <mssgle:LineSegment
                     End="57.0000000000001,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output1]"
+          TopLeft="629.5,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[OLE DB Source Output]"
+          TopLeft="924.5,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-109,59.9999999999999"
+              Start="0,0"
+              End="-109,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.9999999999999"
+                    Point2="0,29.9999999999999"
+                    Point3="-4,29.9999999999999" />
+                  <mssgle:LineSegment
+                    End="-105,29.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-105,29.9999999999999"
+                    Point2="-109,29.9999999999999"
+                    Point3="-109,33.9999999999999" />
+                  <mssgle:LineSegment
+                    End="-109,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13394,7 +13427,7 @@ ON A.Centro = C.NombreLargo
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-191.897261284722,29.5011600928075,111.6127734375,11.609375"
+              BoundingBox="-183.028608940972,29.5011600928075,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -13478,37 +13511,45 @@ ON A.Centro = C.NombreLargo
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transforma Dim Empleado.Paths[Sort Output3]"
+          TopLeft="815.5,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-165.666666666667,59.9999999999999"
+              Start="0,0"
+              End="-165.666666666667,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5623100303951"
+                    Point2="0,35.5623100303951"
+                    Point3="-4,35.5623100303951" />
+                  <mssgle:LineSegment
+                    End="-161.666666666667,35.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-161.666666666667,35.5623100303951"
+                    Point2="-165.666666666667,35.5623100303951"
+                    Point3="-165.666666666667,39.5623100303951" />
+                  <mssgle:LineSegment
+                    End="-165.666666666667,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transforma Dim Empleado\Staging_Dim_Empleado">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos">
+    design-time-name="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13534,7 +13575,7 @@ ON A.Centro = C.NombreLargo
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transforma Dim Empleado\Staging_PersonalTelefonosMoviles">
+    design-time-name="Package\Transforma Dim Empleado\Staging_Datoseis">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13552,7 +13593,7 @@ ON A.Centro = C.NombreLargo
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -13562,7 +13603,7 @@ ON A.Centro = C.NombreLargo
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13570,7 +13611,33 @@ ON A.Centro = C.NombreLargo
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transforma Dim Empleado\Staging_Datoseis">
+    design-time-name="Package\Transforma Dim Empleado\Staging_PersonalTelefonosFijos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transforma Dim Empleado\Staging_Dim_Empleado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transforma Dim Empleado\Staging_PersonalDatosUsuarios">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

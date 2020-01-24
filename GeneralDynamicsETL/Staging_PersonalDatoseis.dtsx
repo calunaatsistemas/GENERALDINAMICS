@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Staging_PersonalDatoseis"
   DTS:PackageType="5"
-  DTS:VersionBuild="113"
-  DTS:VersionGUID="{157BCA73-3408-4549-B770-5B587E911237}">
+  DTS:VersionBuild="115"
+  DTS:VersionGUID="{1CC73F3E-CDBF-464A-B98D-D26DD8032CF9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -657,7 +657,7 @@
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Copia ficheros procesados"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -667,14 +667,35 @@
           Language="CSharp"
           ReadOnlyVariables="$Project::RutaBalance,$Project::RutaBalanceProcesado,$Project::RutaCompras,$Project::RutaComprasProcesado,$Project::RutaOrdenes,$Project::RutaOrdenesProcesado,$Project::RutaPersonal,$Project::RutaPersonalProcesado,$Project::RutaVentas,$Project::RutaVentasProcesado,$Project::File_Clientes,$Project::File_OrdenesSE,$Project::File_OrdenesTR,$Project::File_PedidosDetalle,$Project::File_PersonalDatoseis,$Project::File_PersonalDatosManager,$Project::File_PersonalDatosUsuarios,$Project::File_PersonalTelefonosFijos,$Project::File_PersonalTelefonosMoviles,$Project::File_PlanContableMaestro,$Project::File_Proveedores,$Project::File_VentasEvolucionDetalle,$Project::File_BalancePG">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_5ae326371b954542aafe6c6156878bb6")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_5ae326371b954542aafe6c6156878bb6")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -987,35 +1008,14 @@ namespace ST_5ae326371b954542aafe6c6156878bb6.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_5ae326371b954542aafe6c6156878bb6")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_5ae326371b954542aafe6c6156878bb6")]
-[assembly: AssemblyCopyright("Copyright @  2020")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -2348,10 +2348,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaBaja]"
-                          dataType="wstr"
+                          codePage="1252"
+                          dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          length="50"
+                          length="10"
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaBaja]"
                           name="FechaBaja"
                           truncationRowDisposition="FailComponent">
@@ -2369,9 +2370,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaContratoRelativo]"
-                          dataType="dbDate"
+                          codePage="1252"
+                          dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
+                          length="10"
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaContratoRelativo]"
                           name="FechaContratoRelativo"
                           truncationRowDisposition="FailComponent">
@@ -2389,9 +2392,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechAlta]"
-                          dataType="dbDate"
+                          codePage="1252"
+                          dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
+                          length="10"
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechAlta]"
                           name="FechAlta"
                           truncationRowDisposition="FailComponent">
@@ -2409,10 +2414,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FecSalari]"
-                          dataType="wstr"
+                          codePage="1252"
+                          dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          length="50"
+                          length="10"
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FecSalari]"
                           name="FecSalari"
                           truncationRowDisposition="FailComponent">
@@ -2536,10 +2542,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoFecha]"
-                          dataType="wstr"
+                          codePage="1252"
+                          dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          length="50"
+                          length="10"
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoFecha]"
                           name="NacimientoFecha"
                           truncationRowDisposition="FailComponent">
@@ -3630,7 +3637,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                     <connection
                       refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Connections[OleDbConnection]"
                       connectionManagerID="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[gd.GeneralDynamicsDB]"
+                      connectionManagerRefId="Project.ConnectionManagers[gd GeneralDynamicsDB]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3703,14 +3710,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Nombre]" />
                         <inputColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].Columns[FechAlta]"
-                          cachedDataType="dbDate"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
                           cachedName="FechAlta"
                           externalMetadataColumnId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[FechAlta]"
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechAlta]" />
                         <inputColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].Columns[FechaBaja]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
                           cachedName="FechaBaja"
                           externalMetadataColumnId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[FechaBaja]"
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaBaja]" />
@@ -3774,8 +3784,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Edad]" />
                         <inputColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].Columns[NacimientoFecha]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
                           cachedName="NacimientoFecha"
                           externalMetadataColumnId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[NacimientoFecha]"
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[NacimientoFecha]" />
@@ -3897,8 +3908,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[SalarioMes]" />
                         <inputColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].Columns[FecSalari]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
                           cachedName="FecSalari"
                           externalMetadataColumnId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[FecSalari]"
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FecSalari]" />
@@ -3991,7 +4003,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[SituacionApellido2]" />
                         <inputColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].Columns[FechaContratoRelativo]"
-                          cachedDataType="dbDate"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
                           cachedName="FechaContratoRelativo"
                           externalMetadataColumnId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[FechaContratoRelativo]"
                           lineageId="Package\Datos DatoSeis\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[FechaContratoRelativo]" />
@@ -4154,11 +4168,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           name="Nombre" />
                         <externalMetadataColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[FechAlta]"
-                          dataType="dbDate"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
                           name="FechAlta" />
                         <externalMetadataColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[FechaBaja]"
-                          dataType="dbDate"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
                           name="FechaBaja" />
                         <externalMetadataColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[Antiguedad]"
@@ -4202,7 +4220,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           name="Edad" />
                         <externalMetadataColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[NacimientoFecha]"
-                          dataType="dbDate"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
                           name="NacimientoFecha" />
                         <externalMetadataColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[NacimientoLocalidad]"
@@ -4288,7 +4308,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           name="SalarioMes" />
                         <externalMetadataColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[FecSalari]"
-                          dataType="dbDate"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
                           name="FecSalari" />
                         <externalMetadataColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[Diecso]"
@@ -4355,7 +4377,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           name="SituacionApellido2" />
                         <externalMetadataColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[FechaContratoRelativo]"
-                          dataType="dbDate"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
                           name="FechaContratoRelativo" />
                         <externalMetadataColumn
                           refId="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
@@ -6366,7 +6390,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Ejecutar Datos Cuarentena"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -6407,7 +6431,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Log Auditoria"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:PropertyExpression
         DTS:Name="SqlStatementSource">"INSERT INTO [Sistema].[Auditoria]
@@ -6429,7 +6453,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
-          SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('gd'&#xA;&#x9;&#x9;  ,'Staging_PersonalDatoseis'&#xA;&#x9;&#x9;  ,'gd\gd' &#xA;&#x9;&#x9;  ,'1/21/2020 4:06:06 PM'&#xA;&#x9;&#x9;  ,'[Staging].[PersonalDatoseis]'&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'DATOSEIS.dat')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="INSERT INTO [Sistema].[Auditoria]&#xA;           (MachineName  &#xA;&#x9;&#x9;   ,PackageName&#xA;&#x9;&#x9;   ,PackageUser&#xA;           ,StartTime  &#xA;           ,[Table] &#xA;&#x9;&#x9;   ,NumberRecords&#xA;&#x9;&#x9;   ,FileName)&#xA;     VALUES&#xA;          ('gd'&#xA;&#x9;&#x9;  ,'Staging_PersonalDatoseis'&#xA;&#x9;&#x9;  ,'gd\gd' &#xA;&#x9;&#x9;  ,'1/24/2020 9:42:56 AM'&#xA;&#x9;&#x9;  ,'[Staging].[PersonalDatoseis]'&#xA;&#x9;&#x9;  ,0&#xA;&#x9;&#x9;  ,'DATOSEIS.dat')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -6543,14 +6567,35 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               Language="CSharp"
               ReadOnlyVariables="System::ErrorDescription,System::StartTime">
               <ProjectItem
-                Name="Properties\Settings.settings"
-                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_48a07eefc4eb40df8434d4b92eece029")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_48a07eefc4eb40df8434d4b92eece029")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.resx"
                 Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -6855,35 +6900,14 @@ namespace ST_48a07eefc4eb40df8434d4b92eece029.Properties {
     }
 }]]></ProjectItem>
               <ProjectItem
-                Name="Properties\AssemblyInfo.cs"
-                Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_48a07eefc4eb40df8434d4b92eece029")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_48a07eefc4eb40df8434d4b92eece029")]
-[assembly: AssemblyCopyright("Copyright @  2020")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.Designer.cs"
                 Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -7099,23 +7123,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="249.333333333334,48.6666666666667"
+          Size="249,49"
           Id="Package\BEGIN TRANSACTION DatoSeis"
           TopLeft="213.1944412676,14.3888891084328" />
         <NodeLayout
-          Size="168.666666666667,42.6666666666667"
+          Size="169,43"
           Id="Package\COMIT DatoSeis"
           TopLeft="229.265869599546,440.238089301188" />
         <NodeLayout
-          Size="202.666666666667,42.6666666666667"
+          Size="203,43"
           Id="Package\Copia ficheros procesados"
           TopLeft="236.130948862327,555.25713653871" />
         <NodeLayout
-          Size="152,42.6666666666667"
+          Size="152,43"
           Id="Package\Datos DatoSeis\Data Flow Task"
           TopLeft="115.049595897132,146.451185377887" />
         <NodeLayout
-          Size="204,42.6666666666667"
+          Size="204,43"
           Id="Package\Datos DatoSeis\Truncate PersonalDatoseis"
           TopLeft="93.4722152662781,42.8999967533351" />
         <EdgeLayout
@@ -7143,16 +7167,16 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="374.666666666667,240.666666666667"
-          Size="374.666666666667,283.333333333334"
+          PanelSize="375,241"
+          Size="375,283"
           Id="Package\Datos DatoSeis"
           TopLeft="144.027776525666,112.66666465203" />
         <NodeLayout
-          Size="205.333333333334,42.6666666666667"
+          Size="205,43"
           Id="Package\Ejecutar Datos Cuarentena"
           TopLeft="225.749996665865,637.466665674845" />
         <NodeLayout
-          Size="141.333333333334,42.6666666666667"
+          Size="141,43"
           Id="Package\Log Auditoria"
           TopLeft="684.444434245428,461.004753661354" />
         <EdgeLayout
@@ -7374,31 +7398,31 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="201.333333333334,42.6666666666667"
+          Size="201,43"
           Id="Package\Datos DatoSeis\Data Flow Task\dc_TransformaDatosNULL"
           TopLeft="8.83333333333334,108.166666666666" />
         <NodeLayout
-          Size="208,42.6666666666667"
+          Size="208,43"
           Id="Package\Datos DatoSeis\Data Flow Task\dc_incluyeCamposAuditoria"
           TopLeft="5.50000000000004,313.5" />
         <NodeLayout
-          Size="131.333333333334,42.6666666666667"
+          Size="131,43"
           Id="Package\Datos DatoSeis\Data Flow Task\Row Count"
           TopLeft="43.8333333333334,518.833333333333" />
         <NodeLayout
-          Size="154.666666666667,42.6666666666667"
+          Size="155,43"
           Id="Package\Datos DatoSeis\Data Flow Task\source_datoseis"
           TopLeft="32.1666666666667,5.49999999999993" />
         <NodeLayout
-          Size="166.666666666667,42.6666666666667"
+          Size="167,43"
           Id="Package\Datos DatoSeis\Data Flow Task\Data Conversion 1"
           TopLeft="26.1666666666667,416.166666666667" />
         <NodeLayout
-          Size="157.333333333334,42.6666666666667"
+          Size="157,43"
           Id="Package\Datos DatoSeis\Data Flow Task\Data Conversion"
           TopLeft="30.8333333333334,210.833333333333" />
         <NodeLayout
-          Size="185.333333333334,42.6666666666667"
+          Size="185,43"
           Id="Package\Datos DatoSeis\Data Flow Task\dest_PersonalDatoseis"
           TopLeft="16.8333333333334,621.5" />
         <EdgeLayout

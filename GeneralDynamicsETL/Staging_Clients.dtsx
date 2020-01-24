@@ -11,73 +11,126 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Staging_Clients"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{CF1B6ACB-56A1-492F-9A75-342E81198728}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{0D8C7C7A-18E9-4A8B-A564-ADF74DCB397E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Telefonos-Moviles.dat]"
+      DTS:refId="Package.ConnectionManagers[Clients.dat]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{E711FFBE-C33C-4C5C-AD14-EEE9BC81995C}"
-      DTS:ObjectName="Telefonos-Moviles.dat">
+      DTS:DTSID="{5fe7c98b-de26-4dc6-9c92-ba1c5ce76e90}"
+      DTS:ObjectName="Clients.dat">
       <DTS:PropertyExpression
-        DTS:Name="ConnectionString">@[$Project::RutaPersonal] +@[$Project::File_PersonalTelefonosMoviles]</DTS:PropertyExpression>
+        DTS:Name="ConnectionString">@[$Project::RutaVentas] + @[$Project::File_VentasEvolucionDetalle]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
           DTS:LocaleID="1033"
           DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="Z:\PersonalSBS\Telefonos-Moviles.dat">
+          DTS:ConnectionString="Z:\Ventas\vtasdetevols1102015.dat">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
+              DTS:ColumnDelimiter="_x007C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Clave   NBI + Centro"
-              DTS:DTSID="{9AB3EC8A-B203-44DC-A3FE-39E5136AE502}"
+              DTS:ObjectName="NIF"
+              DTS:DTSID="{4074B1DA-ADEA-4F92-B87C-B29FF7431F9C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
+              DTS:ColumnDelimiter="_x007C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Nombre"
-              DTS:DTSID="{1CCABA3B-4EC8-4E05-A45B-EADC28804059}"
+              DTS:DTSID="{63B31298-5321-4E3A-B6B6-C51967E8E5A5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
+              DTS:ColumnDelimiter="_x007C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Apellido -1-"
-              DTS:DTSID="{88F91732-8D7E-4F82-9D37-B96B8A56ABC7}"
+              DTS:ObjectName="Direccion"
+              DTS:DTSID="{6ED15B6E-97E3-4754-A760-F15B7D7A59DC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
+              DTS:ColumnDelimiter="_x007C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Apellido -2-"
-              DTS:DTSID="{4AEBC10C-1A00-4E0A-8510-1FC2571D824D}"
+              DTS:ObjectName="Localidad"
+              DTS:DTSID="{1FF56322-4F62-470C-9296-71C03615E746}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
+              DTS:ColumnDelimiter="_x007C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Nº Teléfono"
-              DTS:DTSID="{5211B798-08D0-4A13-9CA7-FB6EF3E5205D}"
+              DTS:ObjectName="Telefono"
+              DTS:DTSID="{5888A788-1EB5-4332-8B35-0D5F94DA6B3C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Fax"
+              DTS:DTSID="{75F6832A-6833-47F1-8977-E47070169114}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ContactoCompras"
+              DTS:DTSID="{B8FC6358-1D19-430B-AD0A-92837DDD0C94}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CentroID"
+              DTS:DTSID="{ED76127B-D60A-4B08-893E-E2838D16D165}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ClienteCodigo"
+              DTS:DTSID="{0C68A937-3D8E-4E07-AFF7-671D4A3E1801}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="GrupoContable"
+              DTS:DTSID="{CF6315FC-40B5-48BF-BF35-4F64DADB940F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PaisCodigo"
+              DTS:DTSID="{E9A6E9B5-40DB-40FC-8AC8-AE638694DCBB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -85,8 +138,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Extensión Corta"
-              DTS:DTSID="{7312F551-5602-470B-BAE2-1E62F3B2F289}"
+              DTS:ObjectName="PaisDescripcion"
+              DTS:DTSID="{BE1A4FB8-D87C-4986-8799-4FF2150C41A7}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -153,7 +206,7 @@
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="Clave   NBI + Centro"
-                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]" />
+                          lineageId="Package\Clients\Data Flow Task\124:invalid" />
                         <inputColumn
                           refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Nombre]"
                           cachedCodepage="1252"
@@ -167,28 +220,28 @@
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="Apellido -1-"
-                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -1-]" />
+                          lineageId="Package\Clients\Data Flow Task\130:invalid" />
                         <inputColumn
                           refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Apellido -2-]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="Apellido -2-"
-                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -2-]" />
+                          lineageId="Package\Clients\Data Flow Task\133:invalid" />
                         <inputColumn
                           refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Nº Teléfono]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="Nº Teléfono"
-                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nº Teléfono]" />
+                          lineageId="Package\Clients\Data Flow Task\136:invalid" />
                         <inputColumn
                           refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Extensión Corta]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="Extensión Corta"
-                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Extensión Corta]" />
+                          lineageId="Package\Clients\Data Flow Task\139:invalid" />
                         <inputColumn
                           refId="Package\Clients\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[FechaInsert]"
                           cachedDataType="dbTimeStamp"
@@ -243,7 +296,7 @@
                               containsID="true"
                               dataType="System.Int32"
                               description="Specifies the input column used as the source of data for the conversion."
-                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]}</property>
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\124:invalid}</property>
                             <property
                               dataType="System.Boolean"
                               description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -285,7 +338,7 @@
                               containsID="true"
                               dataType="System.Int32"
                               description="Specifies the input column used as the source of data for the conversion."
-                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -1-]}</property>
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\130:invalid}</property>
                             <property
                               dataType="System.Boolean"
                               description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -306,7 +359,7 @@
                               containsID="true"
                               dataType="System.Int32"
                               description="Specifies the input column used as the source of data for the conversion."
-                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -2-]}</property>
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\133:invalid}</property>
                             <property
                               dataType="System.Boolean"
                               description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -327,7 +380,7 @@
                               containsID="true"
                               dataType="System.Int32"
                               description="Specifies the input column used as the source of data for the conversion."
-                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nº Teléfono]}</property>
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\136:invalid}</property>
                             <property
                               dataType="System.Boolean"
                               description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -348,7 +401,7 @@
                               containsID="true"
                               dataType="System.Int32"
                               description="Specifies the input column used as the source of data for the conversion."
-                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Extensión Corta]}</property>
+                              name="SourceInputColumnLineageID">#{Package\Clients\Data Flow Task\139:invalid}</property>
                             <property
                               dataType="System.Boolean"
                               description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -509,7 +562,7 @@
                           cachedName="Clave   NBI + Centro"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]"
+                          lineageId="Package\Clients\Data Flow Task\124:invalid"
                           truncationRowDisposition="FailComponent"
                           usageType="readWrite">
                           <properties>
@@ -517,7 +570,7 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">[LEFT](#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]},4)</property>
+                              name="Expression">[LEFT](#{Package\Clients\Data Flow Task\124:invalid},4)</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -642,7 +695,7 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">[RIGHT](#{Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]},2)</property>
+                              name="Expression">[RIGHT](#{Package\Clients\Data Flow Task\124:invalid},2)</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -969,8 +1022,8 @@
                   <connections>
                     <connection
                       refId="Package\Clients\Data Flow Task\Source_Clientes.Connections[FlatFileConnection]"
-                      connectionManagerID="Package.ConnectionManagers[Telefonos-Moviles.dat]"
-                      connectionManagerRefId="Package.ConnectionManagers[Telefonos-Moviles.dat]"
+                      connectionManagerID="Package.ConnectionManagers[Clients.dat]"
+                      connectionManagerRefId="Package.ConnectionManagers[Clients.dat]"
                       name="FlatFileConnection" />
                   </connections>
                   <outputs>
@@ -978,28 +1031,6 @@
                       refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output]"
                       name="Flat File Source Output">
                       <outputColumns>
-                        <outputColumn
-                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Clave   NBI + Centro]"
-                          length="50"
-                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Clave   NBI + Centro]"
-                          name="Clave   NBI + Centro"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
                         <outputColumn
                           refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nombre]"
                           codePage="1252"
@@ -1023,15 +1054,15 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -1-]"
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[NIF]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Apellido -1-]"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[NIF]"
                           length="50"
-                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -1-]"
-                          name="Apellido -1-"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[NIF]"
+                          name="NIF"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1045,15 +1076,15 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -2-]"
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Direccion]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Apellido -2-]"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Direccion]"
                           length="50"
-                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Apellido -2-]"
-                          name="Apellido -2-"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Direccion]"
+                          name="Direccion"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1067,15 +1098,15 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nº Teléfono]"
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Localidad]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Nº Teléfono]"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Localidad]"
                           length="50"
-                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Nº Teléfono]"
-                          name="Nº Teléfono"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Localidad]"
+                          name="Localidad"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1089,15 +1120,169 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Extensión Corta]"
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Telefono]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Extensión Corta]"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Telefono]"
                           length="50"
-                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Extensión Corta]"
-                          name="Extensión Corta"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Telefono]"
+                          name="Telefono"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Fax]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Fax]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[Fax]"
+                          name="Fax"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[ContactoCompras]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[ContactoCompras]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[ContactoCompras]"
+                          name="ContactoCompras"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[CentroID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[CentroID]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[CentroID]"
+                          name="CentroID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[ClienteCodigo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[ClienteCodigo]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[ClienteCodigo]"
+                          name="ClienteCodigo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[GrupoContable]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[GrupoContable]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[GrupoContable]"
+                          name="GrupoContable"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[PaisCodigo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[PaisCodigo]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[PaisCodigo]"
+                          name="PaisCodigo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[PaisDescripcion]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[PaisDescripcion]"
+                          length="50"
+                          lineageId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].Columns[PaisDescripcion]"
+                          name="PaisDescripcion"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1114,41 +1299,77 @@
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Clave   NBI + Centro]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="Clave   NBI + Centro" />
-                        <externalMetadataColumn
                           refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Nombre]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="Nombre" />
                         <externalMetadataColumn
-                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Apellido -1-]"
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[NIF]"
                           codePage="1252"
                           dataType="str"
                           length="50"
-                          name="Apellido -1-" />
+                          name="NIF" />
                         <externalMetadataColumn
-                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Apellido -2-]"
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Direccion]"
                           codePage="1252"
                           dataType="str"
                           length="50"
-                          name="Apellido -2-" />
+                          name="Direccion" />
                         <externalMetadataColumn
-                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Nº Teléfono]"
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Localidad]"
                           codePage="1252"
                           dataType="str"
                           length="50"
-                          name="Nº Teléfono" />
+                          name="Localidad" />
                         <externalMetadataColumn
-                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Extensión Corta]"
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Telefono]"
                           codePage="1252"
                           dataType="str"
                           length="50"
-                          name="Extensión Corta" />
+                          name="Telefono" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[Fax]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Fax" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[ContactoCompras]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ContactoCompras" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[CentroID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CentroID" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[ClienteCodigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ClienteCodigo" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[GrupoContable]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="GrupoContable" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[PaisCodigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PaisCodigo" />
+                        <externalMetadataColumn
+                          refId="Package\Clients\Data Flow Task\Source_Clientes.Outputs[Flat File Source Output].ExternalColumns[PaisDescripcion]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PaisDescripcion" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -1327,7 +1548,7 @@
     design-time-name="Package\Clients\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="225.333333333334,42.6666666666667"
           Id="Package\Clients\Data Flow Task\dest_PersonalTelefonosMoviles"
@@ -1345,9 +1566,9 @@
           Id="Package\Clients\Data Flow Task\Row Count"
           TopLeft="52.5,312.833333333334" />
         <NodeLayout
-          Size="161.333333333334,42"
+          Size="154.666666666667,42.6666666666667"
           Id="Package\Clients\Data Flow Task\Source_Clientes"
-          TopLeft="37.5,5.5" />
+          TopLeft="37.9166666604579,5.06666667441527" />
         <EdgeLayout
           Id="Package\Clients\Data Flow Task.Paths[Derived Column Output]"
           TopLeft="118.166666666667,150.166666666667">
@@ -1367,7 +1588,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1416,24 +1639,26 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Clients\Data Flow Task.Paths[Flat File Source Output]"
-          TopLeft="118.166666666667,47.5">
+          TopLeft="116.708333330229,47.7333333410819">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.7666666589181"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.2666666589181">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.2666666589181" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.1333333294591,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
