@@ -7,12 +7,12 @@
   DTS:CreatorName="LAPTOP-U2BHE8C4\FLA. LUNA CERVANTES"
   DTS:DTSID="{9CDC2D1C-0753-4A0B-AE83-BD904B2152D3}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LastModifiedProductVersion="15.0.1900.80"
   DTS:LocaleID="3082"
   DTS:ObjectName="Orquestador"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{3839538E-EE8C-43FA-BF81-775A0C527794}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{003D8E33-7CEE-49AA-B6FC-EBCF930A9298}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -119,7 +119,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{270E65A4-899C-4AB7-A01E-5D8BA5CF1FC5}"
-              SQLTask:SqlStatementSource="SELECT  PkgName+'.dtsx'  as PkgName&#xA;         , nOrder as Orden&#xA;  FROM [Etl].PkgExecution_ControlCargas&#xA;WHERE fgEnabled = 1&#xA;  AND PkgProject = ?&#xA;ORDER BY [nOrder] ASC"
+              SQLTask:SqlStatementSource="&#xA;SELECT  PkgName+'.dtsx'  as PkgName&#xA;         , nOrder as Orden&#xA;  FROM [Sistema].PkgExecution_ControlCargas&#xA;WHERE fgEnabled = 1&#xA;  AND PkgProject = ?&#xA;ORDER BY [nOrder] ASC"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -147,12 +147,12 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
